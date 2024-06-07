@@ -6,18 +6,17 @@ import { SiOpenlayers } from "react-icons/si";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import heroBackground from '../Assets/hero.mp4'
 import courseFeatureBackground from '../Assets/courseFeatureBackground.jpg'
 import SementicRightImage from '../Assets/SementicRightImage.png'
 import coursePageCover from '../Assets/coursePageCover.webp'
-import blogThumbnail from '../Assets/blogThumbnail.jpeg'
 import courseThumbain from '../Assets/courseThumbnail.jpg'
 import blanckBackground from '../Assets/blanckBackground.png'
 import courseImage1 from '../Assets/courseImage1.webp'
 import courseImage2 from '../Assets/courseImage2.webp'
 import courseImage3 from '../Assets/courseImage3.webp'
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 // const courseFeature = [
 //     'https://images.pexels.com/photos/2781195/pexels-photo-2781195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -38,7 +37,7 @@ const createObserver = (ref, className) => {
     );
   
     if (ref.current) {
-      observer.observe(ref.current);
+      observer.observe(ref.current);    
     }
   
     return observer;
@@ -50,24 +49,66 @@ const createObserver = (ref, className) => {
     }
   };
 const Home = () => {
+    const [navbar, setNavbar] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
     const sectionRef1 = useRef(null);
     const sectionRef2 = useRef(null);
+    const sectionRef3 = useRef(null);
+    const sectionRef4 = useRef(null);
 
+    const changeBackground = () => {
+        // console.log(window.scrollY); 
+        if (window.scrollY >= 80) {
+          setNavbar(true);
+        } else {
+          setNavbar(false);
+        }
+      };
+const handleMouseMove = (e) => {
+    document.documentElement.style.setProperty (
+      '--x', (
+        e.clientX+window.scrollX
+      )
+      + 'px'
+    );
+    document.documentElement.style.setProperty (
+      '--y', (
+        e.clientY+window.scrollY
+      ) 
+      + 'px'
+    );
+  }
     useEffect(() => {
     const observer1 = createObserver(sectionRef1, 'feature-course-page');
     const observer2 = createObserver(sectionRef2, 'sementic');
+    const observer3 = createObserver(sectionRef3, 'course-animation');
+    const observer4 = createObserver(sectionRef4, 'header-static');
+    window.addEventListener('scroll', changeBackground);
   
       return () => {
         closeObserver(sectionRef1, observer1);
         closeObserver(sectionRef2, observer2);
+        closeObserver(sectionRef3, observer3);
+        closeObserver(sectionRef4, observer4);
+        window.removeEventListener('scroll', changeBackground);
       };
     }, []);
     return (
         <>
             <LandingPage>
                 <div>
-                    <header className='mt-5 absolute w-full'>
-                        <nav className='flex justify-between px-5 w-full'>
+                    <div onMouseMove={handleMouseMove} className={`wrapper ${isChecked ? 'active' : ''} z-40	 fixed top-0 right-0 w-3/6 bg-white text-black h-full text-3xl `}>
+                        <div className='flex justify-center items-center h-full'> 
+                                <ol className='flex flex-col'>
+                                    <li>Home</li>
+                                    <li>Contact us</li>
+                                    <li>Number</li>
+                                </ol>
+                        </div>
+                        <div id='invertedcursor'></div>
+                    </div>
+                    <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed top-0`}>
+                        <nav className='flex justify-between pt-5  w-full'>
                             <div className='w-32' >
                                 <img src={logo} alt="Logo" width='100%' />
                             </div>
@@ -96,7 +137,7 @@ const Home = () => {
                                 </div>
                             </div>
                             <div>
-                                <IoMenu size={'3rem'} color='white'/>                            
+                                <IoMenu onClick={() => setIsChecked(!isChecked)} size={'3rem'} color={`${navbar ? 'black' : 'white'}`}/>                            
                             </div>
                         </nav>
                     </header>    
@@ -108,7 +149,6 @@ const Home = () => {
                                 <h1 className='font-semibold text-9xl	 leading-tight'>Master the Stock Market with Our Expert-Led Courses</h1>
                                 <p className='text-5xl font-normal mt-10 leading-snug '>Learn the secrets of stock market investing from industry professionals.</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -188,12 +228,12 @@ const Home = () => {
                     </div>
                 </div>
                 {/* Courses */}
-                <div className='my-10 py-10'>
+                <div ref={sectionRef3} className='my-10 py-10'>
                     <h1 className='text-8xl text-center my-10'>Course</h1>
                     {/* container */}
-                    <div className='p-8 flex flex-wrap gap-20 justify-center'> 
+                    <div onScroll className='p-8 flex flex-wrap gap-20 justify-center '> 
                         {/* card */}
-                        <div className='course-card rounded-lg p-4 pt-2'>
+                        <div className='course-card course-card-left rounded-lg p-4 pt-2'>
                             {/* image */}
                             <div className='h-52 w-80'>
                                 <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
@@ -202,29 +242,33 @@ const Home = () => {
                             <div className=''>
                                 <div className='max-w-80 py-2 px-3'>
                                     <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
-                                    <p className='text-[#2495D6]'>Programming Language</p>
+                                    <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
                                     <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
-                                    <p className='text-base	 font-semibold '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
+                                    <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
                                 </div>
 
-                                <div className='flex bg-gray-900 text-white justify-between px-4 py-1'>
+                                <div className='flex bg-gray-900 text-white justify-between px-4 py-1 rounded-md	'>
                                     <span>Instructor</span>
                                     <span>Name</span>
                                 </div>
                                 <div className='p-4 flex justify-between font-semibold py-1 px-2'>
                                     <div>
-                                        <p className='mb-2'>Price Value</p>
-                                        <FaRegStar fill='yellow'/>
+                                        <p className='mb-2 text-xl'>Price Value</p>
+                                        <div className='flex'>
+                                            <FaStar color='yellow' size={20} />
+                                            <FaStar color='yellow' size={20} />
+                                            <FaStar color='yellow' size={20} />
+                                        </div>
                                     </div>
                                     <div className='text-center'>
-                                        <p className='mb-2'>599 Rs.</p>
+                                        <p className='mb-2 text-xl'>599 Rs.</p>
                                         <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {/* card */}
-                        <div className='course-card rounded-lg p-4 pt-2'>
+                        <div className='course-card course-card-center rounded-lg p-4 pt-2  '>
                             {/* image */}
                             <div className='h-52 w-80'>
                                 <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
@@ -233,29 +277,33 @@ const Home = () => {
                             <div className=''>
                                 <div className='max-w-80 py-2 px-3'>
                                     <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
-                                    <p className='text-[#2495D6]'>Programming Language</p>
+                                    <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
                                     <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
-                                    <p className='text-base	 font-semibold '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
+                                    <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
                                 </div>
 
-                                <div className='flex bg-gray-900 text-white justify-between px-4 py-1'>
+                                <div className='flex bg-gray-900 text-white justify-between px-4 py-1 rounded-md	'>
                                     <span>Instructor</span>
                                     <span>Name</span>
                                 </div>
                                 <div className='p-4 flex justify-between font-semibold py-1 px-2'>
                                     <div>
-                                        <p className='mb-2'>Price Value</p>
-                                        <FaRegStar fill='yellow'/>
+                                        <p className='mb-2 text-xl'>Price Value</p>
+                                        <div className='flex'>
+                                            <FaStar color='yellow' size={20} />
+                                            <FaStar color='yellow' size={20} />
+                                            <FaStar color='yellow' size={20} />
+                                        </div>
                                     </div>
                                     <div className='text-center'>
-                                        <p className='mb-2'>599 Rs.</p>
+                                        <p className='mb-2 text-xl'>599 Rs.</p>
                                         <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {/* card */}
-                        <div className='course-card rounded-lg p-4 pt-2'>
+                        <div className='course-card rounded-lg p-4 pt-2  course-card-right'>
                             {/* image */}
                             <div className='h-52 w-80'>
                                 <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
@@ -264,22 +312,26 @@ const Home = () => {
                             <div className=''>
                                 <div className='max-w-80 py-2 px-3'>
                                     <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
-                                    <p className='text-[#2495D6]'>Programming Language</p>
+                                    <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
                                     <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
-                                    <p className='text-base	 font-semibold '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
+                                    <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
                                 </div>
 
-                                <div className='flex bg-gray-900 text-white justify-between px-4 py-1'>
+                                <div className='flex bg-gray-900 text-white justify-between px-4 py-1 rounded-md	'>
                                     <span>Instructor</span>
                                     <span>Name</span>
                                 </div>
                                 <div className='p-4 flex justify-between font-semibold py-1 px-2'>
                                     <div>
-                                        <p className='mb-2'>Price Value</p>
-                                        <FaRegStar fill='yellow'/>
+                                        <p className='mb-2 text-xl'>Price Value</p>
+                                        <div className='flex'>
+                                            <FaStar color='yellow' size={20} />
+                                            <FaStar color='yellow' size={20} />
+                                            <FaStar color='yellow' size={20} />
+                                        </div>
                                     </div>
                                     <div className='text-center'>
-                                        <p className='mb-2'>599 Rs.</p>
+                                        <p className='mb-2 text-xl'>599 Rs.</p>
                                         <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
                                     </div>
                                 </div>
@@ -287,16 +339,56 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='text-center text-3xl my-20'>
-                        <button className='inline-flex	 gap-5 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers />View All</button>
+                        <button className='inline-flex gap-5 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers />View All</button>
                     </div>
                 </div>
                 {/* Subscription */}
                 <div className='text-center ng-white'>
                     <h1 className='text-6xl max-w-2xl my-6 m-auto leading-tight'>Choice your best <span className='font-semibold'>SUBSCRIPTION</span>Plan</h1>
-                    <div className='p-8 flex justify-around flex-wrap py-20'> 
-                        <div className='rounded-3xl subscription-card border-8'>
+                    <div className='p-8 flex justify-around flex-wrap py-20 px-40'> 
                         {/* card */}
-                            <div className='p-6'>
+                        <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8'>
+                            <div className='p-6 rounded-3xl '>
+                                <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                <div className='flex flex-col subcription-card'>
+                                    <div className='font-semibold my-7'>
+                                        <p className='text-5xl'>25 Rs</p>
+                                        <p className='text-2xl'>Per Month</p>
+                                    </div>
+                                    <div className='self-center mb-5'>
+                                        <ul className='text-2xl list-disc text-start'>
+                                            <li>Data Analyst</li>
+                                            <li>Up to 5 Member</li>
+                                            <li>Get 5 GB Storage</li>
+                                            <li>Monthly Report</li>
+                                        </ul>
+                                    </div>
+                                    <button className='text-2xl text-white py-2.5 bg-red-600 rounded-full font-semibold'>Join</button>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8'>
+                            <div className='p-6 rounded-3xl '>
+                                <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                <div className='flex flex-col subcription-card'>
+                                    <div className='font-semibold my-7'>
+                                        <p className='text-5xl'>25 Rs</p>
+                                        <p className='text-2xl'>Per Month</p>
+                                    </div>
+                                    <div className='self-center mb-5'>
+                                        <ul className='text-2xl list-disc text-start'>
+                                            <li>Data Analyst</li>
+                                            <li>Up to 5 Member</li>
+                                            <li>Get 5 GB Storage</li>
+                                            <li>Monthly Report</li>
+                                        </ul>
+                                    </div>
+                                    <button className='text-2xl text-white py-2.5 bg-red-600 rounded-full font-semibold'>Join</button>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8'>
+                            <div className='p-6 rounded-3xl '>
                                 <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
                                 <div className='flex flex-col subcription-card'>
                                     <div className='font-semibold my-7'>
@@ -324,7 +416,7 @@ const Home = () => {
                         {/* images */}
                         <div className=' flex  gap-20 my-20 flex-wrap'>
                             <div className='w-96'>
-                                <img src={courseThumbain} alt="" className='w-full h-full'/>
+                                <img src={courseThumbain} alt="" className='w-full h-full rounded-3xl'/>
                             </div>
                             {/* content */}
                             <div className='max-w-2xl'> 	
@@ -339,7 +431,7 @@ const Home = () => {
                                 <p className='text-lg leading-10'>Morbi tempor eleifend condimentum. Etiam mollis urna et massa tempus vulputate. Nunc sed nisl est. Donec non consectetur elit. Praesent accumsan elit urna, eget mattis turpis aliquam a. In sagittis bibendum consequat. Quisque porta volutpat ligula sit amet varius</p>
                             </div>
                             <div className='w-96'>
-                                <img src={courseThumbain} alt="" className='w-full h-full'/>
+                                <img src={courseThumbain} alt="" className='w-full h-full rounded-3xl'/>
                             </div>
                         </div>
                     </div>
@@ -380,6 +472,59 @@ const Home = () => {
 }
 export default Home;
 const LandingPage = styled.div`
+max-width: 1920px;
+margin: auto;
+.wrapper {
+    transition: clip-path 0.3s ease-in-out;
+    clip-path: circle(0px at calc(100% - 45px) 45px);
+}
+.active {
+  clip-path: circle(75%);
+}
+.wrapper ol{
+    position: absolute;
+  top: 50%;
+  /* left: 50%; */
+  transform: translate(-50%, -50%);
+  padding-left: 80px;
+  list-style: none;
+  display: block;
+  width: 100%;
+  transform: translateY(-50%);
+}
+.wrapper ol li{ 
+    font-size: 9vh;
+    line-height: 1.2;
+    font-weight: 800;
+    color: black;
+    transition: all 250ms linear;
+}
+#invertedcursor {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  top: var(--y, 0);
+  left: var(--x, 0);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  mix-blend-mode: difference;
+  transition: transform .2s;
+}
+header, .hero {
+    padding: 0 70px;
+    transition: all 1s ease;
+    /* max-width: 1920px; */
+    /* margin: auto; */
+}
+.hero video {
+    position: absolute;
+    z-index: -999;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .hero h1{
     font-size: 6.2vw;
     /* line-height: 1.2px; */
@@ -479,6 +624,40 @@ const LandingPage = styled.div`
     background-size: 100% 430px;
     background-position: top;
  }
+.course-animation .course-card-center {
+     animation: 1s slideCenter;
+ }
+.course-animation .course-card-left {
+     animation: 1s slideLeft;
+ }
+.course-animation .course-card-right {
+     animation: 1s slideRight;
+ }
+ @keyframes slideCenter {
+    from {
+    transform: translateY(20%);
+}
+to {
+    transform: translateY(0%);
+  }
+ }
+ @keyframes slideLeft {
+    from {
+    transform: translateX(-50%);
+}
+to {
+    transform: translateX(0%);
+  }
+ }
+ @keyframes slideRight {
+    from {
+    transform: translateX(50%);
+}
+to {
+    transform: translateX(0%);
+  }
+ }
+
 .course-page-nav {
     display: flex;
     font-size: 18px;
@@ -495,4 +674,21 @@ const LandingPage = styled.div`
 .subscription-card {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
+.subscription-card:hover h2 {
+    color: black;
+    background-color: white;
+    transition: all 1s ease; 
+}
+.subscription-card:hover button {
+    color: black;
+    background-color: white;
+    transition: all 1s ease; 
+}
+.subscription-card:hover > div{
+    color: white;
+    font-weight: 600;
+    background-color: red;
+    transition: all 1s ease; 
+}
+
 `
