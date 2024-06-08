@@ -17,6 +17,11 @@ import courseImage1 from '../Assets/courseImage1.webp'
 import courseImage2 from '../Assets/courseImage2.webp'
 import courseImage3 from '../Assets/courseImage3.webp'
 import { useRef, useEffect, useState } from 'react';
+import Contact from './Priyanshu2/contactUs';
+import Footer from './Priyanshu2/footer';
+import Testimonial from './Priyanshu2/testimonial';
+import Faq from './Priyanshu2/faq';
+
 
 // const courseFeature = [
 //     'https://images.pexels.com/photos/2781195/pexels-photo-2781195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -56,6 +61,20 @@ const Home = () => {
     const sectionRef3 = useRef(null);
     const sectionRef4 = useRef(null);
 
+    const [mouseX, setMouseX] = useState(0)
+    const [mouseY, setMouseY] = useState(0)
+    const [xp, setXP] = useState(0)
+    const [yp, setYP] = useState(0)
+
+    const handleMouseMove = (e) => {
+        setMouseX(e.pageX-30);
+        setMouseY(e.pageY-30);
+
+        setXP((mouseX - xp)/6);
+        setYP((mouseY - yp)/6);
+        
+    }
+
     const changeBackground = () => {
         // console.log(window.scrollY); 
         if (window.scrollY >= 80) {
@@ -64,20 +83,9 @@ const Home = () => {
           setNavbar(false);
         }
       };
-const handleMouseMove = (e) => {
-    document.documentElement.style.setProperty (
-      '--x', (
-        e.clientX+window.scrollX
-      )
-      + 'px'
-    );
-    document.documentElement.style.setProperty (
-      '--y', (
-        e.clientY+window.scrollY
-      ) 
-      + 'px'
-    );
-  }
+      
+      
+
     useEffect(() => {
     const observer1 = createObserver(sectionRef1, 'feature-course-page');
     const observer2 = createObserver(sectionRef2, 'sementic');
@@ -97,7 +105,7 @@ const handleMouseMove = (e) => {
         <>
             <LandingPage>
                 <div>
-                    <div onMouseMove={handleMouseMove} className={`wrapper ${isChecked ? 'active' : ''} z-40	 fixed top-0 right-0 w-3/6 bg-white text-black h-full text-3xl `}>
+                    <div  className={`wrapper ${isChecked ? 'active' : ''} z-40	 fixed top-0 right-0 w-3/6 bg-white text-black h-full text-3xl `}>
                         <div className='flex justify-center items-center h-full'> 
                                 <ol className='flex flex-col'>
                                     <li>Home</li>
@@ -105,7 +113,7 @@ const handleMouseMove = (e) => {
                                     <li>Number</li>
                                 </ol>
                         </div>
-                        <div id='invertedcursor'></div>
+                        {/* <span className="circle" style={{ left: `${xp}px`, top: `${yp}px` }}></span> */}
                     </div>
                     <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed top-0`}>
                         <nav className='flex justify-between pt-5  w-full'>
@@ -157,7 +165,7 @@ const handleMouseMove = (e) => {
                 <div className='my-10'>
                     <h1 className='text-8xl text-center my-10'>Our Course Feature</h1>
                     {/* container */}
-                    <div className='feature-container p-8 py-24 flex justify-around flex-wrap'> 
+                    <div className='feature-container p-8 py-24 flex justify-around flex-wrap gap-10'> 
                         {/* card */}
                         <div className='course-feature w-80 bg-white  rounded-lg '>
                             {/* image */}
@@ -190,9 +198,9 @@ const handleMouseMove = (e) => {
                 </div>
                 </div>
                 {/* Sementic */}
-                <div ref={sectionRef2} className='grid grid-cols-2 gap-10 px-5 py-20 my-10'> 
+                <div ref={sectionRef2} className='grid grid-cols-2 md:grid md:grid-cols-1 gap-10 px-5 py-20 my-10 '> 
                     {/* left */}
-                    <div className='flex flex-col sementic-left'>
+                    <div className='flex flex-col sementic-left flex-wrap'>
                         <div className='self-center'>
                             <h2 className='text-7xl	mb-10 '>Schematic</h2>
                             <button className='text-xl border-2 rounded-3xl border-black py-2 px-7'>Brand Identity</button>    
@@ -221,8 +229,8 @@ const handleMouseMove = (e) => {
                         </div>
                     </div>
                     {/* right */}
-                    <div className='content-center sementic-right'>
-                        <div className='p-10'>
+                    <div className='content-center sementic-right '>
+                        <div className='max-w-4xl'>
                             <img src={SementicRightImage} alt="" width="100%" />
                         </div>
                     </div>
@@ -461,10 +469,19 @@ const handleMouseMove = (e) => {
                             <button className='text-xl py-6 px-24 rounded-3xl border-2 border-black flex items-center gap-5	'>Trading Guide <FaArrowRightLong /></button>
                         </div>
                     </div>
-                    
-
                 </div>
-                {/* Course Details */}
+                <div>
+                <div>
+                    <Testimonial/>
+                </div>
+                <div>
+                    <Faq/>
+                </div>
+                    <Contact/>
+                </div>
+                <div>
+                    <Footer/>
+                </div>
          
             </LandingPage>            
         </>
@@ -690,5 +707,13 @@ to {
     background-color: red;
     transition: all 1s ease; 
 }
+.circle {
+      width: 100px;
+      height: 100px;
+      background: #ffffff;
+      border-radius: 50%;
+      position: absolute;
+      mix-blend-mode: difference;
+    }
 
 `
