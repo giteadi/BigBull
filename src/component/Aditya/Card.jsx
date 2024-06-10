@@ -1,5 +1,5 @@
 import React from 'react';
-import certificate from '../adiAssets/c1.jpg'
+import certificate from './adiAssets/c1.jpg'
 
 const Card = ({ award, date, image }) => {
   return (

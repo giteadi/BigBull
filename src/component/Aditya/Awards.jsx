@@ -1,5 +1,5 @@
-import image47 from '../adiAssets/image 47.png';
-import manVideo from '../adiAssets/fire.mp4';
+import image47 from './adiAssets/image 47.png';
+import manVideo from './adiAssets/fire.mp4';
 import styled from 'styled-components';
 import Card from './Card';
 import CardData from './CardData';

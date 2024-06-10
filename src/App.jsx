@@ -8,7 +8,11 @@ import SingleCourse from './component/Aditya/SingleCourse';
 import Blogs from './component/Aditya/Blogs';
 import About from './component/Aditya/About';
 import Test from './component/Aditya/Test';
+import Awards from './component/Aditya/Awards';
 import {Routes, Route} from 'react-router-dom';
+import PurchasedCoursesPage from './component/AsthaYadav/purchasedCoursesPage';
+// import PurchasedComponent from './component/AsthaYadav/purchasedComponent';
+import PaymentForm from './component/Nousheen/paymentForm';
 
 function App() {
   
@@ -23,6 +27,10 @@ function App() {
       <Route path='/blogs' element={<Blogs/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/test' element={<Test/>}/>
+      <Route path='/awards' element={<Awards/>}/>
+      <Route path='/PurchasedCoursesPage' element={<PurchasedCoursesPage/>}/>
+      {/* <Route path='/PurchasedComponent' element={<PurchasedComponent/>}/> */}
+      <Route path='/PaymentForm' element={<PaymentForm/>}/>
     </Routes>
     </>
   )

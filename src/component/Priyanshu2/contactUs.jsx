@@ -12,14 +12,6 @@ function Contact() {
     return (
         <>
             <StyledContact>
-                <header>
-                    <div className="top-container shadow-sm d-flex justify-content-between">
-                        <img src={imag} alt="" width="100px" />
-                        <div className="top-list p-3 px-5">
-                            <i class="bi bi-list fa-2x"></i>
-                        </div>
-                    </div>
-                </header>
                 <div className='container-fluid'>
                     <div className="row mid-container bg-white pt-5 pb-5 d-flex justify-content-center align-items-center">
                         <div className="heading text-center py-3">
