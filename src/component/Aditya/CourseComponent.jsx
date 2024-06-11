@@ -20,7 +20,7 @@ const CourseComponent = () => {
   };
 
   const handleCourseClick = (id) => {
-    navigate(`/course/${id}`);
+    navigate(`/Cdetail/${id}`);
   };
 
   const filteredCourses =
