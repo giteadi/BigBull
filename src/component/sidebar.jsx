@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SideBar = ({ checked }) => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
+
+    console.log(position);
 
     const handleMouseMove = (e) => {
         setPosition({ x: e.clientX, y: e.clientY });
     };
 
+    useEffect(() => {
+                // window.addEventListener('mousemove', handleMouseMove);
+                // Clean up the event listener on component unmount
+        return () => {
+                // window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, []);
     return (
         <>
             <div
@@ -28,9 +37,9 @@ const SideBar = ({ checked }) => {
                     }}
                 ></span> */}
                 <div className='flex justify-center items-center h-full'>
-                    <ol className='flex flex-col'>
+                    <ol className='flex flex-col ps-24'>
                         <li>Home</li>
-                        <li>Contact us</li>
+                        <li className="my-4">Contact us</li>
                         <li>Number</li>
                     </ol>
                 </div>

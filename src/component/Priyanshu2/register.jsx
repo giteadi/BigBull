@@ -99,9 +99,6 @@ const Register = () => {
                                                 <input type="date" class="form-control shadow-sm p-2 mb-4 rounded" aria-label="First name" />
                                             </div>
                                         </div>
-
-
-
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="mobilenumber" class="form-label">Mobile Number</label>

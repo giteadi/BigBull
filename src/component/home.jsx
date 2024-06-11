@@ -10,6 +10,7 @@ import { FaStar } from "react-icons/fa";
 import heroBackground from '../Assets/hero.mp4'
 import courseFeatureBackground from '../Assets/courseFeatureBackground.jpg'
 import SementicRightImage from '../Assets/SementicRightImage.png'
+import bullImage from '../Assets/BULL.png'
 import coursePageCover from '../Assets/coursePageCover.webp'
 import courseThumbain from '../Assets/courseThumbnail.jpg'
 import blanckBackground from '../Assets/blanckBackground.png'
@@ -41,7 +42,7 @@ const createObserver = (ref, className) => {
           entry.target.classList.remove(className);
         }
       },
-      { threshold: 0.1 } // Adjust this threshold as needed
+      { threshold: 0.1 }
     );
   
     if (ref.current) {
@@ -63,6 +64,7 @@ const Home = () => {
     const sectionRef2 = useRef(null);
     const sectionRef3 = useRef(null);
     const sectionRef4 = useRef(null);
+    const sectionRef5 = useRef(null);
 
 
     const changeBackground = () => {
@@ -74,22 +76,47 @@ const Home = () => {
         }
       };
       
-      console.log('hello')
+    //   console.log('hello')
 
     useEffect(() => {
     const observer1 = createObserver(sectionRef1, 'feature-course-page');
     const observer2 = createObserver(sectionRef2, 'sementic');
     const observer3 = createObserver(sectionRef3, 'course-animation');
     const observer4 = createObserver(sectionRef4, 'header-static');
+    const observer5 = createObserver(sectionRef5, 'callToAction-animation');
     window.addEventListener('scroll', changeBackground);
+    const card = document.querySelectorAll('.card');
+
+    card.forEach((eachCard) => {
+        eachCard.addEventListener('mousemove', (e) => {
+            const rect = eachCard.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element.
+            const y = e.clientY - rect.top;  // y position within the element.
+        
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+        
+            const rotateX = ((y - centerY) / centerY) * 5;
+            const rotateY = ((x - centerX) / centerX) * -5;
+        
+            eachCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+    })
+    
   
       return () => {
         closeObserver(sectionRef1, observer1);
         closeObserver(sectionRef2, observer2);
         closeObserver(sectionRef3, observer3);
         closeObserver(sectionRef4, observer4);
+        closeObserver(sectionRef5, observer5);
         window.removeEventListener('scroll', changeBackground);
-      };
+
+        card.forEach((eachCard) => {
+            eachCard.addEventListener('mouseleave', () => {
+                eachCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        })};
     }, []);
     return (
         <>
@@ -126,7 +153,7 @@ const Home = () => {
                                 </div>
                             </div>
                             <div>
-                                <IoMenu onClick={() => setIsChecked(!isChecked)} size={'3rem'} color={`${navbar ? 'black' : 'white'}`}/>                            
+                                <IoMenu onClick={() => setIsChecked(!isChecked)} size={'3rem'} color={`${navbar || isChecked  ? 'black' : 'white'}`}/>                            
                             </div>
                         </nav>
                     </header>    
@@ -146,7 +173,7 @@ const Home = () => {
                 <div className='my-10'>
                     <h1 className='text-8xl text-center my-10'>Our Course Feature</h1>
                     {/* container */}
-                    <div className='feature-container sm:grid grid-cols-2 flex p-8 py-24 lg:flex justify-around flex-wrap gap-10'> 
+                    <div className='feature-container sm:grid grid-cols-2 flex p-8 py-24 lg:flex gap-20 justify-center flex-wrap '> 
                         {/* card */}
                         <div className='course-feature w-80 bg-white  rounded-lg '>
                             {/* image */}
@@ -215,6 +242,11 @@ const Home = () => {
                             <img src={SementicRightImage} alt="" width="100%" />
                         </div>
                     </div>
+                    <div className='relative'>
+                        <div className='max-w-4xl absolute bull-animation hidden lg:block'>
+                            <img src={bullImage} alt="" width="100%" />
+                        </div>
+                    </div>
                 </div>
                 {/* Courses */}
                 <div ref={sectionRef3} className='my-10 py-10'>
@@ -222,106 +254,112 @@ const Home = () => {
                     {/* container */}
                     <div onScroll className='p-8 flex flex-wrap gap-20 justify-center '> 
                         {/* card */}
-                        <div className='course-card course-card-left rounded-lg p-4 pt-2 '>
-                            {/* image */}
-                            <div className='h-52 w-80'>
-                                <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
-                            </div>
-                            {/* content */}
-                            <div className=''>
-                                <div className='max-w-80 py-2 px-3'>
-                                    <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
-                                    <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
-                                    <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
-                                    <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
+                        <div className='card-container'>
+                            <div className='course-card card course-card-left rounded-lg p-4 pt-2 '>
+                                {/* image */}
+                                <div className='h-52 w-80'>
+                                    <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
                                 </div>
-
-                                <div className='flex bg-gray-900 text-white justify-between px-4 py-1 rounded-md	'>
-                                    <span>Instructor</span>
-                                    <span>Name</span>
-                                </div>
-                                <div className='p-4 flex justify-between font-semibold py-1 px-2'>
-                                    <div>
-                                        <p className='mb-2 text-xl'>Price Value</p>
-                                        <div className='flex'>
-                                            <FaStar color='yellow' size={20} />
-                                            <FaStar color='yellow' size={20} />
-                                            <FaStar color='yellow' size={20} />
-                                        </div>
+                                {/* content */}
+                                <div className=''>
+                                    <div className='max-w-80 py-2 px-3'>
+                                        <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
+                                        <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
+                                        <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
+                                        <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
                                     </div>
-                                    <div className='text-center'>
-                                        <p className='mb-2 text-xl'>599 Rs.</p>
-                                        <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
+
+                                    <div className='flex bg-gray-900 text-white justify-between px-4 py-1 rounded-md	'>
+                                        <span>Instructor</span>
+                                        <span>Name</span>
+                                    </div>
+                                    <div className='p-4 flex justify-between font-semibold py-1 px-2'>
+                                        <div>
+                                            <p className='mb-2 text-xl'>Price Value</p>
+                                            <div className='flex'>
+                                                <FaStar color='yellow' size={20} />
+                                                <FaStar color='yellow' size={20} />
+                                                <FaStar color='yellow' size={20} />
+                                            </div>
+                                        </div>
+                                        <div className='text-center'>
+                                            <p className='mb-2 text-xl'>599 Rs.</p>
+                                            <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {/* card */}
-                        <div className='course-card course-card-center rounded-lg p-4 pt-2   '>
-                            {/* image */}
-                            <div className='h-52 w-80'>
-                                <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
-                            </div>
-                            {/* content */}
-                            <div className=''>
-                                <div className='max-w-80 py-2 px-3'>
-                                    <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
-                                    <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
-                                    <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
-                                    <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
+                        <div className='card-container'>
+                            <div className='course-card card course-card-center rounded-lg p-4 pt-2 '>
+                                {/* image */}
+                                <div className='h-52 w-80'>
+                                    <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
                                 </div>
-
-                                <div className='flex bg-gray-900 text-white justify-between px-4 py-1 rounded-md	'>
-                                    <span>Instructor</span>
-                                    <span>Name</span>
-                                </div>
-                                <div className='p-4 flex justify-between font-semibold py-1 px-2'>
-                                    <div>
-                                        <p className='mb-2 text-xl'>Price Value</p>
-                                        <div className='flex'>
-                                            <FaStar color='yellow' size={20} />
-                                            <FaStar color='yellow' size={20} />
-                                            <FaStar color='yellow' size={20} />
-                                        </div>
+                                {/* content */}
+                                <div className=''>
+                                    <div className='max-w-80 py-2 px-3'>
+                                        <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
+                                        <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
+                                        <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
+                                        <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
                                     </div>
-                                    <div className='text-center'>
-                                        <p className='mb-2 text-xl'>599 Rs.</p>
-                                        <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
+
+                                    <div className='flex bg-gray-900 text-white justify-between px-4 py-1 rounded-md	'>
+                                        <span>Instructor</span>
+                                        <span>Name</span>
+                                    </div>
+                                    <div className='p-4 flex justify-between font-semibold py-1 px-2'>
+                                        <div>
+                                            <p className='mb-2 text-xl'>Price Value</p>
+                                            <div className='flex'>
+                                                <FaStar color='yellow' size={20} />
+                                                <FaStar color='yellow' size={20} />
+                                                <FaStar color='yellow' size={20} />
+                                            </div>
+                                        </div>
+                                        <div className='text-center'>
+                                            <p className='mb-2 text-xl'>599 Rs.</p>
+                                            <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {/* card */}
-                        <div className='course-card rounded-lg p-4 pt-2  course-card-right xl:self-start '>
-                            {/* image */}
-                            <div className='h-52 w-80'>
-                                <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
-                            </div>
-                            {/* content */}
-                            <div className=''>
-                                <div className='max-w-80 py-2 px-3'>
-                                    <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
-                                    <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
-                                    <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
-                                    <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
+                        <div className='card-container'>
+                            <div className='course-card card course-card-right rounded-lg p-4 pt-2 '>
+                                {/* image */}
+                                <div className='h-52 w-80'>
+                                    <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
                                 </div>
-
-                                <div className='flex bg-gray-900 text-white justify-between px-4 py-1 rounded-md	'>
-                                    <span>Instructor</span>
-                                    <span>Name</span>
-                                </div>
-                                <div className='p-4 flex justify-between font-semibold py-1 px-2'>
-                                    <div>
-                                        <p className='mb-2 text-xl'>Price Value</p>
-                                        <div className='flex'>
-                                            <FaStar color='yellow' size={20} />
-                                            <FaStar color='yellow' size={20} />
-                                            <FaStar color='yellow' size={20} />
-                                        </div>
+                                {/* content */}
+                                <div className=''>
+                                    <div className='max-w-80 py-2 px-3'>
+                                        <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
+                                        <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
+                                        <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
+                                        <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
                                     </div>
-                                    <div className='text-center'>
-                                        <p className='mb-2 text-xl'>599 Rs.</p>
-                                        <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
+
+                                    <div className='flex bg-gray-900 text-white justify-between px-4 py-1 rounded-md	'>
+                                        <span>Instructor</span>
+                                        <span>Name</span>
+                                    </div>
+                                    <div className='p-4 flex justify-between font-semibold py-1 px-2'>
+                                        <div>
+                                            <p className='mb-2 text-xl'>Price Value</p>
+                                            <div className='flex'>
+                                                <FaStar color='yellow' size={20} />
+                                                <FaStar color='yellow' size={20} />
+                                                <FaStar color='yellow' size={20} />
+                                            </div>
+                                        </div>
+                                        <div className='text-center'>
+                                            <p className='mb-2 text-xl'>599 Rs.</p>
+                                            <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -337,74 +375,80 @@ const Home = () => {
                         <h1>Choice your best </h1>
                         <span className='font-semibold me-2'>SUBSCRIPTION plan</span>
                     </div>
-                    <div className='p-8 xl:flex justify-around flex-wrap py-20 px-40 md:gap-20 gap-16 md:max-lg:grid lg:grid lg:gap-40 lg:grid-cols-2 md:max-lg:grid-cols-2 md:max-xl:px-10 '> 
+                    <div className='p-8 xl:flex justify-center gap-10 flex-wrap py-20 sm:px-40 md:gap-20 gap-20 md:max-lg:grid lg:grid-cols-2 md:max-lg:grid-cols-2 md:max-xl:px-10 flex'> 
                         {/* card */}
-                        <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8'>
-                            <div className='p-6 rounded-3xl '>
-                                <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
-                                <div className='flex flex-col '>
-                                    <div className='font-semibold my-7'>
-                                        <p className='text-5xl'>25 Rs</p>
-                                        <p className='text-2xl'>Per Month</p>
+                        <div className='card-container'>
+                            <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
+                                <div className='p-6 rounded-3xl '>
+                                    <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                    <div className='flex flex-col '>
+                                        <div className='font-semibold my-7'>
+                                            <p className='text-5xl'>25 Rs</p>
+                                            <p className='text-2xl'>Per Month</p>
+                                        </div>
+                                        <div className='self-center mb-5'>
+                                            <ul className='text-2xl list-disc text-start'>
+                                                <li>Data Analyst</li>
+                                                <li>Up to 5 Member</li>
+                                                <li>Get 5 GB Storage</li>
+                                                <li>Monthly Report</li>
+                                            </ul>
+                                        </div>
+                                        <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                     </div>
-                                    <div className='self-center mb-5'>
-                                        <ul className='text-2xl list-disc text-start'>
-                                            <li>Data Analyst</li>
-                                            <li>Up to 5 Member</li>
-                                            <li>Get 5 GB Storage</li>
-                                            <li>Monthly Report</li>
-                                        </ul>
-                                    </div>
-                                    <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
-                                </div>
-                            </div>                            
+                                </div>                            
+                            </div>
                         </div>
                         {/* card */}
-                        <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8'>
-                            <div className='p-6 rounded-3xl '>
-                                <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
-                                <div className='flex flex-col '>
-                                    <div className='font-semibold my-7'>
-                                        <p className='text-5xl'>25 Rs</p>
-                                        <p className='text-2xl'>Per Month</p>
+                        <div className='card-container'>
+                            <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
+                                <div className='p-6 rounded-3xl '>
+                                    <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                    <div className='flex flex-col '>
+                                        <div className='font-semibold my-7'>
+                                            <p className='text-5xl'>25 Rs</p>
+                                            <p className='text-2xl'>Per Month</p>
+                                        </div>
+                                        <div className='self-center mb-5'>
+                                            <ul className='text-2xl list-disc text-start'>
+                                                <li>Data Analyst</li>
+                                                <li>Up to 5 Member</li>
+                                                <li>Get 5 GB Storage</li>
+                                                <li>Monthly Report</li>
+                                            </ul>
+                                        </div>
+                                        <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                     </div>
-                                    <div className='self-center mb-5'>
-                                        <ul className='text-2xl list-disc text-start'>
-                                            <li>Data Analyst</li>
-                                            <li>Up to 5 Member</li>
-                                            <li>Get 5 GB Storage</li>
-                                            <li>Monthly Report</li>
-                                        </ul>
-                                    </div>
-                                    <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
-                                </div>
-                            </div>                            
+                                </div>                            
+                            </div>
                         </div>
                         {/* card */}
-                        <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8'>
-                            <div className='p-6 rounded-3xl '>
-                                <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
-                                <div className='flex flex-col '>
-                                    <div className='font-semibold my-7'>
-                                        <p className='text-5xl'>25 Rs</p>
-                                        <p className='text-2xl'>Per Month</p>
+                        <div className='card-container'>
+                            <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
+                                <div className='p-6 rounded-3xl '>
+                                    <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                    <div className='flex flex-col '>
+                                        <div className='font-semibold my-7'>
+                                            <p className='text-5xl'>25 Rs</p>
+                                            <p className='text-2xl'>Per Month</p>
+                                        </div>
+                                        <div className='self-center mb-5'>
+                                            <ul className='text-2xl list-disc text-start'>
+                                                <li>Data Analyst</li>
+                                                <li>Up to 5 Member</li>
+                                                <li>Get 5 GB Storage</li>
+                                                <li>Monthly Report</li>
+                                            </ul>
+                                        </div>
+                                        <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                     </div>
-                                    <div className='self-center mb-5'>
-                                        <ul className='text-2xl list-disc text-start'>
-                                            <li>Data Analyst</li>
-                                            <li>Up to 5 Member</li>
-                                            <li>Get 5 GB Storage</li>
-                                            <li>Monthly Report</li>
-                                        </ul>
-                                    </div>
-                                    <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
-                                </div>
-                            </div>                            
+                                </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
                 {/* Latest Blogs */}
-                <div className='flex justify-center flex-col latest-blog'>
+                <div className='flex justify-center flex-col latest-blog pt-24'>
                     <h1 className='text-8xl text-center'>Latest Blogs</h1>
                     <div className='max-w-7xl m-auto lg:w-full '>
                         {/* images */}
@@ -434,7 +478,7 @@ const Home = () => {
                     </div>
                 </div>
                     {/* Call to Actions */}
-                <div className='px-40 lg:px-20'>
+                <div ref={sectionRef5} className='px-40 lg:px-20'>
                     <div className='mb-20'>
                         <h1 className='text-7xl	mb-10'>Call to Action</h1>
                         <p className='text-4xl	'>Join Now and Start Your Journey to Financial Mastery!</p>
@@ -445,37 +489,37 @@ const Home = () => {
                     </div>
                     <div className='mt-20 grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center'>
                             <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
-                                <div className='flex items-center m-auto text-xl'>
+                                <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
                             <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
-                                <div className='flex items-center m-auto text-xl'>
+                                <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
                             <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
-                                <div className='flex items-center m-auto text-xl'>
+                                <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
                             <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
-                                <div className='flex items-center m-auto text-xl'>
+                                <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
                             <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
-                                <div className='flex items-center m-auto text-xl'>
+                                <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
                             <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
-                                <div className='flex items-center m-auto text-xl'>
+                                <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
@@ -487,7 +531,7 @@ const Home = () => {
                     {/* <Awards/> */}
                 </div>
                 <div>
-                    <Testimonial/>
+                    {/* <Testimonial/> */}
                 </div>
                 <div>
                     {/* <About/> */}
@@ -495,10 +539,10 @@ const Home = () => {
                 <div>
                     {/* <Faq/> */}
                 </div>
-                    <Contact/>
+                    {/* <Contact/> */}
                 </div>
                 <div>
-                    <Footer/>
+                    {/* <Footer/> */}
                 </div>
          
             </LandingPage>            
@@ -510,8 +554,8 @@ const LandingPage = styled.div`
 max-width: 1920px;
 margin: auto;
 .wrapper {
-    transition: clip-path 0.3s ease-in-out;
-    clip-path: circle(0px at calc(100% - 45px) 45px);
+    transition: clip-path 0.5s ease-in-out;
+    clip-path: circle(0px at calc(100% - 10px) 45px);
 }
 .active {
   clip-path: circle(75%);
@@ -593,6 +637,7 @@ header, .hero {
    padding: 15px;
    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
    animation: 1.5s fadeInUp;
+   width: 24rem;
 }  
 @keyframes fadeInUp {
  0% {
@@ -630,6 +675,18 @@ header, .hero {
    transform: translateX(0%);
    opacity: 1;
  }
+}
+.sementic .bull-animation {
+    animation: 1s bullAni ease-in;
+    z-index: -20;
+    top: -331px;
+}
+@keyframes bullAni {
+    from {
+        transform: translate(-20%, 50%);
+    } to {
+        transform: translate(0%);
+    }
 }
  .feature-container > div > div:nth-child(1), .course-page{
     background-repeat: no-repeat;
@@ -718,7 +775,11 @@ to {
 .subscription-card span{
     color: white;
 }
-.subscription-card:hover button, span{
+.subscription-card:hover button{
+    background-color: white;
+    transition: all 1s ease; 
+}
+.subscription-card:hover span{
     background-color: white;
     transition: all 1s ease; 
 }
@@ -739,5 +800,23 @@ to {
       position: absolute;
       mix-blend-mode: difference;
     }
+.callToAction-animation {
+    animation: 2s callToActionRL;
+}
+@keyframes callToActionRL {
+    from {
+        transform: translateX(-20%);
+    } to {
+        transform: translateX(0%);
+    }
+}
+.card-container {
+    perspective: 1000px;
+}
 
+.card {
+    overflow: hidden;
+    transition: transform 0.1s ease;
+    /* box-shadow: rgb(253, 9, 9) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
+}
 `
