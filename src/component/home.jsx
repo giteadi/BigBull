@@ -69,6 +69,7 @@ const Home = () => {
     const sectionRef3 = useRef(null);
     const sectionRef4 = useRef(null);
     const sectionRef5 = useRef(null);
+    const [checked, setChecked] = useState(false);
 
 
     const changeBackground = () => {
@@ -127,7 +128,7 @@ const Home = () => {
             <LandingPage >
                 <div>
                     <div>
-                        <SideBar checked={isChecked}/>
+                        <SideBar checked={isChecked} setChecked={setIsChecked} />
                     </div>
                     <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed top-0`}>
                         <nav className='flex justify-between w-full'>

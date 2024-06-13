@@ -1,253 +1,449 @@
-import React from 'react';
-import styled from 'styled-components';
-import img from '../../Assets/login2.png';
-import img2 from '../../Assets/bigbulllogo.png';
-import img3 from '../../Assets/google.png';
+import React from "react";
+
+import styled from "styled-components";
+
+// import img from '../Image/login2.png';
+// import img2 from '../Image/bigbulllogo.png';
+// import img3 from '../Image/google.png';
 
 function Login() {
-    const data = new Date();
-    const currentYear = data.getFullYear();
-    console.log(currentYear);   
-    return (
-        <>
-            <StyledContact>
-                <div className='container-fluid'>
-                    <div className="main-container row py-5 d-flex justify-content-center">
-                        <div className="heading text-center py-3">
-                            <h1>Login</h1>
-                        </div>
-                        <div class="parent-container col-md-10 shadow-lg p-2 rounded-8">
-                            <div class="child-container d-flex justify-content-between row">
-                                <div className="box-image d-flex justify-content-center align-center w-25 h-25 col-md-6 m-auto">
-                                    <img className='register_img' src={img} alt="" width="100%" />
+  const data = new Date();
+
+  const currentYear = data.getFullYear();
+
+  console.log(currentYear);
+
+  return (
+    <>
+      <StyledContact>
+        <div className="container mx-auto py-5">
+          <div className="main-container flex flex-col items-center">
+            <div className="heading text-center py-3">
+              <h1 className="text-3xl font-bold">Login</h1>
+            </div>
+
+            <div className="parent-container w-full md:w-10/12 shadow-lg p-2 rounded-lg">
+              <div className="child-container grid grid-cols-2 md:flex-row justify-between">
+                {/* image */}
+
+                {/* <div className="box-image h-full md:w-5/12 "> */}
+                <div className="">
+                  <img className='register-img object-cover' src='https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?w=826&t=st=1718289653~exp=1718290253~hmac=86619a5c4fcd8a147c7f7ce924db20b3d07a62fbb69c85ac4c5c42ec51bd4fdc' alt="" width='80%'/>
+                </div>
+
+
+                <div className="box w-full">
+                  <div className="flex justify-center">
+                    <form className="form w-10/12">
+                      <div className="inputs p-4">
+                        <div className="">
+                          {/* Email input */}
+
+                          <div className="column-1 w-full md:w-11/12 mx-auto text-lg">
+                            <label
+                              className="text-gray-700"
+                              htmlFor="form4Example2"
+                            >
+                              Email
+                            </label>
+
+                            <input
+                              type="email"
+                              id="form4Example2"
+                              className="email form-control border border-gray-400 p-2 mb-2 w-full rounded"
+                              placeholder="Enter your Email"
+                            />
+                          </div>
+
+                          {/* Password input */}
+
+                          <div className="column-2 w-full md:w-11/12 mx-auto text-lg">
+                            <div className="">
+                              <label
+                                htmlFor="form4Example2"
+                                className="text-gray-700"
+                              >
+                                Password
+                              </label>
+
+                              <div className="password-eye flex justify-between items-center border border-gray-400 rounded p-1">
+                                <input
+                                  type="password"
+                                  className="form-control border-none p-2 w-full"
+                                  placeholder="Enter your Password"
+                                />
+
+                                <div className="icon px-2 py-1">
+                                  <i className="bi bi-eye-slash-fill" />
                                 </div>
-                                <div class="box col-md-8 col-sm-12">
-
-                                    <div class="d-flex justify-content-center">
-                                        <form class="form col-10">
-                                            <div class="inputs p-4">
-                                                <div className="">
-                                                    <div class="column-1 col-md-11 col-sm-11 m-auto fs-5">
-                                                        <label for="mobilenumber" class="form-label color-black">Email</label>
-                                                        <input type="tel" class="form-control shadow-sm p-2 mb-2 border border-dark rounded-2" placeholder="Enter your Email" />
-                                                    </div>
-                                                    <div class="column-2 col-md-11 m-auto fs-5">
-                                                        <div class="">
-                                                            <label for="lastname" class="form-label">Password</label>
-                                                            <div class="password-eye d-flex justify-content-between border border-dark rounded-2">
-                                                                <input type="Email" class="form-control border border-0 p-2" placeholder="Enter your Password" />
-                                                                <div class="icon px-2 py-1">
-                                                                    <i class="bi bi-eye-slash-fill "></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="remember pt-3 ts-2">
-                                                        <label>
-                                                            <input type="checkbox" class="checkbox" />Remember me
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-check d-flex justify-content-center pt-4 mb-3 px-4 ">
-                                                    <button type="login" class="btn btn-danger col-md-11 border rounded-pill">Log In</button>
-                                                </div>
-
-                                                <div className="option text-center">
-                                                    <p>OR</p>
-                                                </div>
-
-                                                <div class="form-check google-button d-flex justify-content-center pt-2 mb-3 px-4">
-                                                    <button type="signup" class="google-btn btn btn-danger col-md-11 bg-white border rounded-pill"><a href="#"><img src={img3} alt="" class="google-img" />Sign Up with Google</a></button>
-                                                </div>
-                                                <div className="bottom-forgetaccount d-flex justify-content-between py-2 ">
-                                                    <div className="forget-pass">
-                                                        <p><a href="#">Forgot Password?</a></p>
-                                                    </div>
-                                                    <div className="no-account">
-                                                        <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                              </div>
                             </div>
-                        </div>
-                    </div>
-                </div >
-                <footer>
-                    <div class="main-footer p-2">
-                        <div className="footer-content bg-white text-center ">
-                            <img src={img2} alt="#" width="100px" class="pt-4" />
-                            <h4 class="pt-4">We are Social</h4>
-                            <p class='bottom-para pt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda!</p>
-                            <div className="bottom-icons">
-                                <div className="icons pt-2">
-                                    <i class="bi bi-facebook px-4 fa-2x"></i>
-                                    <i class="bi bi-twitter px-4 fa-2x"></i>
-                                    <i class="bi bi-instagram px-4 fa-2x"></i>
-                                    <i class="bi bi-linkedin px-4 fa-2x"></i>
-                                    <i class="bi bi-youtube px-4 fa-2x"></i>
-                                </div>
-                            </div>
+                          </div>
 
-                            <div className="bottom-content pt-5 d-flex justify-content-around">
-                                <div className="contact-info text-start pb-5">
-                                    <p class="para line-1 "><i class="bi bi-envelope"></i>contact@company.com</p>
-                                    <p class="para line-2 "><i class="bi bi-telephone"></i>(+91)000-0000</p>
-                                    <p class="para line-3 "><i class="bi bi-geo-alt"></i>794 Mcallister St</p>
-                                    <p class="para line-4 ">San Francisco, 94102</p>
-                                </div>
-                                <div className="columns d-flex">
-                                    <div className="column-1">
-                                        <p class='head pb-2'><b>Product</b></p>
-                                        <p>Features</p>
-                                        <p>Pricing</p>
-                                        <p>Case studies</p>
-                                        <p>Reviews</p>
-                                        <p>Update</p>
-                                    </div>
-                                    <div className="column-2">
-                                        <p class='head pb-2'><b>Company</b></p>
-                                        <p>About</p>
-                                        <p>Contact us</p>
-                                        <p>Careers</p>
-                                        <p>Culture</p>
-                                        <p>Blog</p>
-                                    </div>
-                                    <div className="column-3">
-                                        <p class='head pb-2'><b>Support</b></p>
-                                        <p>Getting started</p>
-                                        <p>Help center</p>
-                                        <p>Server status</p>
-                                        <p>Report a bug</p>
-                                        <p>Chat support</p>
-                                    </div>
-                                </div>
-                            </div>
+                          {/* Remember me checkbox */}
+
+                          <div className="checkbox form-check pt-4 px-4 md:px-5">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              defaultValue=""
+                              id="check"
+                            />
+
+                            <label
+                              className="form-check-label text-gray-700"
+                              htmlFor="check"
+                            >
+                              Remember me
+                            </label>
+                          </div>
                         </div>
-                        <hr class="thick-line" />
-                        <div className="copyrights d-flex justify-content-around">
-                            <p>Copyright &copy; {currentYear} DOAGuru InfoSystems</p>
-                            <p>All Rights Reserved | <a href="#">Terms and Conditions | <a href="#">Privacy Policy</a></a></p>
+
+                        {/* Login button */}
+
+                        <div className="form-check flex justify-center pt-4 mb-3 px-4">
+                          <button
+                            type="button"
+                            className="login-btn btn bg-red-600 text-white w-8/12 md:w-8/12 rounded-full py-2"
+                          >
+                            Log In
+                          </button>
                         </div>
-                    </div>
-                </footer>
-            </StyledContact >
-        </>
-    )
+
+                        <div className="option text-center">
+                          <p>OR</p>
+                        </div>
+
+                        {/* Google sign up button */}
+
+                        <div className="form-check google-button flex justify-center pt-1 mb-3 px-1 mx-auto">
+                          <button
+                            type="button"
+                            className="google-btn btn bg-white border border-red-600 text-red-600 w-7/12 rounded-full py-2"
+                          >
+                            <a href="#" className="google-text">
+                              {/* <img src={img3} alt="" class="google-img" /> */}
+                              Sign Up
+                            </a>
+                          </button>
+                        </div>
+
+                        {/* Forgot password and register links */}
+
+                        <div className="bottom-forgetaccount flex justify-between py-2">
+                          <div className="forget-pass">
+                            <p className="text-gray-700">
+                              <a href="#" className="underline">
+                                Forgot Password?
+                              </a>
+                            </p>
+                          </div>
+
+                          <div className="no-account">
+                            <p className="text-gray-700">
+                              Don't have an account?{" "}
+                              <a
+                                href="#"
+                                className="register-link underline px-1"
+                              >
+                                Register
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </StyledContact>
+    </>
+  );
 }
 
 export default Login;
+
 const StyledContact = styled.div`
+  .google-btn img {
+    width: 18px;
 
-.google-btn img {
-    width: 40px;
-    padding-right: 10px;
-}
+    padding-right: 5px;
+  }
 
-.bottom-forgetaccount {
+  .bottom-forgetaccount {
     font-size: 15px;
+
     text-decoration: none;
-}
+  }
 
+  .forgetpass-link:hover {
+    text-decoration: underline;
+  }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    
-    .register_img {
-        width: 10rem;
-        height: 10rem;
+  .register-link:hover {
+    text-decoration: underline;
+  }
+
+  i:hover {
+    font-size: 30px;
+  }
+
+  .c-fe:hover {
+    text-decoration: underline;
+
+    cursor: pointer;
+  }
+
+  .tandc:hover {
+    text-decoration: underline;
+  }
+
+  .policy:hover {
+    text-decoration: underline;
+  }
+
+  .contactlink:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1280px) {
+    .bottom-content {
+      display: flex;
+
+      justify-content: space-around;
+
+      align-items: center;
     }
-    
+
+    .columns {
+      width: 100%;
+
+      display: flex;
+
+      justify-content: space-around;
+
+      margin: auto;
+
+      font-size: 15px;
+    }
+
+    .contact-info {
+      padding-bottom: 15px;
+
+      font-size: 15px;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .register-img {
+      max-width: 90%;
+
+      margin: auto;
+    }
+
     .remember {
-        padding-left: 21px;
+      padding-left: 21px;
     }
-    
+
     .parent-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
     }
 
     .bottom-forgetaccount {
-    font-size: 12px;
-    text-decoration: none;
-}
-    
-}
+      font-size: 12px;
 
-@media screen and (min-width: 540px) and (max-width: 550px) {
+      text-decoration: none;
+    }
+
+    .google-img {
+      max-width: 100px;
+    }
+
+    .google-text {
+      font-size: 10px;
+    }
+
+    /* footer */
+
+    .bottom-content {
+      display: flex;
+
+      justify-content: space-around;
+
+      align-items: center;
+    }
+
+    .contact-info {
+      margin: auto;
+    }
+
+    .columns {
+      width: 90%;
+
+      display: flex;
+
+      justify-content: space-around;
+    }
+
+    .contact-img {
+      min-width: 200px;
+
+      max-width: 800px;
+    }
+  }
+
+  @media screen and (min-width: 481px) and (max-width: 545px) {
+    background-color: pink;
+
+    .register-img {
+      max-width: 70%;
+
+      margin: auto;
+    }
 
     .parent-container {
-        width: 95vw;
-    }
-    
-    .register_img {
-        width: 15rem;
-    }
-    
-    .box {
-        width: 100vw;
+      width: 90vw;
     }
 
-}
-
-@media screen and (min-width: 320px) and (max-width: 480px) {
-    
     .child-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    
-    .parent-container {
-        width: 95vw;
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
     }
 
-    .register_img {
-        width: 15rem;
+    .login-btn {
+      max-width: 300px;
     }
-    
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 480px) {
+    .parent-container {
+      display: flex;
+
+      width: 90vw;
+
+      justify-content: center;
+    }
+
+    .child-container {
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+    .register-img {
+      max-width: 60%;
+    }
+
     .box {
-        width: 110vw;
+      width: 100vw;
+    }
+
+    .checkbox {
+      font-size: 13px;
+
+      padding-right: 10px;
     }
 
     .inputs {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      margin: auto;
     }
-    
+
     .bottom-forgetaccount {
-        flex-direction: column;
+      flex-direction: column;
     }
-    
+
     .input::placeholder {
-        color: gray;
+      color: gray;
     }
-    
+
     .bottom-content {
+      display: flex;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      margin: auto;
     }
 
-    .copyrights {
-        font-size: 10px;
+    .bottom-para {
+      font-size: 15px;
+
+      padding: 0px 10px;
+    }
+
+    .google-button {
+      margin: auto;
     }
 
     .google-btn {
-        width: 200px;
+      width: 250px;
     }
-}
 
+    .google-btn img {
+      width: 30px;
+
+      padding-right: 14px;
+    }
+
+    .login-btn {
+      width: 250px;
+    }
+
+    /* footer */
+
+    .icon {
+      font-size: 20px;
+    }
+
+    .columns {
+      width: 100%;
+
+      display: flex;
+
+      justify-content: space-around;
+
+      margin: auto;
+
+      font-size: 12px;
+    }
+
+    .contact-info {
+      padding-bottom: 15px;
+
+      font-size: 12px;
+    }
+
+    .copyrights {
+      display: flex;
+
+      flex-direction: column;
+
+      font-size: 10px;
+
+      padding: 0px 10px;
+    }
+  }
 `;

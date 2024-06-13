@@ -1,29 +1,37 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-const SideBar = ({ checked }) => {
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-
-    console.log(position);
+const SideBar = ({ checked, setChecked }) => {
+    // const [position, setPosition] = useState({ x: 0, y: 0 });
+    const sidebarRef = useRef(null);
 
     const handleMouseMove = (e) => {
-        setPosition({ x: e.clientX, y: e.clientY });
+        // setPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleClickOutside = (event) => {
+        // console.log(sidebarRef, event);
+        if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+            console.log(sidebarRef, event);
+            setChecked(false);
+        }
     };
 
     useEffect(() => {
-                // window.addEventListener('mousemove', handleMouseMove);
-                // Clean up the event listener on component unmount
+        window.addEventListener('mousedown', handleClickOutside);
         return () => {
-                // window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
     return (
         <>
-         {checked && <div className="backdrop" />}
+            {checked && <div className="backdrop" />}
             <div
-                onMouseMove={handleMouseMove}
+                ref={sidebarRef}
+                // onMouseMove={handleMouseMove}
                 className={`wrapper ${checked ? 'active' : ''} z-40 fixed right-0 bg-white text-black h-full`}
             >
-                   {/* <span
+                {/* <span
                     className="circle"
                     style={{
                         left: `${position.x - 50}px`, // Adjust for half the width

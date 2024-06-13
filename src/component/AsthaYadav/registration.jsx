@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import img from '../Assets/register.png';
 
-const AsthaRegister = () => {
+const Register = () => {
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
@@ -45,10 +45,10 @@ const AsthaRegister = () => {
             <div className="bg-gray-100 min-h-screen flex items-center justify-center">
                 <div className="container mx-auto">
                     <div className="main-container pt-5 pb-5 flex justify-center">
-                        {/* <div className="text-center py-3">
+                        <div className="text-center py-3">
                             <h1 className="text-3xl font-bold">Register</h1>
-                        </div> */}
-                        <div className="flex justify-center mt-4 w-full">
+                        </div>
+                        <div className="flex justify-center mt-4">
                             <div className="hidden md:block">
                                 {/* <img className='register_img' src={img} alt="Register" width="80%" /> */}
                             </div>
@@ -245,4 +245,4 @@ const AsthaRegister = () => {
     );
 };
 
-export default AsthaRegister;
+export default Register;

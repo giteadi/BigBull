@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
-
+import { useNavigate } from 'react-router-dom';
 const Blogs = () => {
   const initialPosts = [
     {
@@ -42,6 +42,7 @@ const Blogs = () => {
   ];
 
   const [posts, setPosts] = useState(initialPosts);
+  const navigate = useNavigate();
 
   const handleLikeClick = (id) => {
     setPosts((prevPosts) =>
@@ -51,6 +52,9 @@ const Blogs = () => {
     );
   };
 
+  const handlePost = (id) => {
+    navigate(`/singlepost/${id}`);
+  };
   return (
     <div className="container mx-auto p-4">
       <h1 className="bg-red-600 text-white flex items-center justify-center text-4xl py-4">
@@ -60,9 +64,10 @@ const Blogs = () => {
         {posts.map((post, index) => (
           <div
             key={post.id}
-            className={`post flex flex-col md:flex-row ${
+            className={`post cursor-pointer flex flex-col md:flex-row ${
               index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
             } items-center`}
+            onClick={() => handlePost(post.id)} // Pass post id to handlePost
           >
             <div className="w-full md:w-1/2 p-4 relative">
               <div className="bg-white shadow-lg rounded-lg overflow-hidden">
@@ -102,5 +107,4 @@ const Blogs = () => {
     </div>
   );
 };
-
 export default Blogs;
