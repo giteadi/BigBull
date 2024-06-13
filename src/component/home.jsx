@@ -8,6 +8,10 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import heroBackground from '../Assets/hero.mp4'
+// import heroBackground from '../Assets/hero.mp4'
+import mobileFrameVideo from '../Assets/mobileFrameVideo.mp4';
+import tableFrame from '../Assets/tableFrame.png'
+import mobileFrame from '../Assets/mobileFrame.png'
 import courseFeatureBackground from '../Assets/courseFeatureBackground.jpg'
 import SementicRightImage from '../Assets/SementicRightImage.png'
 import bullImage from '../Assets/BULL.png'
@@ -120,9 +124,11 @@ const Home = () => {
     }, []);
     return (
         <>
-            <LandingPage>
+            <LandingPage >
                 <div>
-                    <SideBar checked={isChecked}/>
+                    <div>
+                        <SideBar checked={isChecked}/>
+                    </div>
                     <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed top-0`}>
                         <nav className='flex justify-between w-full'>
                             <div className='w-32' >
@@ -158,7 +164,7 @@ const Home = () => {
                         </nav>
                     </header>    
                     {/* hero part */}
-                    <div className='hero'>
+                    <div className={`hero ${!isChecked || 'brightness-50'} `}>
                         <div className='h-screen' >
                             <video src={heroBackground} autoPlay loop muted className='h-full w-full object-cover'></video>
                             <div className='absolute top-0 text-white h-full flex flex-col justify-center w-4/5 px-5'>
@@ -235,16 +241,22 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {/* right */}
-                    <div className='content-center sementic-right '>
-                        <div className='max-w-4xl'>
-                            <img src={SementicRightImage} alt="" width="100%" />
-                        </div>
-                    </div>
-                    <div className='relative'>
+                        <div className='relative'>
                         <div className='max-w-4xl absolute bull-animation hidden lg:block'>
                             <img src={bullImage} alt="" width="100%" />
+                        </div>
+                    </div>
+                    </div>
+                    {/* right */}
+                    <div className='content-center sementic-right relative test-tablet'>
+                        <div className='max-w-4xl table'>
+                            {/* <img src={SementicRightImage} alt="" width="100%" /> */}
+                            <video src={heroBackground} autoPlay loop muted className='h-full w-full object-cover'></video>
+                            
+                        </div>
+                        <div className='mobile'>
+                            <video src={mobileFrameVideo} autoPlay loop muted className='h-full w-full object-cover'></video>
+                            
                         </div>
                     </div>
                 </div>
@@ -554,29 +566,45 @@ const LandingPage = styled.div`
 max-width: 1920px;
 margin: auto;
 .wrapper {
-    transition: clip-path 0.5s ease-in-out;
-    clip-path: circle(0px at calc(100% - 10px) 45px);
-}
+    /* transition: clip-path 0.5s ease-in-out; */
+    /* clip-path: circle(0px at calc(100% - 10px) 45px); */
+    max-width: 722px;
+    width: 100%;
+    /* right: -722px; */
+    /* z-index: -23; */
+    transition: right 0.5s ease-in-out, clip-path 0.5s ease-in-out;
+    clip-path: inset(0 0 0 100%); /* initially clipped to the right */
+    }
 .active {
-  clip-path: circle(75%);
+    /* clip-path: circle(75%); */
+    clip-path: inset(0 0 0 0); /* fully open */
+    /* right: 0; */
 }
 .wrapper ol{
-    position: absolute;
-  top: 50%;
+    /* position: absolute; */
+  /* top: 50%; */
   /* left: 50%; */
-  transform: translate(-50%, -50%);
-  padding-left: 80px;
+  /* transform: translate(-50%, -50%); */
+  /* padding-left: 80px; */
   list-style: none;
-  display: block;
-  width: 100%;
-  transform: translateY(-50%);
+  /* display: block; */
+  /* width: 100%; */
+  /* transform: translateY(-50%); */
 }
 .wrapper ol li{ 
-    font-size: 9vh;
+    font-size: 50px;
     line-height: 1.2;
-    font-weight: 800;
+    font-weight: 500;
     color: black;
-    transition: all 250ms linear;
+    margin: 50px 0;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+.wrapper ol li:hover{ 
+    transform: scale(1.3);
+    /* transform-origin: 0% 50%; */
+    transition: all 0.3s ease-in-out;
 }
 #invertedcursor {
   position: absolute;
@@ -681,6 +709,7 @@ header, .hero {
     z-index: -20;
     top: -331px;
 }
+
 @keyframes bullAni {
     from {
         transform: translate(-20%, 50%);
@@ -819,4 +848,46 @@ to {
     transition: transform 0.1s ease;
     /* box-shadow: rgb(253, 9, 9) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
 }
+.blackshadow {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    filter: brightness(50%);
+    background-color: transparent;
+    z-index: 1;
+}
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity here */
+    z-index: 39; /* Ensure it's below the sidebar */
+}
+.test-tablet {
+    position: relative;
+    background-image: url(${tableFrame});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.test-tablet > .table{
+    /* transform: translateX(5%);
+    width: 92%; */
+    padding: 6%;
+}   
+.test-tablet .mobile{
+    position: absolute;
+    background-image: url(${mobileFrame});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 25%;
+    top: 50%;
+    right: 7%;
+    padding: 40px;
+}   
+
 `

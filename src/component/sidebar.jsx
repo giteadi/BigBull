@@ -18,9 +18,10 @@ const SideBar = ({ checked }) => {
     }, []);
     return (
         <>
+         {checked && <div className="backdrop" />}
             <div
                 onMouseMove={handleMouseMove}
-                className={`wrapper ${checked ? 'active' : ''} z-40 fixed top-0 right-0 w-3/6 bg-white text-black h-full text-3xl`}
+                className={`wrapper ${checked ? 'active' : ''} z-40 fixed right-0 bg-white text-black h-full`}
             >
                    {/* <span
                     className="circle"
@@ -36,11 +37,13 @@ const SideBar = ({ checked }) => {
                         zIndex: 50,
                     }}
                 ></span> */}
-                <div className='flex justify-center items-center h-full'>
-                    <ol className='flex flex-col ps-24'>
+                <div className='h-full flex justify-center items-center '>
+                    <ol className=''>
                         <li>Home</li>
-                        <li className="my-4">Contact us</li>
-                        <li>Number</li>
+                        <li>Courses</li>
+                        <li>About</li>
+                        <li>Contact us</li>
+                        <li>Sign-in</li>
                     </ol>
                 </div>
             </div>
