@@ -24,7 +24,8 @@ import courseImage3 from '../Assets/courseImage3.webp'
 import { useRef, useEffect, useState } from 'react';
 import Contact from './Priyanshu2/contactUs';
 import Footer from './Priyanshu2/footer';
-import Testimonial from './Priyanshu2/testimonial';
+// import Testimonial from './Priyanshu2/testimonial';
+import Carousel from './Priyanshu2/carousel';
 import Faq from './Priyanshu2/faq';
 import Awards from './Aditya/Awards';
 import About from './Aditya/About';
@@ -69,8 +70,12 @@ const Home = () => {
     const sectionRef3 = useRef(null);
     const sectionRef4 = useRef(null);
     const sectionRef5 = useRef(null);
-    const [checked, setChecked] = useState(false);
 
+    const handleClickOutside = (event) => {
+        let target = event.target;
+        // console.log(target);
+        if(target.classList[0] == 'backdrop') setIsChecked(false);
+    };
 
     const changeBackground = () => {
         // console.log(window.scrollY); 
@@ -91,6 +96,7 @@ const Home = () => {
     const observer5 = createObserver(sectionRef5, 'callToAction-animation');
     window.addEventListener('scroll', changeBackground);
     const card = document.querySelectorAll('.card');
+    window.addEventListener('mousedown', handleClickOutside);
 
     card.forEach((eachCard) => {
         eachCard.addEventListener('mousemove', (e) => {
@@ -116,6 +122,7 @@ const Home = () => {
         closeObserver(sectionRef4, observer4);
         closeObserver(sectionRef5, observer5);
         window.removeEventListener('scroll', changeBackground);
+        window.removeEventListener('mousedown', handleClickOutside);
 
         card.forEach((eachCard) => {
             eachCard.addEventListener('mouseleave', () => {
@@ -128,7 +135,7 @@ const Home = () => {
             <LandingPage >
                 <div>
                     <div>
-                        <SideBar checked={isChecked} setChecked={setIsChecked} />
+                        <SideBar checked={isChecked}/>
                     </div>
                     <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed top-0`}>
                         <nav className='flex justify-between w-full'>
@@ -159,8 +166,8 @@ const Home = () => {
                                     <button>Get Started</button>
                                 </div>
                             </div>
-                            <div>
-                                <IoMenu onClick={() => setIsChecked(!isChecked)} size={'3rem'} color={`${navbar || isChecked  ? 'black' : 'white'}`}/>                            
+                            <div onClick={() => setIsChecked(!isChecked)}>
+                                <IoMenu className='menu-bar' size={'3rem'} color={`${navbar || isChecked  ? 'black' : 'white'}`}/>                            
                             </div>
                         </nav>
                     </header>    
@@ -544,18 +551,18 @@ const Home = () => {
                     {/* <Awards/> */}
                 </div>
                 <div>
-                    {/* <Testimonial/> */}
+                    <Carousel/>
                 </div>
                 <div>
                     {/* <About/> */}
                 </div>
                 <div>
-                    {/* <Faq/> */}
+                    <Faq/>
                 </div>
-                    {/* <Contact/> */}
+                    <Contact/>
                 </div>
                 <div>
-                    {/* <Footer/> */}
+                    <Footer/>
                 </div>
          
             </LandingPage>            
@@ -569,13 +576,15 @@ margin: auto;
 .wrapper {
     /* transition: clip-path 0.5s ease-in-out; */
     /* clip-path: circle(0px at calc(100% - 10px) 45px); */
-    max-width: 722px;
-    width: 100%;
+    /* max-width: 722px; */
+    /* width: 100%; */
+    width: 40vw;
     /* right: -722px; */
     /* z-index: -23; */
     transition: right 0.5s ease-in-out, clip-path 0.5s ease-in-out;
     clip-path: inset(0 0 0 100%); /* initially clipped to the right */
     }
+
 .active {
     /* clip-path: circle(75%); */
     clip-path: inset(0 0 0 0); /* fully open */
@@ -593,7 +602,7 @@ margin: auto;
   /* transform: translateY(-50%); */
 }
 .wrapper ol li{ 
-    font-size: 50px;
+    font-size: 3vw;
     line-height: 1.2;
     font-weight: 500;
     color: black;
@@ -607,6 +616,17 @@ margin: auto;
     /* transform-origin: 0% 50%; */
     transition: all 0.3s ease-in-out;
 }
+
+@media screen and (max-width: 768px){
+    .wrapper {
+        width: 100%;
+    }
+    .wrapper ol li{  
+        font-size: 40px;
+    }
+    
+}
+
 #invertedcursor {
   position: absolute;
   width: 40px;

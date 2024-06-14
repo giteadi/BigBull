@@ -12,7 +12,7 @@ const Footer = () => {
     <>
       <StyledContact>
         <footer>
-          <div class="main-footer h-75 bg-blue-300">
+          <div class="main-footer h-75 bg-blue-300 ">
             <div className="footer-content bg-white text-center text-lg">
               <div className="flex justify-center ">
                 <img
@@ -59,64 +59,70 @@ const Footer = () => {
                 </div>
               </div>
 
-              <div className="bottom-content flex justify-center ">
-                <div className="contact-info text-start pt-5 m-auto">
-                  <p class="para line-1 ">
-                    <i class="bi bi-envelope px-2 "></i>
-                    <a href="#" className="contactlink">
-                      contact@company.com
-                    </a>
-                  </p>
+              <div className="bottom-content flex justify-center text-2xl">
+  <div className="contact-info text-start pt-5 m-auto">
+    <ul className="flex flex-col">
+      <li className="para line-1">
+        <i className="bi bi-envelope px-2"></i>
+        <a href="#" className="contactlink">
+          contact@company.com
+        </a>
+      </li>
+      <li className="para line-2">
+        <i className="bi bi-telephone px-2"></i>(+91)000-0000
+      </li>
+      <li className="para line-3">
+        <i className="bi bi-geo-alt px-2"></i>794 Mcallister St <br />
+        <span className="px-4">San Francisco, 94102</span>
+      </li>
+    </ul>
+  </div>
 
-                  <p class="para line-2 ">
-                    <i class="bi bi-telephone px-2"></i>(+91)000-0000
-                  </p>
+  <div className="columns flex justify-around w-[60%] pb-10">
+    <div className="column-1">
+      <p className="head pb-2">
+        <b>Product</b>
+      </p>
+      <ul>
+        <li className="c-fe">Features</li>
+        <li className="c-fe">Pricing</li>
+        <li className="c-fe">Case studies</li>
+        <li className="c-fe">Reviews</li>
+        <li className="c-fe">Update</li>
+      </ul>
+    </div>
+    <div className="column-2">
+      <p className="head pb-2">
+        <b>Company</b>
+      </p>
+      <ul>
+        <li className="c-fe">About</li>
+        <li className="c-fe">Contact us</li>
+        <li className="c-fe">Careers</li>
+        <li className="c-fe">Culture</li>
+        <li className="c-fe">Blog</li>
+      </ul>
+    </div>
+    <div className="column-3">
+      <p className="head pb-2">
+        <b>Support</b>
+      </p>
+      <ul>
+        <li className="c-fe">Getting started</li>
+        <li className="c-fe">Help center</li>
+        <li className="c-fe">Server status</li>
+        <li className="c-fe">Report a bug</li>
+        <li className="c-fe">Chat support</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-                  <p class="para line-3 ">
-                    <i class="bi bi-geo-alt px-2"></i>794 Mcallister St <br />{" "}
-                    <p class="px-4">San Francisco, 94102</p>
-                  </p>
-                </div>
-
-                <div className="columns flex justify-around w-[60%]  pb-10">
-                  <div className="column-1">
-                    <p class="head pb-2">
-                      <b>Product</b>
-                    </p>
-
-                    <p className="c-fe">Features</p>
-                    <p className="c-fe">Pricing</p>
-                    <p className="c-fe">Case studies</p>
-                    <p className="c-fe">Reviews</p>
-                    <p className="c-fe">Update</p>
-                  </div>
-                  <div className="column-2">
-                    <p class="head pb-2">
-                      <b>Company</b>
-                    </p>
-                    <p className="c-fe">About</p>
-                    <p className="c-fe">Contact us</p>
-                    <p className="c-fe">Careers</p>
-                    <p className="c-fe">Culture</p>
-                    <p className="c-fe">Blog</p>
-                  </div>
-                  <div className="column-3">
-                    <p class="head pb-2">
-                      <b>Support</b>
-                    </p>
-                    <p className="c-fe">Getting started</p>
-                    <p className="c-fe">Help center</p>
-                    <p className="c-fe">Server status</p>
-                    <p className="c-fe">Report a bug</p>
-                    <p className="c-fe">Chat support</p>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <hr class="thick-line" />
 
-            <div className="copyrights flex justify-between px-4 pt-10 text-sm">
+            <div className="copyrights flex justify-between p-4 text-sm bg-black text-white flex items-center justify-center">
               <p>Copyright &copy; 2024 DOAGuru InfoSystems</p>
 
               <div className="flex ">

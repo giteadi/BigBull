@@ -8,7 +8,7 @@ function ContactUs() {
     const data = new Date();
     const currentYear = data.getFullYear();
 
-    console.log(currentYear);
+    // console.log(currentYear);
 
     return (
         <>  
@@ -28,7 +28,7 @@ function ContactUs() {
           </div>
         </div>
       </div>
-      <div className="bg-gray-50 p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl">
+      <div className=" p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl">
         <h2 className="text-indigo-600 font-manrope text-4xl font-semibold leading-10 mb-11">
           Send Us A Message
         </h2>
