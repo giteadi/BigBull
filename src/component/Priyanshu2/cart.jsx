@@ -14,7 +14,7 @@ const Cart = () => {
     return (
         <>
             <LandingPage>
-                <div className="main-container flex">
+                <div className="main-container flex max-w-screen-2xl m-auto">
                     <div className="box-1 detail-box head w-[65%]">
 
                         {/* line-1 */}
@@ -265,6 +265,14 @@ const Cart = () => {
 export default Cart;
 const LandingPage = styled.div`
 
+.course-img {
+    /* width: 200px; */
+    max-width: 170px;
+    min-width: 118px;
+}
+.course-img img {
+    width: 100%;
+}
 
 .half-line {
     width: 100%;
@@ -280,9 +288,9 @@ const LandingPage = styled.div`
  @media screen and (min-width: 1200px){
 
      .box-2 {
-         position: fixed;
-         top: 0;
-         right: 0;
+         //position: fixed;
+         //top: 0;
+         //right: 0;
          background-color: white;
      }
 
@@ -446,9 +454,6 @@ font-size: 18px;
     font-size: 12px;
 }
 
-.course-img {
-    width: 200px;
-}
 
 .paypal-btn, .coupon-box, .apply-btn{
     display: none;

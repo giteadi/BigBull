@@ -22,7 +22,7 @@ const About = () => {
     <div className="container mx-auto p-4 relative">
       {/* Bg Video */}
       {/* <video src={bgvdo} autoPlay muted loop className='bg-video absolute inset-0 w-full h-full object-cover'></video> */}
-      <h1 className={`bg-red-600 text-white flex items-center justify-center text-4xl py-4 transform transition-transform duration-1000 ${animate ? 'translate-x-full' : 'translate-x-0'} font-bold`}>
+      <h1 className={`text-black flex items-center justify-center text-4xl py-4 transform transition-transform duration-1000 ${animate ? 'translate-x-full' : 'translate-x-0'} font-bold`}>
         About Us
       </h1>
       <div className="mt-8 p-6 shadow-lg rounded-lg relative z-10 ">

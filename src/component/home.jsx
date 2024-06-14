@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 import { IoMenu } from "react-icons/io5";
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import logo from './../../public/logo/logo.png'
 import { SiOpenlayers } from "react-icons/si";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { FaRegHeart } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import heroBackground from '../Assets/hero.mp4'
-// import heroBackground from '../Assets/hero.mp4'
-import mobileFrameVideo from '../Assets/mobileFrameVideo.mp4';
+import videoInMobileFrame from '../Assets/videoInMobileFrame.mp4';
+import videoInTableFrame from '../Assets/videoInTabletForm.mp4'
 import tableFrame from '../Assets/tableFrame.png'
 import mobileFrame from '../Assets/mobileFrame.png'
 import courseFeatureBackground from '../Assets/courseFeatureBackground.jpg'
@@ -30,6 +28,8 @@ import Faq from './Priyanshu2/faq';
 import Awards from './Aditya/Awards';
 import About from './Aditya/About';
 import SideBar from './sidebar';
+import LatestPage from './Nousheen/latestPage';
+
 
 
 // const courseFeature = [
@@ -70,6 +70,7 @@ const Home = () => {
     const sectionRef3 = useRef(null);
     const sectionRef4 = useRef(null);
     const sectionRef5 = useRef(null);
+    const sectionRef6 = useRef(null);
 
     const handleClickOutside = (event) => {
         let target = event.target;
@@ -94,6 +95,8 @@ const Home = () => {
     const observer3 = createObserver(sectionRef3, 'course-animation');
     const observer4 = createObserver(sectionRef4, 'header-static');
     const observer5 = createObserver(sectionRef5, 'callToAction-animation');
+    const observer6 = createObserver(sectionRef5, 'callToAction-animation');
+
     window.addEventListener('scroll', changeBackground);
     const card = document.querySelectorAll('.card');
     window.addEventListener('mousedown', handleClickOutside);
@@ -121,6 +124,8 @@ const Home = () => {
         closeObserver(sectionRef3, observer3);
         closeObserver(sectionRef4, observer4);
         closeObserver(sectionRef5, observer5);
+        closeObserver(sectionRef6, observer6);
+
         window.removeEventListener('scroll', changeBackground);
         window.removeEventListener('mousedown', handleClickOutside);
 
@@ -250,7 +255,7 @@ const Home = () => {
                             </div>
                         </div>
                         <div className='relative'>
-                        <div className='max-w-4xl absolute bull-animation hidden lg:block'>
+                        <div className='max-w-4xl absolute bull-animation hidden'>
                             <img src={bullImage} alt="" width="100%" />
                         </div>
                     </div>
@@ -259,11 +264,11 @@ const Home = () => {
                     <div className='content-center sementic-right relative test-tablet'>
                         <div className='max-w-4xl table'>
                             {/* <img src={SementicRightImage} alt="" width="100%" /> */}
-                            <video src={heroBackground} autoPlay loop muted className='h-full w-full object-cover'></video>
+                            <video src={videoInTableFrame} autoPlay loop muted className='h-full w-full object-cover'></video>
                             
                         </div>
                         <div className='mobile'>
-                            <video src={mobileFrameVideo} autoPlay loop muted className='h-full w-full object-cover'></video>
+                            <video src={videoInMobileFrame} autoPlay loop muted className='h-full w-full object-cover'></video>
                             
                         </div>
                     </div>
@@ -386,7 +391,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='text-center text-3xl my-20'>
-                        <button className='inline-flex gap-5 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers />View All</button>
+                        <Link to={'/courses'}  className='inline-flex gap-4 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers />View All</Link>
                     </div>
                 </div>
                 {/* Subscription */}
@@ -468,33 +473,11 @@ const Home = () => {
                     </div>
                 </div>
                 {/* Latest Blogs */}
-                <div className='flex justify-center flex-col latest-blog pt-24'>
+                <div ref={sectionRef6} className='flex justify-center flex-col latest-blog pt-24'>
                     <h1 className='text-8xl text-center'>Latest Blogs</h1>
-                    <div className='max-w-7xl m-auto lg:w-full '>
-                        {/* images */}
-                        <div className=' flex gap-20 my-20 flex-wrap sm:justify-center'>
-                            <div className='w-96'>
-                                <img src={courseThumbain} alt="" className='w-full h-full rounded-3xl'/>
-                            </div>
-                            {/* content */}
-                            <div className='max-w-2xl'> 	
-                                <h2 className='text-5xl	mb-7 leading-10'>Start your journey now, level up your skill</h2>
-                                <p className='text-lg leading-10'>Morbi tempor eleifend condimentum. Etiam mollis urna et massa tempus vulputate. Nunc sed nisl est. Donec non consectetur elit. Praesent accumsan elit urna, eget mattis turpis aliquam a. In sagittis bibendum consequat. Quisque porta volutpat ligula sit amet varius</p>
-                            </div>
-                        </div>
-                        <div className=' flex m-auto gap-20 my-20 flex-wrap-reverse sm:justify-center'>
-                            {/* content */}
-                            <div className='max-w-2xl'> 	
-                                <h2 className='text-5xl	mb-7 leading-10'>Start your journey now, level up your skill</h2>
-                                <p className='text-lg leading-10'>Morbi tempor eleifend condimentum. Etiam mollis urna et massa tempus vulputate. Nunc sed nisl est. Donec non consectetur elit. Praesent accumsan elit urna, eget mattis turpis aliquam a. In sagittis bibendum consequat. Quisque porta volutpat ligula sit amet varius</p>
-                            </div>
-                            <div className='w-96'>
-                                <img src={courseThumbain} alt="" className='w-full h-full rounded-3xl'/>
-                            </div>
-                        </div>
-                    </div>
+                    <LatestPage/>
                     <div className='text-center text-3xl'>
-                        <button className='inline-flex my-20 gap-5 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers />View All</button>
+                        <Link to={'/blogs'} className='inline-flex gap-4 mb-20 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers />View All</Link>
                     </div>
                 </div>
                     {/* Call to Actions */}
@@ -557,12 +540,12 @@ const Home = () => {
                     {/* <About/> */}
                 </div>
                 <div>
-                    <Faq/>
+                    {/* <Faq/> */}
                 </div>
                     <Contact/>
                 </div>
                 <div>
-                    <Footer/>
+                    {/* <Footer/> */}
                 </div>
          
             </LandingPage>            
@@ -726,6 +709,7 @@ header, .hero {
  }
 }
 .sementic .bull-animation {
+    display: block;
     animation: 1s bullAni ease-in;
     z-index: -20;
     top: -331px;

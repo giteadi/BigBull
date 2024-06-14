@@ -6,143 +6,110 @@ import { FaSquareInstagram } from "react-icons/fa6";
 import { FaTwitterSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
+import {Link} from 'react-router-dom';
+
 
 const Footer = () => {
   return (
     <>
       <StyledContact>
-        <footer>
-          <div class="main-footer h-75 bg-blue-300 ">
-            <div className="footer-content bg-white text-center text-lg">
-              <div className="flex justify-center ">
-                <img
-                //   src={img}
-                  alt=""
-                  width="100px"
-                  class=" bottom-img pt-md-2 "
-                />
-              </div>
+      <footer className="">
+      <div className="main-footer ">
+        <div className="footer-content bg-white text-center text-lg p-6">
+          <div className="flex justify-center mb-4">
+            <img
+              // src={img}
+              alt=""
+              width="100px"
+              className="bottom-img pt-md-2"
+            />
+          </div>
 
-              <h4 class="pt-4 text-3xl font-semibold">We are Social</h4>
+          <h4 className="pt-4 text-3xl font-semibold">We are Social</h4>
+          <p className="bottom-para text-2xl py-8">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda!
+          </p>
 
-              <p class="bottom-para pt-2 pb-10 text-2xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Assumenda!
-              </p>
+          <div className="bottom-icons mb-10">
+            <div className="icons flex justify-center space-x-8">
+              <FaFacebook className="text-5xl" />
+              <FaSquareInstagram className="text-5xl" />
+              <FaTwitterSquare className="text-5xl" />
+              <FaLinkedin className="text-5xl" />
+              <FaYoutube className="text-5xl" />
+            </div>
+          </div>
 
-              <div className="bottom-icons">
-                <div className="icons pt-2 flex justify-center pb-10">
-                  <div className="px-8 icon text-5xl">
-                    {" "}
-                    <FaFacebook />
-                  </div>
-
-                  <div className="px-8 icon text-5xl">
-                    {" "}
-                    <FaSquareInstagram />
-                  </div>
-
-                  <div className="px-8 icon text-5xl">
-                    {" "}
-                    <FaTwitterSquare />
-                  </div>
-
-                  <div className="px-8 icon text-5xl">
-                    {" "}
-                    <FaLinkedin />
-                  </div>
-
-                  <div className="px-8 icon text-5xl">
-                    {" "}
-                    <FaYoutube />
-                  </div>
-                </div>
-              </div>
-
-              <div className="bottom-content flex justify-center text-2xl">
-  <div className="contact-info text-start pt-5 m-auto">
-    <ul className="flex flex-col">
-      <li className="para line-1">
-        <i className="bi bi-envelope px-2"></i>
-        <a href="#" className="contactlink">
-          contact@company.com
-        </a>
-      </li>
-      <li className="para line-2">
-        <i className="bi bi-telephone px-2"></i>(+91)000-0000
-      </li>
-      <li className="para line-3">
-        <i className="bi bi-geo-alt px-2"></i>794 Mcallister St <br />
-        <span className="px-4">San Francisco, 94102</span>
-      </li>
-    </ul>
-  </div>
-
-  <div className="columns flex justify-around w-[60%] pb-10">
-    <div className="column-1">
-      <p className="head pb-2">
-        <b>Product</b>
-      </p>
-      <ul>
-        <li className="c-fe">Features</li>
-        <li className="c-fe">Pricing</li>
-        <li className="c-fe">Case studies</li>
-        <li className="c-fe">Reviews</li>
-        <li className="c-fe">Update</li>
-      </ul>
-    </div>
-    <div className="column-2">
-      <p className="head pb-2">
-        <b>Company</b>
-      </p>
-      <ul>
-        <li className="c-fe">About</li>
-        <li className="c-fe">Contact us</li>
-        <li className="c-fe">Careers</li>
-        <li className="c-fe">Culture</li>
-        <li className="c-fe">Blog</li>
-      </ul>
-    </div>
-    <div className="column-3">
-      <p className="head pb-2">
-        <b>Support</b>
-      </p>
-      <ul>
-        <li className="c-fe">Getting started</li>
-        <li className="c-fe">Help center</li>
-        <li className="c-fe">Server status</li>
-        <li className="c-fe">Report a bug</li>
-        <li className="c-fe">Chat support</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
+          <div className="bottom-content flex flex-col lg:flex-row justify-between text-2xl footer-links gap-20">
+            <div className="contact-info text-start m-auto mb-8 lg:mb-0 lg:mr-8">
+              <ul className="flex flex-col space-y-2">
+                <li className="para line-1">
+                  <i className="bi bi-envelope"></i>
+                  <a href="#" className="contactlink">contact@company.com</a>
+                </li>
+                <li className="para line-2">
+                  <i className="bi bi-telephone"></i>(+91)000-0000
+                </li>
+                <li className="para line-3">
+                  794 Mcallister St
+                </li>
+              </ul>
             </div>
 
-            <hr class="thick-line" />
-
-            <div className="copyrights flex justify-between p-4 text-sm bg-black text-white flex items-center justify-center">
-              <p>Copyright &copy; 2024 DOAGuru InfoSystems</p>
-
-              <div className="flex ">
-                <p>All Rights Reserved |</p>
-
-                <p>
-                  <a href="#" className="tandc">
-                    Terms and Conditions |
-                  </a>
+            <div className="columns grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 w-full lg:w-3/4">
+              <div className="column-1">
+                <ul className="space-y-2 text-center">
+                <p className="head pb-2">
+                  <b>Product</b>
                 </p>
-
-                <p>
-                  <a href="#" className="policy">
-                    Privacy Policy
-                  </a>
+                  <li className="c-fe text-center">Features</li>
+                  <li className="c-fe text-center">Pricing</li>
+                  <li className="c-fe text-center">Case studies</li>
+                  <li className="c-fe text-center">Reviews</li>
+                  <li className="c-fe text-center">Update</li>
+                </ul>
+              </div>
+              <div className="column-2">
+                <ul className="space-y-2 text-center">
+                <p className="head pb-2">
+                  <b>Company</b>
                 </p>
+                  <li className="c-fe text-center">About</li>
+                  <li className="c-fe text-center">Contact us</li>
+                  <li className="c-fe text-center">Careers</li>
+                  <li className="c-fe text-center">Culture</li>
+                  <li className="c-fe text-center">Blog</li>
+                </ul>
+              </div>
+              <div className="column-3">
+                <ul className="space-y-2 text-center">
+                <p className="head pb-2">
+                  <b>Support</b>
+                </p>
+                  <li className="c-fe text-center">Getting started</li>
+                  <li className="c-fe text-center">Help center</li>
+                  <li className="c-fe text-center">Server status</li>
+                  <li className="c-fe text-center">Report a bug</li>
+                  <li className="c-fe text-center">Chat support</li>
+                </ul>
               </div>
             </div>
           </div>
-        </footer>
+        </div>
+
+        <hr className="thick-line my-4" />
+        <div className="bg-black footer-bar">
+          <div className="copyrights flex flex-col md:flex-row justify-between items-center p-4 text-sm text-white max-w-screen-2xl mx-auto">
+            <p className="mb-2 md:mb-0">&copy; 2024 DOAGuru InfoSystems</p>
+            <div className="flex space-x-2">
+              <p>All Rights Reserved |</p>
+              <p><Link to="/TermCondition" className="tandc">Terms and Conditions |</Link></p>
+              <p><Link to="/PrivacyPolicy" className="policy">Privacy Policy</Link></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
       </StyledContact>
     </>
   );
@@ -170,6 +137,22 @@ const StyledContact = styled.div`
 
   .contactlink:hover {
     text-decoration: underline;
+  }
+  .copyrights {
+    font-size: 14px;
+  }
+  .tandc, .policy {
+    margin-left: 5px;
+  }
+  .tandc:hover, .policy:hover {
+    text-decoration: underline;
+  }
+  .footer-bar p{
+    font-size: 20px;
+  }
+  .footer-links li{
+    text-align: start;
+    margin: 10px 0;
   }
 
   .icon {

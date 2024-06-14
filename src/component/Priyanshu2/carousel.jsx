@@ -57,10 +57,10 @@ const Carousel = () => {
             <div className="max-w-screen-xl px-4 mx-auto text-center lg:py-16 lg:px-6">
                 <div className="max-w-screen-md mx-auto">
                     <div className="">
-                        <button onClick={prevSlide} className="absolute left-24 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 w-12 h-12 rounded-full focus:outline-none border-gray-200 border-1 flex justify-center items-center">
+                        <button onClick={prevSlide} className="absolute left-24 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 w-12 h-12 rounded-full focus:outline-none border-gray-200 border-2 flex justify-center items-center">
                             {/* &larr; */} <LuMoveLeft />
                         </button>
-                        <div className="py-8 px-4 bg-white dark:bg-gray-800 rounded-lg">
+                        <div className="py-8 px-4 bg-white dark:bg-gray-800 rounded-lg h-80	">
                             <div className="flex flex-col items-center gap-4">
                                 <svg className="h-12 mb-3 text-gray-400 dark:text-gray-600" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" fill="currentColor"/>
@@ -76,7 +76,7 @@ const Carousel = () => {
                                 </figcaption>
                             </div>
                         </div>
-                        <button onClick={nextSlide} className="bg-white text-gray-800 w-12 h-12  absolute right-24 top-1/2 transform -translate-y-1/2 bg-gray-300 text-gray-800 p-2 rounded-full focus:outline-none flex justify-center items-center">
+                        <button onClick={nextSlide} className="bg-white text-gray-800 w-12 h-12  absolute right-24 top-1/2 transform -translate-y-1/2 bg-gray-300 text-gray-800 p-2 rounded-full focus:outline-none flex justify-center items-center border-2">
                             <LuMoveRight/>
                             {/* &rarr; */}
                         </button>
