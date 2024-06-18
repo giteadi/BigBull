@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa'; // Importing star icons
@@ -143,6 +143,34 @@ const CourseComponent = () => {
     );
   };
 
+  useEffect(() => {
+
+    const card = document.querySelectorAll('.card');
+    card.forEach((eachCard) => {
+        eachCard.addEventListener('mousemove', (e) => {
+            const rect = eachCard.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element.
+            const y = e.clientY - rect.top;  // y position within the element.
+        
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+        
+            const rotateX = ((y - centerY) / centerY) * 5;
+            const rotateY = ((x - centerX) / centerX) * -5;
+        
+            eachCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+    })
+
+    return () => {
+
+      card.forEach((eachCard) => {
+          eachCard.addEventListener('mouseleave', () => {
+              eachCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+          });
+      })};
+  }, []);
+
   return (
     <CoursePage>
     <div className="container mx-auto p-4">
@@ -200,9 +228,10 @@ const CourseComponent = () => {
 
       {/* <label>Categories by Dater</label> */}
         {filteredCourses.map((course) => (
+          <div className='card-container'>
           <div 
             key={course.id} 
-           className="bg-white border p-4 cursor-pointer rounded-lg shadow-lg text-black transition-transform transform hover:scale-105"
+           className="bg-white card border p-4 cursor-pointer rounded-lg shadow-lg text-black transition-transform transform hover:scale-105"
             onClick={() => handleCourseClick(course.id)}
           >
              <div className="w-full h-48 mb-4 overflow-hidden rounded-lg">
@@ -221,6 +250,7 @@ const CourseComponent = () => {
                 {renderRatingStars(course.rating)}
               </div>
           </div>
+          </div>
         ))}
          </div>
       </div>
@@ -233,6 +263,9 @@ const CourseComponent = () => {
 
 export default CourseComponent;
 const CoursePage = styled.div`
+.card-container {
+    perspective: 1000px;
+}
   .course-container {
     height: 70vh;
   }

@@ -101,7 +101,7 @@ const  EnrollNow = () => {
     try {
       await axios.put(`${baseUrl}/update-users/${user.id}`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "multi`pa`rt/form-data",
         },
       });
 

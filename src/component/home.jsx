@@ -87,7 +87,7 @@ const Home = () => {
         }
       };
       
-    //   console.log('hello')
+    //   console.log('hello')`
 
     useEffect(() => {
     const observer1 = createObserver(sectionRef1, 'feature-course-page');
@@ -95,12 +95,12 @@ const Home = () => {
     const observer3 = createObserver(sectionRef3, 'course-animation');
     const observer4 = createObserver(sectionRef4, 'header-static');
     const observer5 = createObserver(sectionRef5, 'callToAction-animation');
-    const observer6 = createObserver(sectionRef5, 'callToAction-animation');
+    const observer6 = createObserver(sectionRef6, 'latest-blog');
 
     window.addEventListener('scroll', changeBackground);
-    const card = document.querySelectorAll('.card');
     window.addEventListener('mousedown', handleClickOutside);
-
+    
+    const card = document.querySelectorAll('.card');
     card.forEach((eachCard) => {
         eachCard.addEventListener('mousemove', (e) => {
             const rect = eachCard.getBoundingClientRect();
@@ -133,7 +133,8 @@ const Home = () => {
             eachCard.addEventListener('mouseleave', () => {
                 eachCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
             });
-        })};
+        })
+    };
     }, []);
     return (
         <>
@@ -143,7 +144,7 @@ const Home = () => {
                         <SideBar checked={isChecked}/>
                     </div>
                     <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed top-0`}>
-                        <nav className='flex justify-between w-full'>
+                        <nav className='flex justify-between w-full m-auto max-w-screen-2xl'>
                             <div className='w-32' >
                                 <img src={logo} alt="Logo" width='100%' />
                             </div>
@@ -402,78 +403,84 @@ const Home = () => {
                     </div>
                     <div className='p-8 xl:flex justify-center gap-10 flex-wrap py-20 sm:px-40 md:gap-20 gap-20 md:max-lg:grid lg:grid-cols-2 md:max-lg:grid-cols-2 md:max-xl:px-10 flex'> 
                         {/* card */}
-                        <div className='card-container'>
-                            <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
-                                <div className='p-6 rounded-3xl '>
-                                    <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
-                                    <div className='flex flex-col '>
-                                        <div className='font-semibold my-7'>
-                                            <p className='text-5xl'>25 Rs</p>
-                                            <p className='text-2xl'>Per Month</p>
+                        <Link to={'/SubscriptionPlans'}>
+                            <div className='card-container'>
+                                <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
+                                    <div className='p-6 rounded-3xl '>
+                                        <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                        <div className='flex flex-col '>
+                                            <div className='font-semibold my-7'>
+                                                <p className='text-5xl'>25 Rs</p>
+                                                <p className='text-2xl'>Per Month</p>
+                                            </div>
+                                            <div className='self-center mb-5'>
+                                                <ul className='text-2xl list-disc text-start'>
+                                                    <li>Data Analyst</li>
+                                                    <li>Up to 5 Member</li>
+                                                    <li>Get 5 GB Storage</li>
+                                                    <li>Monthly Report</li>
+                                                </ul>
+                                            </div>
+                                            <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                         </div>
-                                        <div className='self-center mb-5'>
-                                            <ul className='text-2xl list-disc text-start'>
-                                                <li>Data Analyst</li>
-                                                <li>Up to 5 Member</li>
-                                                <li>Get 5 GB Storage</li>
-                                                <li>Monthly Report</li>
-                                            </ul>
-                                        </div>
-                                        <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
-                                    </div>
-                                </div>                            
+                                    </div>                            
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                         {/* card */}
-                        <div className='card-container'>
-                            <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
-                                <div className='p-6 rounded-3xl '>
-                                    <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
-                                    <div className='flex flex-col '>
-                                        <div className='font-semibold my-7'>
-                                            <p className='text-5xl'>25 Rs</p>
-                                            <p className='text-2xl'>Per Month</p>
+                        <Link to={'/SubscriptionPlans'}>
+                            <div className='card-container'>
+                                <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
+                                    <div className='p-6 rounded-3xl '>
+                                        <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                        <div className='flex flex-col '>
+                                            <div className='font-semibold my-7'>
+                                                <p className='text-5xl'>25 Rs</p>
+                                                <p className='text-2xl'>Per Month</p>
+                                            </div>
+                                            <div className='self-center mb-5'>
+                                                <ul className='text-2xl list-disc text-start'>
+                                                    <li>Data Analyst</li>
+                                                    <li>Up to 5 Member</li>
+                                                    <li>Get 5 GB Storage</li>
+                                                    <li>Monthly Report</li>
+                                                </ul>
+                                            </div>
+                                            <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                         </div>
-                                        <div className='self-center mb-5'>
-                                            <ul className='text-2xl list-disc text-start'>
-                                                <li>Data Analyst</li>
-                                                <li>Up to 5 Member</li>
-                                                <li>Get 5 GB Storage</li>
-                                                <li>Monthly Report</li>
-                                            </ul>
-                                        </div>
-                                        <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
-                                    </div>
-                                </div>                            
+                                    </div>                            
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                         {/* card */}
-                        <div className='card-container'>
-                            <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
-                                <div className='p-6 rounded-3xl '>
-                                    <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
-                                    <div className='flex flex-col '>
-                                        <div className='font-semibold my-7'>
-                                            <p className='text-5xl'>25 Rs</p>
-                                            <p className='text-2xl'>Per Month</p>
+                        <Link to={'/SubscriptionPlans'}>
+                            <div className='card-container'>
+                                <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
+                                    <div className='p-6 rounded-3xl '>
+                                        <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                        <div className='flex flex-col '>
+                                            <div className='font-semibold my-7'>
+                                                <p className='text-5xl'>25 Rs</p>
+                                                <p className='text-2xl'>Per Month</p>
+                                            </div>
+                                            <div className='self-center mb-5'>
+                                                <ul className='text-2xl list-disc text-start'>
+                                                    <li>Data Analyst</li>
+                                                    <li>Up to 5 Member</li>
+                                                    <li>Get 5 GB Storage</li>
+                                                    <li>Monthly Report</li>
+                                                </ul>
+                                            </div>
+                                            <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                         </div>
-                                        <div className='self-center mb-5'>
-                                            <ul className='text-2xl list-disc text-start'>
-                                                <li>Data Analyst</li>
-                                                <li>Up to 5 Member</li>
-                                                <li>Get 5 GB Storage</li>
-                                                <li>Monthly Report</li>
-                                            </ul>
-                                        </div>
-                                        <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
-                                    </div>
-                                </div>                            
+                                    </div>                            
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 </div>
                 {/* Latest Blogs */}
-                <div ref={sectionRef6} className='flex justify-center flex-col latest-blog pt-24'>
+                <div ref={sectionRef6} className='flex justify-center flex-col pt-24'>
                     <h1 className='text-8xl text-center'>Latest Blogs</h1>
                     <LatestPage/>
                     <div className='text-center text-3xl'>
@@ -745,6 +752,26 @@ header, .hero {
  .latest-blog h2{
     line-height: 3.5rem;
  }
+ .latest-blog .blog-left {
+    animation: 1.5s blogfromleft ease-in;
+ }
+@keyframes blogfromleft {
+    from {
+        transform: translateX(-50%);
+    } to {
+        transform: translateX(0%);
+    }
+}
+ .latest-blog .blog-right {
+    animation: 1.5s blogfromright ease-in;
+ }
+@keyframes blogfromright {
+    from {
+        transform: translateX(50%);
+    } to {
+        transform: translateX(0%);
+    }
+}
  .course-page {
     background-image: url(${coursePageCover});  
     background-size: 100% 430px;
