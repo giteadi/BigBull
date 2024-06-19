@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 import { IoMenu } from "react-icons/io5";
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import logo from './../../public/logo/logo.png'
 import { SiOpenlayers } from "react-icons/si";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { FaRegHeart } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import heroBackground from '../Assets/hero.mp4'
-// import heroBackground from '../Assets/hero.mp4'
-import mobileFrameVideo from '../Assets/mobileFrameVideo.mp4';
+import videoInMobileFrame from '../Assets/videoInMobileFrame.mp4';
+import videoInTableFrame from '../Assets/videoInTabletForm.mp4'
 import tableFrame from '../Assets/tableFrame.png'
 import mobileFrame from '../Assets/mobileFrame.png'
 import courseFeatureBackground from '../Assets/courseFeatureBackground.jpg'
@@ -30,6 +28,8 @@ import Faq from './Priyanshu2/faq';
 import Awards from './Aditya/Awards';
 import About from './Aditya/About';
 import SideBar from './sidebar';
+import LatestPage from './Nousheen/latestPage';
+
 
 
 // const courseFeature = [
@@ -70,6 +70,7 @@ const Home = () => {
     const sectionRef3 = useRef(null);
     const sectionRef4 = useRef(null);
     const sectionRef5 = useRef(null);
+    const sectionRef6 = useRef(null);
 
     const handleClickOutside = (event) => {
         let target = event.target;
@@ -86,7 +87,7 @@ const Home = () => {
         }
       };
       
-    //   console.log('hello')
+    //   console.log('hello')`
 
     useEffect(() => {
     const observer1 = createObserver(sectionRef1, 'feature-course-page');
@@ -94,10 +95,12 @@ const Home = () => {
     const observer3 = createObserver(sectionRef3, 'course-animation');
     const observer4 = createObserver(sectionRef4, 'header-static');
     const observer5 = createObserver(sectionRef5, 'callToAction-animation');
-    window.addEventListener('scroll', changeBackground);
-    const card = document.querySelectorAll('.card');
-    window.addEventListener('mousedown', handleClickOutside);
+    const observer6 = createObserver(sectionRef6, 'latest-blog');
 
+    window.addEventListener('scroll', changeBackground);
+    window.addEventListener('mousedown', handleClickOutside);
+    
+    const card = document.querySelectorAll('.card');
     card.forEach((eachCard) => {
         eachCard.addEventListener('mousemove', (e) => {
             const rect = eachCard.getBoundingClientRect();
@@ -121,6 +124,8 @@ const Home = () => {
         closeObserver(sectionRef3, observer3);
         closeObserver(sectionRef4, observer4);
         closeObserver(sectionRef5, observer5);
+        closeObserver(sectionRef6, observer6);
+
         window.removeEventListener('scroll', changeBackground);
         window.removeEventListener('mousedown', handleClickOutside);
 
@@ -128,7 +133,8 @@ const Home = () => {
             eachCard.addEventListener('mouseleave', () => {
                 eachCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
             });
-        })};
+        })
+    };
     }, []);
     return (
         <>
@@ -137,8 +143,8 @@ const Home = () => {
                     <div>
                         <SideBar checked={isChecked}/>
                     </div>
-                    <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed top-0`}>
-                        <nav className='flex justify-between w-full'>
+                    <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed py-3`}>
+                        <nav className='flex justify-between w-full m-auto max-w-screen-2xl'>
                             <div className='w-32' >
                                 <img src={logo} alt="Logo" width='100%' />
                             </div>
@@ -183,11 +189,11 @@ const Home = () => {
                     </div>
                 </div>
                 {/* feature Course Page */}
-                <div  ref={sectionRef1} className="">
+                <div ref={sectionRef1} className="mb-44">
                 <div className='my-10'>
-                    <h1 className='text-8xl text-center my-10'>Our Course Feature</h1>
+                    <h1 className='text-8xl text-center my-10 font-semibold'>Our Course Feature</h1>
                     {/* container */}
-                    <div className='feature-container sm:grid grid-cols-2 flex p-8 py-24 lg:flex gap-20 justify-center flex-wrap '> 
+                    <div  className='feature-container sm:grid grid-cols-2 flex p-8 py-24 lg:flex gap-20 justify-center flex-wrap '> 
                         {/* card */}
                         <div className='course-feature w-80 bg-white  rounded-lg '>
                             {/* image */}
@@ -220,7 +226,7 @@ const Home = () => {
                 </div>
                 </div>
                 {/* Sementic */}
-                <div ref={sectionRef2} className='grid lg:grid-cols-2 sm:grid-cols-1 grid gap-10 px-5 py-20 my-10 '> 
+                <div ref={sectionRef2} className='grid mb-20 lg:grid-cols-2 sm:grid-cols-1 grid gap-10 px-5'> 
                     {/* left */}
                     <div className='flex flex-col sementic-left flex-wrap'>
                         <div className='self-center'>
@@ -250,7 +256,7 @@ const Home = () => {
                             </div>
                         </div>
                         <div className='relative'>
-                        <div className='max-w-4xl absolute bull-animation hidden lg:block'>
+                        <div className='max-w-4xl absolute bull-animation hidden'>
                             <img src={bullImage} alt="" width="100%" />
                         </div>
                     </div>
@@ -259,20 +265,20 @@ const Home = () => {
                     <div className='content-center sementic-right relative test-tablet'>
                         <div className='max-w-4xl table'>
                             {/* <img src={SementicRightImage} alt="" width="100%" /> */}
-                            <video src={heroBackground} autoPlay loop muted className='h-full w-full object-cover'></video>
+                            <video src={videoInTableFrame} autoPlay loop muted className='h-full w-full object-cover'></video>
                             
                         </div>
                         <div className='mobile'>
-                            <video src={mobileFrameVideo} autoPlay loop muted className='h-full w-full object-cover'></video>
+                            <video src={videoInMobileFrame} autoPlay loop muted className='h-full w-full object-cover'></video>
                             
                         </div>
                     </div>
                 </div>
                 {/* Courses */}
-                <div ref={sectionRef3} className='my-10 py-10'>
-                    <h1 className='text-8xl text-center my-10'>Course</h1>
+                <div className='my-10 py-10'>
+                    <h1 className='text-8xl text-center my-10 font-semibold'>Course</h1>
                     {/* container */}
-                    <div onScroll className='p-8 flex flex-wrap gap-20 justify-center '> 
+                    <div ref={sectionRef3} className='p-8 flex flex-wrap gap-20 justify-center '> 
                         {/* card */}
                         <div className='card-container'>
                             <div className='course-card card course-card-left rounded-lg p-4 pt-2 '>
@@ -385,120 +391,109 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='text-center text-3xl my-20'>
-                        <button className='inline-flex gap-5 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers />View All</button>
+                    <div className='text-center text-3xl my-10'>
+                        <span>
+                        <Link to={'/courses'}  className=' view-all inline-flex gap-4 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers style={{margin: 'auto'}}  />View All</Link>
+
+                        </span>
                     </div>
                 </div>
                 {/* Subscription */}
                 <div className='text-center bg-white subscription'>
                     <div className='text-5xl max-w-2xl my-6 m-auto leading-tight '>
-                        <h1>Choice your best </h1>
-                        <span className='font-semibold me-2'>SUBSCRIPTION plan</span>
+                        <h1 className='mb-4'>Choice your best </h1>
+                        <span className='font-bold me-2'><span className='px-4'>SUBSCRIPTION</span>PLAN</span>
                     </div>
                     <div className='p-8 xl:flex justify-center gap-10 flex-wrap py-20 sm:px-40 md:gap-20 gap-20 md:max-lg:grid lg:grid-cols-2 md:max-lg:grid-cols-2 md:max-xl:px-10 flex'> 
                         {/* card */}
-                        <div className='card-container'>
-                            <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
-                                <div className='p-6 rounded-3xl '>
-                                    <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
-                                    <div className='flex flex-col '>
-                                        <div className='font-semibold my-7'>
-                                            <p className='text-5xl'>25 Rs</p>
-                                            <p className='text-2xl'>Per Month</p>
+                        <Link to={'/SubscriptionPlans'}>
+                            <div className='card-container'>
+                                <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
+                                    <div className='p-6 rounded-3xl '>
+                                        <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                        <div className='flex flex-col '>
+                                            <div className='font-semibold my-7'>
+                                                <p className='text-5xl'>25 Rs</p>
+                                                <p className='text-2xl'>Per Month</p>
+                                            </div>
+                                            <div className='self-center mb-5'>
+                                                <ul className='text-2xl list-disc text-start'>
+                                                    <li>Data Analyst</li>
+                                                    <li>Up to 5 Member</li>
+                                                    <li>Get 5 GB Storage</li>
+                                                    <li>Monthly Report</li>
+                                                </ul>
+                                            </div>
+                                            <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                         </div>
-                                        <div className='self-center mb-5'>
-                                            <ul className='text-2xl list-disc text-start'>
-                                                <li>Data Analyst</li>
-                                                <li>Up to 5 Member</li>
-                                                <li>Get 5 GB Storage</li>
-                                                <li>Monthly Report</li>
-                                            </ul>
-                                        </div>
-                                        <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
-                                    </div>
-                                </div>                            
+                                    </div>                            
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                         {/* card */}
-                        <div className='card-container'>
-                            <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
-                                <div className='p-6 rounded-3xl '>
-                                    <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
-                                    <div className='flex flex-col '>
-                                        <div className='font-semibold my-7'>
-                                            <p className='text-5xl'>25 Rs</p>
-                                            <p className='text-2xl'>Per Month</p>
+                        <Link to={'/SubscriptionPlans'}>
+                            <div className='card-container'>
+                                <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
+                                    <div className='p-6 rounded-3xl '>
+                                        <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                        <div className='flex flex-col '>
+                                            <div className='font-semibold my-7'>
+                                                <p className='text-5xl'>25 Rs</p>
+                                                <p className='text-2xl'>Per Month</p>
+                                            </div>
+                                            <div className='self-center mb-5'>
+                                                <ul className='text-2xl list-disc text-start'>
+                                                    <li>Data Analyst</li>
+                                                    <li>Up to 5 Member</li>
+                                                    <li>Get 5 GB Storage</li>
+                                                    <li>Monthly Report</li>
+                                                </ul>
+                                            </div>
+                                            <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                         </div>
-                                        <div className='self-center mb-5'>
-                                            <ul className='text-2xl list-disc text-start'>
-                                                <li>Data Analyst</li>
-                                                <li>Up to 5 Member</li>
-                                                <li>Get 5 GB Storage</li>
-                                                <li>Monthly Report</li>
-                                            </ul>
-                                        </div>
-                                        <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
-                                    </div>
-                                </div>                            
+                                    </div>                            
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                         {/* card */}
-                        <div className='card-container'>
-                            <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
-                                <div className='p-6 rounded-3xl '>
-                                    <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
-                                    <div className='flex flex-col '>
-                                        <div className='font-semibold my-7'>
-                                            <p className='text-5xl'>25 Rs</p>
-                                            <p className='text-2xl'>Per Month</p>
+                        <Link to={'/SubscriptionPlans'}>
+                            <div className='card-container'>
+                                <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
+                                    <div className='p-6 rounded-3xl '>
+                                        <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                        <div className='flex flex-col '>
+                                            <div className='font-semibold my-7'>
+                                                <p className='text-5xl'>25 Rs</p>
+                                                <p className='text-2xl'>Per Month</p>
+                                            </div>
+                                            <div className='self-center mb-5'>
+                                                <ul className='text-2xl list-disc text-start'>
+                                                    <li>Data Analyst</li>
+                                                    <li>Up to 5 Member</li>
+                                                    <li>Get 5 GB Storage</li>
+                                                    <li>Monthly Report</li>
+                                                </ul>
+                                            </div>
+                                            <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                         </div>
-                                        <div className='self-center mb-5'>
-                                            <ul className='text-2xl list-disc text-start'>
-                                                <li>Data Analyst</li>
-                                                <li>Up to 5 Member</li>
-                                                <li>Get 5 GB Storage</li>
-                                                <li>Monthly Report</li>
-                                            </ul>
-                                        </div>
-                                        <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
-                                    </div>
-                                </div>                            
+                                    </div>                            
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 </div>
                 {/* Latest Blogs */}
-                <div className='flex justify-center flex-col latest-blog pt-24'>
-                    <h1 className='text-8xl text-center'>Latest Blogs</h1>
-                    <div className='max-w-7xl m-auto lg:w-full '>
-                        {/* images */}
-                        <div className=' flex gap-20 my-20 flex-wrap sm:justify-center'>
-                            <div className='w-96'>
-                                <img src={courseThumbain} alt="" className='w-full h-full rounded-3xl'/>
-                            </div>
-                            {/* content */}
-                            <div className='max-w-2xl'> 	
-                                <h2 className='text-5xl	mb-7 leading-10'>Start your journey now, level up your skill</h2>
-                                <p className='text-lg leading-10'>Morbi tempor eleifend condimentum. Etiam mollis urna et massa tempus vulputate. Nunc sed nisl est. Donec non consectetur elit. Praesent accumsan elit urna, eget mattis turpis aliquam a. In sagittis bibendum consequat. Quisque porta volutpat ligula sit amet varius</p>
-                            </div>
-                        </div>
-                        <div className=' flex m-auto gap-20 my-20 flex-wrap-reverse sm:justify-center'>
-                            {/* content */}
-                            <div className='max-w-2xl'> 	
-                                <h2 className='text-5xl	mb-7 leading-10'>Start your journey now, level up your skill</h2>
-                                <p className='text-lg leading-10'>Morbi tempor eleifend condimentum. Etiam mollis urna et massa tempus vulputate. Nunc sed nisl est. Donec non consectetur elit. Praesent accumsan elit urna, eget mattis turpis aliquam a. In sagittis bibendum consequat. Quisque porta volutpat ligula sit amet varius</p>
-                            </div>
-                            <div className='w-96'>
-                                <img src={courseThumbain} alt="" className='w-full h-full rounded-3xl'/>
-                            </div>
-                        </div>
-                    </div>
+                <div ref={sectionRef6} className='flex justify-center flex-col pt-24'>
+                    <h1 className='text-8xl text-center font-semibold'>Latest Blogs</h1>
+                    <LatestPage/>
                     <div className='text-center text-3xl'>
-                        <button className='inline-flex my-20 gap-5 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers />View All</button>
+                        <span>
+                        <Link to={'/blogs'} className=' view-all inline-flex gap-4 mb-20 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers style={{margin: 'auto'}} />View All</Link>
+                        </span>
                     </div>
                 </div>
                     {/* Call to Actions */}
-                <div ref={sectionRef5} className='px-40 lg:px-20'>
+                <div ref={sectionRef5} className='px-40 lg:px-20 py-20'>
                     <div className='mb-20'>
                         <h1 className='text-7xl	mb-10'>Call to Action</h1>
                         <p className='text-4xl	'>Join Now and Start Your Journey to Financial Mastery!</p>
@@ -507,8 +502,9 @@ const Home = () => {
                         <h1 className='text-7xl	mb-10'>What we do</h1>
                         <p className='text-4xl	'>Elevate your brand and make your mark in history.</p>
                     </div>
-                    <div className='mt-20 grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center'>
-                            <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
+                    <div className='mt-20 '>
+                     <div className='grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center guideLeft'>
+                     <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
                                 <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
@@ -526,7 +522,9 @@ const Home = () => {
                                     <FaArrowRightLong />
                                 </div>
                             </div>
-                            <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
+                     </div>
+                           <div  className='grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center mt-5 guidRight'>
+                           <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
                                 <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
@@ -544,6 +542,7 @@ const Home = () => {
                                     <FaArrowRightLong />
                                 </div>
                             </div>
+                           </div>
                     </div>
                 </div>
                 <div>
@@ -557,12 +556,12 @@ const Home = () => {
                     {/* <About/> */}
                 </div>
                 <div>
-                    <Faq/>
+                    {/* <Faq/> */}
                 </div>
                     <Contact/>
                 </div>
                 <div>
-                    <Footer/>
+                    {/* <Footer/> */}
                 </div>
          
             </LandingPage>            
@@ -726,6 +725,7 @@ header, .hero {
  }
 }
 .sementic .bull-animation {
+    display: block;
     animation: 1s bullAni ease-in;
     z-index: -20;
     top: -331px;
@@ -761,6 +761,26 @@ header, .hero {
  .latest-blog h2{
     line-height: 3.5rem;
  }
+ .latest-blog .blog-left {
+    animation: 1.5s blogfromleft ease-in;
+ }
+@keyframes blogfromleft {
+    from {
+        transform: translateX(-50%);
+    } to {
+        transform: translateX(0%);
+    }
+}
+ .latest-blog .blog-right {
+    animation: 1.5s blogfromright ease-in;
+ }
+@keyframes blogfromright {
+    from {
+        transform: translateX(50%);
+    } to {
+        transform: translateX(0%);
+    }
+}
  .course-page {
     background-image: url(${coursePageCover});  
     background-size: 100% 430px;
@@ -860,6 +880,16 @@ to {
         transform: translateX(0%);
     }
 }
+.callToAction-animation .guidRight{
+    animation: 2s callToActionRLguidRight;
+}
+@keyframes callToActionRLguidRight {
+    from {
+        transform: translateX(40%);
+    } to {
+        transform: translateX(0%);
+    }
+}
 .card-container {
     perspective: 1000px;
 }
@@ -910,5 +940,10 @@ to {
     right: 7%;
     padding: 40px;
 }   
+.view-all:hover {
+    scale: 0.9;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition : all 0.5s;
+}
 
 `

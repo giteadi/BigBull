@@ -9,7 +9,7 @@ import Blogs from './component/Aditya/Blogs';
 import About from './component/Aditya/About';
 import Test from './component/Aditya/Test';
 import Awards from './component/Aditya/Awards';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useLocation } from 'react-router-dom';
 import PurchasedCoursesPage from './component/AsthaYadav/purchasedCoursesPage';
 import PaymentForm from './component/Nousheen/paymentForm';
 import HelpPage from './component/Nousheen/helpPage';
@@ -27,17 +27,24 @@ import RefundPolicy from './component/Nousheen/refundPolicy';
 import TermCondition from './component/Nousheen/termAndCondition';
 import ContactUs from './component/Priyanshu2/contactUs';
 import FAQ from './component/Priyanshu2/faq';
-import EnrollNow from './component/AsthaYadav/enrollNow';
+// import EnrollNow from './component/AsthaYadav/enrollNow';
 import SinglePost from './component/Aditya/singleBlogPost';
 import NotificationPage from './component/Nousheen/notification';
 import SubscriptionPlans from './component/Nousheen/subscription';
+import Navbar from './component/navbar';
+import LatestPage from './component/Nousheen/latestPage';
+import EnrollForm from './component/EnrollForm';
 
 function App() {
-  
+  const location = useLocation();
+  const hideNavbarRoutes = ['/'];
+
   return (
     <>
+      {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
     <Routes>
       <Route path='/' element={<Home/>}/>
+      <Route path='/Navbar' element={<Navbar/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/courses' element={<CourseComponent/>}/>
@@ -64,11 +71,14 @@ function App() {
       <Route path='/TermCondition' element={<TermCondition/>}/>
       <Route path='/ContactUs' element={<ContactUs/>}/>
       <Route path='/FAQ' element={<FAQ/>}/>
-      <Route path='/EnrollNow' element={<EnrollNow/>}/>
+      {/* <Route path='/EnrollNow' element={<EnrollNow/>}/> */}
       <Route path='/singlepost/:id' element={<SinglePost/>}/>
       <Route path='/NotificationPage' element={<NotificationPage/>}/>
       <Route path='/SubscriptionPlans' element={<SubscriptionPlans/>}/>
+      <Route path='/LatestPage' element={<LatestPage/>}/>
+      <Route path='/EnrollForm' element={<EnrollForm/>}/>
     </Routes>
+      <Footer/>
     </>
   )
 }

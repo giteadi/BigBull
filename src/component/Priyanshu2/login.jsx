@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import styled from "styled-components";
 
 // import img from '../Image/login2.png';
@@ -8,9 +9,13 @@ import styled from "styled-components";
 
 function Login() {
   const data = new Date();
-
+  const [showPassword, setShowPassword] = useState(false);
   const currentYear = data.getFullYear();
 
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+  
   console.log(currentYear);
 
   return (
@@ -66,17 +71,18 @@ function Login() {
                                 Password
                               </label>
 
-                              <div className="password-eye flex justify-between items-center border border-gray-400 rounded p-1">
+                              <div className=" password-eye flex justify-between items-center border border-gray-400 rounded p-1">
                                 <input
-                                  type="password"
+                                  type={showPassword ? "text" :"password"}
                                   className="form-control border-none p-2 w-full"
                                   placeholder="Enter your Password"
                                 />
-
-                                <div className="icon px-2 py-1">
-                                  <i className="bi bi-eye-slash-fill" />
-                                </div>
                               </div>
+                                <div className="flex justify-end relative -mt-10 pe-3">
+                                  <span onClick={togglePasswordVisibility}>
+                                      {showPassword ? <FaEyeSlash size={25} /> : <FaEye size={25} />}
+                                  </span>
+                                </div>
                             </div>
                           </div>
 
