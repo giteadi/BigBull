@@ -17,7 +17,7 @@ const SideBar = ({ checked }) => {
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/ContactUs">Contact Us</Link></li>
                         <li><Link to="/Cart">Cart</Link></li>
-                        <li><Link to="/EnrollNow">Enroll Now</Link></li>``
+                        <li><Link to="/EnrollForm">Enroll Now</Link></li>``
                     </ol>
                 </div>
             </div>

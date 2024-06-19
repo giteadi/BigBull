@@ -96,12 +96,12 @@ const MyEnroll = () => {
     };
     return (
         <>
-            <div className="max-w-screen-xl	m-auto pt-28">
+            <div className="max-w-screen-xl	m-auto pt-10">
                 <div className="mb-5">
-                    <h1 className="text-4xl font-bold">EnrollMent Form</h1>
+                    <h1 className="text-4xl font-bold text-center">Enrollment Form</h1>
                 </div>
                 <div>
-                <form className="px-20" onSubmit={handleSubmit}>
+                <form className="px-20 border-1 rounded-2xl pb-5" onSubmit={handleSubmit}>
             <div className="flex justify-around my-10">
                 <div className="w-full max-w-lg">
                     <label htmlFor="name" className="mb-2 text-xl font-semibold">Name</label>
@@ -296,7 +296,7 @@ const MyEnroll = () => {
                 </div>
             </div>
             <div className="flex justify-center my-10">
-                <button type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-xl text-xl font-semibold">Submit</button>
+                <button type="submit" className="bg-rose-600 text-white py-2 px-6 rounded-xl text-xl font-semibold">Submit</button>
             </div>
             <div className="flex justify-center text-xl">
                 <p className="px-2">Already Have an Accound </p> <Link className="text-blue-600 hover:underline" to={'/login'}>Login</Link>

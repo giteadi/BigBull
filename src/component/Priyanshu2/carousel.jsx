@@ -34,15 +34,15 @@ const Carousel = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    const interval = setInterval(nextSlide, 2000); // Change slide every 5 seconds
 
     return () => clearInterval(interval); // Clear interval on component unmount
   }, []);
 
   return (
     <>
-        <section className="bg-white dark:bg-gray-900 py-8 relative">
-            <div className="max-w-screen-xl px-4 mx-auto text-center lg:py-16 lg:px-6">
+        <section style={{height: '70vh'}} className="bg-white dark:bg-gray-900 py-8 relative flex items-center justify-center">
+            <div className="max-w-screen-xl px-4 mx-auto text-center lg:py-16 lg:px-6 ">
                 <div className="max-w-screen-md mx-auto">
                     <div className="">
                         <button onClick={prevSlide} className="absolute left-24 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 w-12 h-12 rounded-full focus:outline-none border-gray-200 border-2 flex justify-center items-center">

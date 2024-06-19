@@ -74,7 +74,7 @@ const Blogs = () => {
             className={`flex flex-col md:flex-row items-center gap-10 my-20 ${
               index % 2 === 0 ? 'blog-left' : 'blog-right'
             }`}
-            // onClick={() => handlePost(post.id)} // Pass post id to handlePost
+            onClick={() => handlePost(post.id)} // Pass post id to handlePost
           >
             {index % 2 === 0 ? (
               <>

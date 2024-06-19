@@ -62,12 +62,9 @@ function ContactUs() {
 
   return (
     <>  
-    <div className="max-w-screen-xl	my-10 max-lg:max-w-3xl mx-auto bg-white my-6 font-[sans-serif] ">
-  <div className="text-center px-6">
-    <h2 className="text-gray-800 text-5xl font-extrabold">Contact Us</h2>
-    <p className="text-sm text-gray-500 mt-4">
-      Have some big idea or brand to develop and need help?
-    </p>
+    <div style={{height: '70vh'}}  className="max-w-screen-xl	my-20 max-lg:max-w-3xl mx-auto bg-white my-6 font-[sans-serif] ">
+  <div className="text-start px-6">
+    <h2 className="text-gray-800 text-5xl font-semibold">Contact Us</h2>
   </div>
   <div className="grid lg:grid-cols-3 items-start gap-4 p-2 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-lg mt-12">
     <div className="bg-[#011c2b] rounded-lg p-6 h-full max-lg:order-1 ">
@@ -145,7 +142,7 @@ function ContactUs() {
     <div className="p-4 lg:col-span-2 ms-10">
       <form onSubmit={handleSubmit} >
         <div className="grid sm:grid-cols-2 gap-8">
-          <div className="relative flex items-center">
+          {/* <div className="relative flex items-center">
             <input
             ref={nameInputRef}
               type="text"
@@ -168,11 +165,11 @@ function ContactUs() {
                 data-original="#000000"
               />
             </svg>
-          </div>
-          <div className="relative flex items-center">
+          </div> */}
+          <div className="relative flex items-center  sm:col-span-2 ">
             <input
               type="text"
-              placeholder="Last Name"
+              placeholder="Full Name"
               name='lastname'
               value={formData.lastname}
               onChange={handleChange}
@@ -344,7 +341,7 @@ function ContactUs() {
         </div>
         <button
           type="submit"
-          className="mt-12 flex items-center justify-center text-sm lg:ml-auto max-lg:w-full rounded-lg px-4 py-3 tracking-wide text-white bg-blue-600 hover:bg-blue-700"
+          className="mt-12 flex items-center justify-center text-sm lg:ml-auto max-lg:w-full rounded-lg px-4 py-3 tracking-wide text-white bg-rose-600 hover:bg-rose-700"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

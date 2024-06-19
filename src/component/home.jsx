@@ -143,7 +143,7 @@ const Home = () => {
                     <div>
                         <SideBar checked={isChecked}/>
                     </div>
-                    <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed top-0`}>
+                    <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed py-3`}>
                         <nav className='flex justify-between w-full m-auto max-w-screen-2xl'>
                             <div className='w-32' >
                                 <img src={logo} alt="Logo" width='100%' />
@@ -189,11 +189,11 @@ const Home = () => {
                     </div>
                 </div>
                 {/* feature Course Page */}
-                <div  ref={sectionRef1} className="">
+                <div ref={sectionRef1} className="mb-44">
                 <div className='my-10'>
-                    <h1 className='text-8xl text-center my-10'>Our Course Feature</h1>
+                    <h1 className='text-8xl text-center my-10 font-semibold'>Our Course Feature</h1>
                     {/* container */}
-                    <div className='feature-container sm:grid grid-cols-2 flex p-8 py-24 lg:flex gap-20 justify-center flex-wrap '> 
+                    <div  className='feature-container sm:grid grid-cols-2 flex p-8 py-24 lg:flex gap-20 justify-center flex-wrap '> 
                         {/* card */}
                         <div className='course-feature w-80 bg-white  rounded-lg '>
                             {/* image */}
@@ -226,7 +226,7 @@ const Home = () => {
                 </div>
                 </div>
                 {/* Sementic */}
-                <div ref={sectionRef2} className='grid lg:grid-cols-2 sm:grid-cols-1 grid gap-10 px-5 py-20 my-10 '> 
+                <div ref={sectionRef2} className='grid mb-20 lg:grid-cols-2 sm:grid-cols-1 grid gap-10 px-5'> 
                     {/* left */}
                     <div className='flex flex-col sementic-left flex-wrap'>
                         <div className='self-center'>
@@ -275,10 +275,10 @@ const Home = () => {
                     </div>
                 </div>
                 {/* Courses */}
-                <div ref={sectionRef3} className='my-10 py-10'>
-                    <h1 className='text-8xl text-center my-10'>Course</h1>
+                <div className='my-10 py-10'>
+                    <h1 className='text-8xl text-center my-10 font-semibold'>Course</h1>
                     {/* container */}
-                    <div onScroll className='p-8 flex flex-wrap gap-20 justify-center '> 
+                    <div ref={sectionRef3} className='p-8 flex flex-wrap gap-20 justify-center '> 
                         {/* card */}
                         <div className='card-container'>
                             <div className='course-card card course-card-left rounded-lg p-4 pt-2 '>
@@ -391,15 +391,18 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='text-center text-3xl my-20'>
-                        <Link to={'/courses'}  className='inline-flex gap-4 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers />View All</Link>
+                    <div className='text-center text-3xl my-10'>
+                        <span>
+                        <Link to={'/courses'}  className=' view-all inline-flex gap-4 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers style={{margin: 'auto'}}  />View All</Link>
+
+                        </span>
                     </div>
                 </div>
                 {/* Subscription */}
                 <div className='text-center bg-white subscription'>
                     <div className='text-5xl max-w-2xl my-6 m-auto leading-tight '>
-                        <h1>Choice your best </h1>
-                        <span className='font-semibold me-2'>SUBSCRIPTION plan</span>
+                        <h1 className='mb-4'>Choice your best </h1>
+                        <span className='font-bold me-2'><span className='px-4'>SUBSCRIPTION</span>PLAN</span>
                     </div>
                     <div className='p-8 xl:flex justify-center gap-10 flex-wrap py-20 sm:px-40 md:gap-20 gap-20 md:max-lg:grid lg:grid-cols-2 md:max-lg:grid-cols-2 md:max-xl:px-10 flex'> 
                         {/* card */}
@@ -481,14 +484,16 @@ const Home = () => {
                 </div>
                 {/* Latest Blogs */}
                 <div ref={sectionRef6} className='flex justify-center flex-col pt-24'>
-                    <h1 className='text-8xl text-center'>Latest Blogs</h1>
+                    <h1 className='text-8xl text-center font-semibold'>Latest Blogs</h1>
                     <LatestPage/>
                     <div className='text-center text-3xl'>
-                        <Link to={'/blogs'} className='inline-flex gap-4 mb-20 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers />View All</Link>
+                        <span>
+                        <Link to={'/blogs'} className=' view-all inline-flex gap-4 mb-20 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers style={{margin: 'auto'}} />View All</Link>
+                        </span>
                     </div>
                 </div>
                     {/* Call to Actions */}
-                <div ref={sectionRef5} className='px-40 lg:px-20'>
+                <div ref={sectionRef5} className='px-40 lg:px-20 py-20'>
                     <div className='mb-20'>
                         <h1 className='text-7xl	mb-10'>Call to Action</h1>
                         <p className='text-4xl	'>Join Now and Start Your Journey to Financial Mastery!</p>
@@ -497,8 +502,9 @@ const Home = () => {
                         <h1 className='text-7xl	mb-10'>What we do</h1>
                         <p className='text-4xl	'>Elevate your brand and make your mark in history.</p>
                     </div>
-                    <div className='mt-20 grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center'>
-                            <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
+                    <div className='mt-20 '>
+                     <div className='grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center guideLeft'>
+                     <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
                                 <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
@@ -516,7 +522,9 @@ const Home = () => {
                                     <FaArrowRightLong />
                                 </div>
                             </div>
-                            <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
+                     </div>
+                           <div  className='grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center mt-5 guidRight'>
+                           <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
                                 <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
@@ -534,6 +542,7 @@ const Home = () => {
                                     <FaArrowRightLong />
                                 </div>
                             </div>
+                           </div>
                     </div>
                 </div>
                 <div>
@@ -871,6 +880,16 @@ to {
         transform: translateX(0%);
     }
 }
+.callToAction-animation .guidRight{
+    animation: 2s callToActionRLguidRight;
+}
+@keyframes callToActionRLguidRight {
+    from {
+        transform: translateX(40%);
+    } to {
+        transform: translateX(0%);
+    }
+}
 .card-container {
     perspective: 1000px;
 }
@@ -921,5 +940,10 @@ to {
     right: 7%;
     padding: 40px;
 }   
+.view-all:hover {
+    scale: 0.9;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition : all 0.5s;
+}
 
 `
