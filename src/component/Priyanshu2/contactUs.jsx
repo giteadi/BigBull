@@ -62,12 +62,12 @@ function ContactUs() {
 
   return (
     <>  
-    <div style={{height: '70vh'}}  className="max-w-screen-xl	my-20 max-lg:max-w-3xl mx-auto bg-white my-6 font-[sans-serif] ">
+    <div className="max-w-screen-xl	my-20 max-lg:max-w-3xl mx-auto bg-white my-6 font-[sans-serif] ">
   <div className="text-start px-6">
     <h2 className="text-gray-800 text-5xl font-semibold">Contact Us</h2>
   </div>
   <div className="grid lg:grid-cols-3 items-start gap-4 p-2 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-lg mt-12">
-    <div className="bg-[#011c2b] rounded-lg p-6 h-full max-lg:order-1 ">
+    <div className="bg-[#011c2b] hidden lg:block rounded-lg p-6 h-full max-lg:order-1 ">
       <h2 className="text-2xl text-white">Contact Information</h2>
       <p className="text-xl text-gray-300 mt-4 leading-relaxed	">
         Have some big idea or brand to develop and need help?
@@ -341,7 +341,7 @@ function ContactUs() {
         </div>
         <button
           type="submit"
-          className="mt-12 flex items-center justify-center text-sm lg:ml-auto max-lg:w-full rounded-lg px-4 py-3 tracking-wide text-white bg-rose-600 hover:bg-rose-700"
+          className="mt-12 flex items-center justify-center text-sm lg:ml-auto max-lg:w-full rounded-lg px-4 py-3 tracking-wide text-white bg-red-700 hover:bg-red-800"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

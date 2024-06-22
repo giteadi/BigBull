@@ -30,8 +30,6 @@ import About from './Aditya/About';
 import SideBar from './sidebar';
 import LatestPage from './Nousheen/latestPage';
 
-
-
 // const courseFeature = [
 //     'https://images.pexels.com/photos/2781195/pexels-photo-2781195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 //     'https://images.pexels.com/photos/2681319/pexels-photo-2681319.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -71,6 +69,7 @@ const Home = () => {
     const sectionRef4 = useRef(null);
     const sectionRef5 = useRef(null);
     const sectionRef6 = useRef(null);
+    // const locomomiveContainer = useRef(null);
 
     const handleClickOutside = (event) => {
         let target = event.target;
@@ -99,6 +98,8 @@ const Home = () => {
 
     window.addEventListener('scroll', changeBackground);
     window.addEventListener('mousedown', handleClickOutside);
+
+       
     
     const card = document.querySelectorAll('.card');
     card.forEach((eachCard) => {
@@ -126,6 +127,8 @@ const Home = () => {
         closeObserver(sectionRef5, observer5);
         closeObserver(sectionRef6, observer6);
 
+
+
         window.removeEventListener('scroll', changeBackground);
         window.removeEventListener('mousedown', handleClickOutside);
 
@@ -139,12 +142,13 @@ const Home = () => {
     return (
         <>
             <LandingPage >
+                <div className='landingPage-container' >
                 <div>
                     <div>
                         <SideBar checked={isChecked}/>
                     </div>
                     <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed py-3`}>
-                        <nav className='flex justify-between w-full m-auto max-w-screen-2xl'>
+                        <nav style={{maxWidth: 'max-width: 1920px;'}} className='flex justify-between w-full m-auto'>
                             <div className='w-32' >
                                 <img src={logo} alt="Logo" width='100%' />
                             </div>
@@ -180,9 +184,9 @@ const Home = () => {
                     {/* hero part */}
                     <div className={`hero ${!isChecked || 'brightness-50'} `}>
                         <div className='h-screen' >
-                            <video src={heroBackground} autoPlay loop muted className='h-full w-full object-cover'></video>
-                            <div className='absolute top-0 text-white h-full flex flex-col justify-center w-4/5 px-5'>
-                                <h1 className='font-semibold text-9xl	 leading-tight'>Master the Stock Market with Our Expert-Led Courses</h1>
+                            <video  style={{filter: 'brightness(60%)' }} src={heroBackground} autoPlay loop muted className='h-full w-full object-cover'></video>
+                            <div className='absolute top-0 text-white h-full flex flex-col justify-center w-full sm:w-4/5 px-2 sm:px-5'>
+                                <h1 className='font-semibold text-9xl leading-tight'>Master the Stock Market with Our Expert-Led Courses</h1>
                                 <p className='text-5xl font-normal mt-10 leading-snug '>Learn the secrets of stock market investing from industry professionals.</p>
                             </div>
                         </div>
@@ -191,16 +195,16 @@ const Home = () => {
                 {/* feature Course Page */}
                 <div ref={sectionRef1} className="mb-44">
                 <div className='my-10'>
-                    <h1 className='text-8xl text-center my-10 font-semibold'>Our Course Feature</h1>
+                    <h1 className='text-5xl	sm:text-8xl text-center sm:my-10 font-semibold'>Our Course Feature</h1>
                     {/* container */}
-                    <div  className='feature-container sm:grid grid-cols-2 flex p-8 py-24 lg:flex gap-20 justify-center flex-wrap '> 
+                    <div  className='feature-container flex py-10 sm:py-24 lg:flex gap-20 justify-center flex-wrap '> 
                         {/* card */}
-                        <div className='course-feature w-80 bg-white  rounded-lg '>
+                        <div className='course-feature w-80 bg-white rounded-lg '>
                             {/* image */}
                             <div className='h-96 rounded-lg  '></div>
                             {/* content */}
                             <div className='py-4'>
-                                <h4 className='text-lg font-bold'>Beginner’s Guide to Stock Market Investing</h4>
+                                <h4 className='text-lg font-bold'>Beginner’s `Guide to `Stock Market Investing</h4>
                                 <p className='text-base'>Understand the basics, start investing, and manage risks.</p>
                             </div>
                         </div>
@@ -226,37 +230,37 @@ const Home = () => {
                 </div>
                 </div>
                 {/* Sementic */}
-                <div ref={sectionRef2} className='grid mb-20 lg:grid-cols-2 sm:grid-cols-1 grid gap-10 px-5'> 
+                <div ref={sectionRef2} className='grid mb-20 lg:grid-cols-2 sm:grid-cols-1 grid gap-10 px-4 sm:px-5 sementic-container'> 
                     {/* left */}
                     <div className='flex flex-col sementic-left flex-wrap'>
                         <div className='self-center'>
-                            <h2 className='text-7xl	mb-10 '>Schematic</h2>
+                            <h2 className='text-5xl sm:text-7xl	mb-10 '>Schematic</h2>
                             <button className='text-xl border-2 rounded-3xl border-black py-2 px-7'>Brand Identity</button>    
                         </div>
                         {/* content */}
                         <div className='gap-y-14 mt-14 max-w-md lg:self-end self-center'>
                             <div className='flex gap-11 mb-12'> 
                                 {/* numberr */}
-                                <div className='text-7xl'>01</div>
+                                <div className='text-5xl sm:text-7xl'>01</div>
                                 {/* paragraph */}
                                 <div>
-                                    <h3 className='text-4xl font-semibold'>Background</h3>
-                                    <p className='text-2xl leading-10 mt-3'>Give a brief overview of your project here. 
+                                    <h3 className='text-3xl sm:text-4xl font-semibold'>Background</h3>
+                                    <p className='text-xl sm:text-2xl leading-10 mt-3'>Give a brief overview of your project here. 
                                         You may talk about the client brand and the main project challenge.</p>
                                 </div>
                             </div>
                             <div className='flex gap-11'> 
                                 {/* numberr */}
-                                <div className='text-7xl'>02</div>
+                                <div className='text-5xl sm:text-7xl'>02</div>
                                 {/* paragraph */}
                                 <div>
-                                    <h3 className='text-4xl font-semibold'>Solution</h3>
-                                    <p className='text-2xl leading-10 mt-3'>Talk about your idea here. Expound a bit on how you solved the challenge and how your work helped your..</p>
+                                    <h3 className='text-3xl sm:text-4xl font-semibold'>Solution</h3>
+                                    <p className='text-xl sm:text-2xl leading-10 mt-3'>Talk about your idea here. Expound a bit on how you solved the challenge and how your work helped your..</p>
                                 </div>
                             </div>
                         </div>
                         <div className='relative'>
-                        <div className='max-w-4xl absolute bull-animation hidden'>
+                        <div className='max-w-4xl absolute sm:bull-animation hidden'>
                             <img src={bullImage} alt="" width="100%" />
                         </div>
                     </div>
@@ -276,14 +280,14 @@ const Home = () => {
                 </div>
                 {/* Courses */}
                 <div className='my-10 py-10'>
-                    <h1 className='text-8xl text-center my-10 font-semibold'>Course</h1>
+                    <h1 className='text-5xl sm:text-8xl text-center sm:my-10 font-semibold'>Course</h1>
                     {/* container */}
                     <div ref={sectionRef3} className='p-8 flex flex-wrap gap-20 justify-center '> 
                         {/* card */}
                         <div className='card-container'>
-                            <div className='course-card card course-card-left rounded-lg p-4 pt-2 '>
+                            <div className='course-card card course-card-left rounded-lg p-4 pt-2'>
                                 {/* image */}
-                                <div className='h-52 w-80'>
+                                <div className='h-52 w-72 sm:w-80'>
                                     <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
                                 </div>
                                 {/* content */}
@@ -291,7 +295,7 @@ const Home = () => {
                                     <div className='max-w-80 py-2 px-3'>
                                         <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
                                         <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
-                                        <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
+                                        <p className='font-bold text-xl font-bold'>Angular - The Complete Guide (2020 Edition)</p>
                                         <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
                                     </div>
 
@@ -310,7 +314,7 @@ const Home = () => {
                                         </div>
                                         <div className='text-center'>
                                             <p className='mb-2 text-xl'>599 Rs.</p>
-                                            <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
+                                            <button className='text-white bg-red-700 py-1 px-3 rounded-xl '>Add to cart</button>
                                         </div>
                                     </div>
                                 </div>
@@ -318,9 +322,9 @@ const Home = () => {
                         </div>
                         {/* card */}
                         <div className='card-container'>
-                            <div className='course-card card course-card-center rounded-lg p-4 pt-2 '>
+                            <div className='course-card card course-card-left rounded-lg p-4 pt-2'>
                                 {/* image */}
-                                <div className='h-52 w-80'>
+                                <div className='h-52 w-72 sm:w-80'>
                                     <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
                                 </div>
                                 {/* content */}
@@ -328,7 +332,7 @@ const Home = () => {
                                     <div className='max-w-80 py-2 px-3'>
                                         <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
                                         <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
-                                        <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
+                                        <p className='font-bold text-xl font-bold'>Angular - The Complete Guide (2020 Edition)</p>
                                         <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
                                     </div>
 
@@ -347,7 +351,7 @@ const Home = () => {
                                         </div>
                                         <div className='text-center'>
                                             <p className='mb-2 text-xl'>599 Rs.</p>
-                                            <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
+                                            <button className='text-white bg-red-700 py-1 px-3 rounded-xl '>Add to cart</button>
                                         </div>
                                     </div>
                                 </div>
@@ -355,9 +359,9 @@ const Home = () => {
                         </div>
                         {/* card */}
                         <div className='card-container'>
-                            <div className='course-card card course-card-right rounded-lg p-4 pt-2 '>
+                            <div className='course-card card course-card-left rounded-lg p-4 pt-2'>
                                 {/* image */}
-                                <div className='h-52 w-80'>
+                                <div className='h-52 w-72 sm:w-80'>
                                     <img src={courseThumbain} alt="" className='h-full object-cover border-8  border-white rounded-2xl	'/>
                                 </div>
                                 {/* content */}
@@ -365,7 +369,7 @@ const Home = () => {
                                     <div className='max-w-80 py-2 px-3'>
                                         <button className='bg-[#2495D6] text-white py-1 px-3 rounded-md'>Begginer</button>
                                         <p className='text-[#2495D6] my-2.5 '>Programming Language</p>
-                                        <p className='font-bold text-xl font-bold		'>Angular - The Complete Guide (2020 Edition)</p>
+                                        <p className='font-bold text-xl font-bold'>Angular - The Complete Guide (2020 Edition)</p>
                                         <p className='text-base	 font-semibold my-2.5 '>From Setup to Deployment, this course it all! You’ll Learn all.</p>
                                     </div>
 
@@ -384,7 +388,7 @@ const Home = () => {
                                         </div>
                                         <div className='text-center'>
                                             <p className='mb-2 text-xl'>599 Rs.</p>
-                                            <button className='text-white bg-red-600 py-1 px-3 rounded-xl '>Add to cart</button>
+                                            <button className='text-white bg-red-700 py-1 px-3 rounded-xl '>Add to cart</button>
                                         </div>
                                     </div>
                                 </div>
@@ -393,16 +397,16 @@ const Home = () => {
                     </div>
                     <div className='text-center text-3xl my-10'>
                         <span>
-                        <Link to={'/courses'}  className=' view-all inline-flex gap-4 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers style={{margin: 'auto'}}  />View All</Link>
+                        <Link to={'/courses'}  className=' view-all inline-flex gap-4 text-white bg-red-700 py-2 px-6 rounded-3xl'><SiOpenlayers style={{margin: 'auto'}}  />View All</Link>
 
                         </span>
                     </div>
                 </div>
                 {/* Subscription */}
                 <div className='text-center bg-white subscription'>
-                    <div className='text-5xl max-w-2xl my-6 m-auto leading-tight '>
-                        <h1 className='mb-4'>Choice your best </h1>
-                        <span className='font-bold me-2'><span className='px-4'>SUBSCRIPTION</span>PLAN</span>
+                    <div className='text-xl sm:text-5xl max-w-2xl my-6 m-auto leading-tight'>
+                        <h1 className='sm:mb-4'>Choice your best </h1>
+                        <span className='font-bold text-3xl me-2'><span className='sm:ps-4 pe-2'>SUBSCRIPTION</span>PLAN</span>
                     </div>
                     <div className='p-8 xl:flex justify-center gap-10 flex-wrap py-20 sm:px-40 md:gap-20 gap-20 md:max-lg:grid lg:grid-cols-2 md:max-lg:grid-cols-2 md:max-xl:px-10 flex'> 
                         {/* card */}
@@ -410,7 +414,7 @@ const Home = () => {
                             <div className='card-container'>
                                 <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
                                     <div className='p-6 rounded-3xl '>
-                                        <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                        <h2 className='text-5xl py-3 px-10 sm:px-12 bg-red-700 rounded-full font-semibold '>Monthly</h2>
                                         <div className='flex flex-col '>
                                             <div className='font-semibold my-7'>
                                                 <p className='text-5xl'>25 Rs</p>
@@ -424,7 +428,7 @@ const Home = () => {
                                                     <li>Monthly Report</li>
                                                 </ul>
                                             </div>
-                                            <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
+                                            <button className='  py-2.5 bg-red-700 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                         </div>
                                     </div>                            
                                 </div>
@@ -435,7 +439,7 @@ const Home = () => {
                             <div className='card-container'>
                                 <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
                                     <div className='p-6 rounded-3xl '>
-                                        <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                        <h2 className='text-5xl py-3 px-10 sm:px-12 bg-red-700 rounded-full font-semibold '>Monthly</h2>
                                         <div className='flex flex-col '>
                                             <div className='font-semibold my-7'>
                                                 <p className='text-5xl'>25 Rs</p>
@@ -449,7 +453,7 @@ const Home = () => {
                                                     <li>Monthly Report</li>
                                                 </ul>
                                             </div>
-                                            <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
+                                            <button className='  py-2.5 bg-red-700 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                         </div>
                                     </div>                            
                                 </div>
@@ -460,7 +464,7 @@ const Home = () => {
                             <div className='card-container'>
                                 <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
                                     <div className='p-6 rounded-3xl '>
-                                        <h2 className='text-5xl py-3 px-12 bg-red-600 rounded-full font-semibold'>Monthly</h2>
+                                        <h2 className='text-5xl py-3 px-10 sm:px-12 bg-red-700 rounded-full font-semibold '>Monthly</h2>
                                         <div className='flex flex-col '>
                                             <div className='font-semibold my-7'>
                                                 <p className='text-5xl'>25 Rs</p>
@@ -474,7 +478,7 @@ const Home = () => {
                                                     <li>Monthly Report</li>
                                                 </ul>
                                             </div>
-                                            <button className='  py-2.5 bg-red-600 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
+                                            <button className='  py-2.5 bg-red-700 rounded-full '><span className='bg-transparent font-semibold text-2xl'>Join</span></button>
                                         </div>
                                     </div>                            
                                 </div>
@@ -484,72 +488,72 @@ const Home = () => {
                 </div>
                 {/* Latest Blogs */}
                 <div ref={sectionRef6} className='flex justify-center flex-col pt-24'>
-                    <h1 className='text-8xl text-center font-semibold'>Latest Blogs</h1>
+                    <h1 className='text-5xl sm:text-8xl text-center font-semibold'>Latest Blogs</h1>
                     <LatestPage/>
                     <div className='text-center text-3xl'>
                         <span>
-                        <Link to={'/blogs'} className=' view-all inline-flex gap-4 mb-20 text-white bg-red-600 py-2 px-6 rounded-3xl'><SiOpenlayers style={{margin: 'auto'}} />View All</Link>
+                        <Link to={'/blogs'} className=' view-all inline-flex gap-4 mb-20 text-white bg-red-700 py-2 px-6 rounded-3xl'><SiOpenlayers style={{margin: 'auto'}} />View All</Link>
                         </span>
                     </div>
                 </div>
                     {/* Call to Actions */}
-                <div ref={sectionRef5} className='px-40 lg:px-20 py-20'>
-                    <div className='mb-20'>
-                        <h1 className='text-7xl	mb-10'>Call to Action</h1>
-                        <p className='text-4xl	'>Join Now and Start Your Journey to Financial Mastery!</p>
+                <div ref={sectionRef5} className='px-40 lg:px-20 py-20 call-to-action'>
+                    <div className='mb-10 sm:mb-20 '>
+                        <h1 className='text-5xl sm:text-7xl	mb-10  '>Call to Action</h1>
+                        <p className='text-xl sm:text-4xl'>Join Now and Start Your Journey to Financial Mastery!</p>
                     </div>
                     <div>
-                        <h1 className='text-7xl	mb-10'>What we do</h1>
-                        <p className='text-4xl	'>Elevate your brand and make your mark in history.</p>
+                        <h1 className='text-5xl sm:text-7xl	mb-3 sm:mb-10 '>What we do</h1>
+                        <p className='text-xl sm:text-4xl'>Elevate your brand and make your mark in history.</p>
                     </div>
-                    <div className='mt-20 '>
+                    <div className='mt-20 training-guide'>
                      <div className='grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center guideLeft'>
-                     <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
+                     <div className='rounded-3xl border-2 border-black flex w-80 sm:w-96 py-3'>
                                 <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
-                            <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
+                     <div className='rounded-3xl border-2 border-black flex w-80 sm:w-96 py-3'>
                                 <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
-                            <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
+                     <div className='rounded-3xl border-2 border-black flex w-80 sm:w-96 py-3'>
                                 <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
                      </div>
-                           <div  className='grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center mt-5 guidRight'>
-                           <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
+                        <div className=' hidden sm:block grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center mt-5 guidRight'>
+                           <div className='rounded-3xl border-2 border-black flex w-80 sm:w-96 py-3'>
                                 <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
-                            <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
+                           <div className='rounded-3xl border-2 border-black flex w-80 sm:w-96 py-3'>
                                 <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
-                            <div className='rounded-3xl border-2 border-black flex w-96 py-3'>
+                           <div className='rounded-3xl border-2 border-black flex w-80 sm:w-96 py-3'>
                                 <div className='flex items-center m-auto text-xl gap-5'>
                                     <button>Trading Guide</button> 
                                     <FaArrowRightLong />
                                 </div>
                             </div>
-                           </div>
+                        </div>
                     </div>
                 </div>
-                <div>
+                <div >
                 <div>
                     {/* <Awards/> */}
                 </div>
-                <div>
+                <div className='testimonial'>
                     <Carousel/>
                 </div>
                 <div>
@@ -560,8 +564,9 @@ const Home = () => {
                 </div>
                     <Contact/>
                 </div>
-                <div>
+                <div data-scroll-section>
                     {/* <Footer/> */}
+                </div>
                 </div>
          
             </LandingPage>            
@@ -570,8 +575,29 @@ const Home = () => {
 }
 export default Home;
 const LandingPage = styled.div`
-max-width: 1920px;
-margin: auto;
+overflow: hidden;
+.landingPage-container {
+    max-width: 1920px;
+    margin: auto;
+}
+@media screen and (max-width: 530px){
+    .testimonial {
+        height: 100vh;
+    }
+}
+
+
+nav {
+    padding: 0 30px;
+}
+@media screen and (max-width: 530px){
+        nav {
+            padding: 0;
+        }
+        .menu-bar {
+            transform: translateX(-20%);
+        }
+}
 .wrapper {
     /* transition: clip-path 0.5s ease-in-out; */
     /* clip-path: circle(0px at calc(100% - 10px) 45px); */
@@ -652,12 +678,22 @@ header, .hero {
     left: 50%;
     transform: translateX(-50%);
 }
+
 .hero h1{
     font-size: 6.2vw;
     /* line-height: 1.2px; */
 }
 .hero p {
     font-size: 4vw;
+}
+@media screen and (max-width: 530px){
+    .hero h1{
+    font-size: 14vw;
+    /* line-height: 1.2px; */
+}
+.hero p {
+    font-size: 6vw;
+}
 }
 .feature-course-page {
   background-image: url(${courseFeatureBackground}); /* Placeholder URL */
@@ -681,12 +717,21 @@ header, .hero {
     background-position: 15000px; 
   }
 }
+
 .feature-course-page .course-feature {
-   padding: 15px;
-   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-   animation: 1.5s fadeInUp;
-   width: 24rem;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 0px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 2px;
+    animation: 1.5s fadeInUp;
+    width: 24rem;
 }  
+
+@media screen and (max-width: 855px){
+.feature-course-page .course-feature {
+    width: 20rem;
+    gap: 0;
+    }  
+}
+
 @keyframes fadeInUp {
  0% {
    transform: translateY(40%);
@@ -696,6 +741,16 @@ header, .hero {
    transform: translateY(0%);
    opacity: 1;
  }
+}
+@media screen and (max-width: 530px){
+    .sementic-container {
+        padding: 0px 1px;
+    }
+}
+.course-feature:hover {
+    scale: 1.01;
+    box-shadow: rgba(0, 0, 0, 0.12) 8px 9px 14px, rgba(0, 0, 0, 0.24) 0px 7px 9px;
+    transition: all 0.6s;
 }
 
 .sementic .sementic-left {
@@ -833,7 +888,14 @@ to {
     justify-content: space-between;
     /* border: 1px solid black; */
 }
-
+@media screen and (max-width: 530px){
+    .subscription > div:nth-child(1){
+        font-size: 9vw;
+    }
+    .training-guide > div {
+        justify-content: center;
+    }
+}
 .subscription-card {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
@@ -842,7 +904,7 @@ to {
     background-color: white;
     transition: all 1s ease; 
 }
-.subscription-card span{
+.subscription-card span, .subscription-card h2{
     color: white;
 }
 .subscription-card:hover button{
@@ -856,10 +918,14 @@ to {
 .subscription-card:hover span{
     color: black;
 }
+.subscription-card:hover .subscription-card h2{
+    color: black;
+}
 .subscription-card:hover > div{
     color: white;
     font-weight: 600;
-    background-color: red;
+    /* background-color: red; */
+    background-color: rgb(185 28 28);
     transition: all 1s ease; 
 }
 .circle {
@@ -869,6 +935,16 @@ to {
       border-radius: 50%;
       position: absolute;
       mix-blend-mode: difference;
+    }
+    @media screen and (max-width: 530px){
+        .call-to-action {
+            text-align: center;
+            padding: 0 10px;
+        }
+        .feature-course-page {
+            background-image: none;
+        }
+
     }
 .callToAction-animation {
     animation: 2s callToActionRL;
@@ -944,6 +1020,12 @@ to {
     scale: 0.9;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition : all 0.5s;
+}
+@media screen and (max-width: 530px){
+        header, .hero {
+        padding: 0 ;
+        transition: all 1s ease;
+    }
 }
 
 `

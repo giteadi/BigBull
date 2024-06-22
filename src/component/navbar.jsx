@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <>
 <nav className="border-gray-200 dark:bg-gray-900 w-full bg-white pt-3 mb-20">
-  <div className="flex flex-wrap items-center justify-between mx-auto max-w-screen-2xl	">
+  <div style={{maxWidth: 'max-width: 1920px;'}} className="flex flex-wrap items-center justify-between mx-auto">
     <Link to={'/'} className="flex items-center space-x-3 rtl:space-x-reverse w-32">
       <img
         src={logo}
@@ -17,7 +17,7 @@ const Navbar = () => {
     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       <Link
         to={'/EnrollForm'}
-        className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+        className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-4 py-2 text-center"
       >
         Get started
       </Link>

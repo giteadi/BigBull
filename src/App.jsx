@@ -34,6 +34,8 @@ import SubscriptionPlans from './component/Nousheen/subscription';
 import Navbar from './component/navbar';
 import LatestPage from './component/Nousheen/latestPage';
 import EnrollForm from './component/EnrollForm';
+import locomotiveScroll from "locomotive-scroll";
+
 
 function App() {
   const location = useLocation();
