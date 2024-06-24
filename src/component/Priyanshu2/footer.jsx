@@ -44,9 +44,9 @@ const Footer = () => {
           <div className="bottom-content flex flex-col lg:flex-row justify-between text-2xl footer-links gap-20">
             <div className="contact-info text-start m-auto mb-8 lg:mb-0 lg:mr-8">
               <ul className="flex flex-col space-y-2">
-              <div className='p-0 '>
+              {/* <div className='p-0 '>
                     <img src={logo} alt="Logo" width='100%' />
-                </div>
+                </div> */}
                 <li className=" my-2 para line-1">
                   <i className="bi bi-envelope"></i>
                   <div className="flex items-center gap-4 contactlink"> <span className="pt-2"><MdEmail />
@@ -75,9 +75,9 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="columns grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 w-full lg:w-3/4">
+            <div className="columns grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 w-full lg:w-3/4">
   <div className="column-1">
-    <ul className="flex flex-col items-start px-20 sm:px-0 sm:items-center lg:items-start space-y-2 lg:text-left sm:mb-5">
+    <ul className="flex flex-col items-start px-0 sm:items-center lg:items-start space-y-2 lg:text-left sm:mb-5">
       <p className="head  my-4 pb-2">
         <b className="text-3xl font-medium	">Product</b>
       </p>
@@ -89,7 +89,7 @@ const Footer = () => {
     </ul>
   </div>
   <div className="column-2">
-    <ul className="flex flex-col items-start px-20 sm:px-0 sm:items-center lg:items-start space-y-2 lg:text-left sm:mb-5">
+    <ul className="flex flex-col items-start px-0 sm:items-center lg:items-start space-y-2 lg:text-left sm:mb-5">
       <p className="head  my-4 pb-2">
         <b className="text-3xl font-medium	">Company</b>
       </p>
@@ -101,7 +101,7 @@ const Footer = () => {
     </ul>
   </div>
   <div className="column-3">
-    <ul className="flex flex-col items-start px-20 sm:px-0 sm:items-center lg:items-start space-y-2 lg:text-left sm:mb-5">
+    <ul className="flex flex-col items-start px-0 sm:items-center lg:items-start space-y-2 lg:text-left sm:mb-5">
       <p className="head my-4 pb-2">
         <b className="text-3xl font-medium	">Support</b>
       </p>

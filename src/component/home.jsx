@@ -147,9 +147,9 @@ const Home = () => {
                     <div>
                         <SideBar checked={isChecked}/>
                     </div>
-                    <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed py-3`}>
+                    <header ref={sectionRef4} className={`${navbar ? 'bg-white' : ''} z-50 w-full fixed py-1 sm:py-3`}>
                         <nav style={{maxWidth: 'max-width: 1920px;'}} className='flex justify-between w-full m-auto'>
-                            <div className='w-32' >
+                            <div className='w-24 sm:w-32'>
                                 <img src={logo} alt="Logo" width='100%' />
                             </div>
                             {/* Center nav bar */}
@@ -177,7 +177,7 @@ const Home = () => {
                                 </div>
                             </div>
                             <div onClick={() => setIsChecked(!isChecked)}>
-                                <IoMenu className='menu-bar' size={'3rem'} color={`${navbar || isChecked  ? 'black' : 'white'}`}/>                            
+                                <IoMenu className='menu-bar text-4xl sm:text-6xl' color={`${navbar || isChecked  ? 'black' : 'white'}`}/>                            
                             </div>
                         </nav>
                     </header>    
@@ -193,13 +193,13 @@ const Home = () => {
                     </div>
                 </div>
                 {/* feature Course Page */}
-                <div ref={sectionRef1} className="mb-44">
+                <div ref={sectionRef1} className="mb-20 sm:mb-44">
                 <div className='my-10'>
                     <h1 className='text-5xl	sm:text-8xl text-center sm:my-10 font-semibold'>Our Course Feature</h1>
                     {/* container */}
-                    <div  className='feature-container flex py-10 sm:py-24 lg:flex gap-20 justify-center flex-wrap '> 
+                    <div  className='feature-container flex py-10 sm:py-24 lg:flex sm:gap-20 justify-center flex-wrap '> 
                         {/* card */}
-                        <div className='course-feature w-80 bg-white rounded-lg '>
+                        <div className='course-feature w-80 bg-white rounded-lg mb-10 '>
                             {/* image */}
                             <div className='h-96 rounded-lg  '></div>
                             {/* content */}
@@ -208,7 +208,7 @@ const Home = () => {
                                 <p className='text-base'>Understand the basics, start investing, and manage risks.</p>
                             </div>
                         </div>
-                        <div className='course-feature w-80 bg-white  rounded-lg '>
+                        <div className='course-feature w-80 bg-white  rounded-lg mb-10 '>
                             {/* image */}
                             <div className='h-96 rounded-lg  '></div>
                             {/* content */}
@@ -217,7 +217,7 @@ const Home = () => {
                                 <p className='text-base'>Understand the basics, start investing, and manage risks.</p>
                             </div>
                         </div>
-                        <div className='course-feature w-80 bg-white  rounded-lg '>
+                        <div className='course-feature w-80 bg-white  rounded-lg mb-10 '>
                             {/* image */}
                             <div className='h-96 rounded-lg  '></div>
                             {/* content */}
@@ -241,7 +241,7 @@ const Home = () => {
                         <div className='gap-y-14 mt-14 max-w-md lg:self-end self-center'>
                             <div className='flex gap-11 mb-12'> 
                                 {/* numberr */}
-                                <div className='text-5xl sm:text-7xl'>01</div>
+                                <div className='text-5xl me-10 sm:m-0 sm:text-7xl'>01</div>
                                 {/* paragraph */}
                                 <div>
                                     <h3 className='text-3xl sm:text-4xl font-semibold'>Background</h3>
@@ -251,7 +251,7 @@ const Home = () => {
                             </div>
                             <div className='flex gap-11'> 
                                 {/* numberr */}
-                                <div className='text-5xl sm:text-7xl'>02</div>
+                                <div className='text-5xl me-10 sm:m-0 sm:text-7xl'>02</div>
                                 {/* paragraph */}
                                 <div>
                                     <h3 className='text-3xl sm:text-4xl font-semibold'>Solution</h3>
@@ -282,9 +282,9 @@ const Home = () => {
                 <div className='my-10 py-10'>
                     <h1 className='text-5xl sm:text-8xl text-center sm:my-10 font-semibold'>Course</h1>
                     {/* container */}
-                    <div ref={sectionRef3} className='p-8 flex flex-wrap gap-20 justify-center '> 
+                    <div ref={sectionRef3} className='p-8 flex flex-wrap sm:gap-20 justify-center '> 
                         {/* card */}
-                        <div className='card-container'>
+                        <div className='card-container mb-10 sm:m-0'>
                             <div className='course-card card course-card-left rounded-lg p-4 pt-2'>
                                 {/* image */}
                                 <div className='h-52 w-72 sm:w-80'>
@@ -321,7 +321,7 @@ const Home = () => {
                             </div>
                         </div>
                         {/* card */}
-                        <div className='card-container'>
+                        <div className='card-container mb-10 sm:m-0'>
                             <div className='course-card card course-card-left rounded-lg p-4 pt-2'>
                                 {/* image */}
                                 <div className='h-52 w-72 sm:w-80'>
@@ -358,7 +358,7 @@ const Home = () => {
                             </div>
                         </div>
                         {/* card */}
-                        <div className='card-container'>
+                        <div className='card-container mb-10 sm:m-0'>
                             <div className='course-card card course-card-left rounded-lg p-4 pt-2'>
                                 {/* image */}
                                 <div className='h-52 w-72 sm:w-80'>
@@ -408,10 +408,10 @@ const Home = () => {
                         <h1 className='sm:mb-4'>Choice your best </h1>
                         <span className='font-bold text-3xl me-2'><span className='sm:ps-4 pe-2'>SUBSCRIPTION</span>PLAN</span>
                     </div>
-                    <div className='p-8 xl:flex justify-center gap-10 flex-wrap py-20 sm:px-40 md:gap-20 gap-20 md:max-lg:grid lg:grid-cols-2 md:max-lg:grid-cols-2 md:max-xl:px-10 flex'> 
+                    <div className='p-8 xl:flex justify-center sm:gap-10 flex-wrap sm:py-20 sm:px-40 md:gap-20 sm:gap-20 md:max-lg:grid lg:grid-cols-2 md:max-lg:grid-cols-2 md:max-xl:px-10 flex'> 
                         {/* card */}
                         <Link to={'/SubscriptionPlans'}>
-                            <div className='card-container'>
+                            <div className='card-container mb-10 sm:m-0'>
                                 <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
                                     <div className='p-6 rounded-3xl '>
                                         <h2 className='text-5xl py-3 px-10 sm:px-12 bg-red-700 rounded-full font-semibold '>Monthly</h2>
@@ -436,7 +436,7 @@ const Home = () => {
                         </Link>
                         {/* card */}
                         <Link to={'/SubscriptionPlans'}>
-                            <div className='card-container'>
+                            <div className='card-container mb-10 sm:m-0'>
                                 <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
                                     <div className='p-6 rounded-3xl '>
                                         <h2 className='text-5xl py-3 px-10 sm:px-12 bg-red-700 rounded-full font-semibold '>Monthly</h2>
@@ -461,7 +461,7 @@ const Home = () => {
                         </Link>
                         {/* card */}
                         <Link to={'/SubscriptionPlans'}>
-                            <div className='card-container'>
+                            <div className='card-container mb-10 sm:m-0'>
                                 <div className='rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card'>
                                     <div className='p-6 rounded-3xl '>
                                         <h2 className='text-5xl py-3 px-10 sm:px-12 bg-red-700 rounded-full font-semibold '>Monthly</h2>
@@ -487,7 +487,7 @@ const Home = () => {
                     </div>
                 </div>
                 {/* Latest Blogs */}
-                <div ref={sectionRef6} className='flex justify-center flex-col pt-24'>
+                <div ref={sectionRef6} className='flex justify-center flex-col sm:pt-24'>
                     <h1 className='text-5xl sm:text-8xl text-center font-semibold'>Latest Blogs</h1>
                     <LatestPage/>
                     <div className='text-center text-3xl'>
@@ -582,7 +582,7 @@ overflow: hidden;
 }
 @media screen and (max-width: 530px){
     .testimonial {
-        height: 100vh;
+        height: 70vh;
     }
 }
 
@@ -636,12 +636,12 @@ nav {
     font-optical-sizing: auto;
     font-style: normal;
 }
+
 .wrapper ol li:hover{ 
     transform: scale(1.3);
     /* transform-origin: 0% 50%; */
     transition: all 0.3s ease-in-out;
 }
-
 @media screen and (max-width: 768px){
     .wrapper {
         width: 100%;
@@ -650,6 +650,14 @@ nav {
         font-size: 40px;
     }
     
+}
+@media screen and (max-width: 530px){
+    .wrapper ol li{
+    margin: 20px 0;
+}
+.wrapper ol li{  
+        font-size: 35px;
+    }
 }
 
 #invertedcursor {
@@ -1016,6 +1024,13 @@ to {
     right: 7%;
     padding: 40px;
 }   
+
+@media screen and (max-width: 530px){
+    .test-tablet .mobile{
+    padding: 15px;
+}   
+}
+
 .view-all:hover {
     scale: 0.9;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
