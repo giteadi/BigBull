@@ -14,11 +14,22 @@ const cardContent = [
 
 const FeatureCardSection = ({sectionRef}) => {
     const scrollRef = useRef(null);
+  
     useEffect(() => {
         if (scrollRef.current) {
-            scrollRef.current.scrollLeft = 1000;
+            const scrollContainer = scrollRef.current;
+            const scrollContent = scrollContainer.firstElementChild;
+            
+            // Calculate the center position
+            const scrollLeft = (scrollContent.scrollWidth - scrollContainer.clientWidth) / 2;
+            
+            // Scroll to the center position
+            scrollContainer.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth' // Optional: adds a smooth scrolling effect
+            });
         }
-    })
+    }, []);
     return (
         <>
                <Container>  
@@ -26,8 +37,8 @@ const FeatureCardSection = ({sectionRef}) => {
                 <div className='my-10'>
                     <h1 className='text-5xl	sm:text-8xl text-center sm:my-10 font-semibold'>Our Course Feature</h1>
                     {/* container */}
-                    <div className="makeScrollable">
-                    <div ref={scrollRef}  className='feature-container flex py-10 sm:py-24 lg:flex sm:gap-20 justify-center '> 
+                    <div ref={scrollRef} className="makeScrollable">
+                    <div  className='feature-container flex py-10 sm:py-24 lg:flex sm:gap-20 justify-center '> 
                         {
                             cardContent.map((card) => <div className='course-feature p-4 w-80 bg-white rounded-lg mb-10 sm:mb-0 border border-gray-300'>
 
@@ -139,7 +150,7 @@ const Container = styled.div`
     overflow: scroll;
 }
 .course-feature{
-    margin-right: 50px;
+    margin: 0 50px;
 }
 }  
 `

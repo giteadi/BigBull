@@ -3,7 +3,7 @@ import courseThumbain from '../Assets/courseThumbnail.jpg'
 import {Link} from 'react-router-dom';
 import { FaStar } from "react-icons/fa";
 import { SiOpenlayers } from "react-icons/si";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const courseCardData = [
     {
@@ -45,7 +45,10 @@ const courseCardData = [
   ];
 
 const CoursesInLandingPage = ({sectionRef}) => {
-    console.log('render');
+    // console.log('render');
+    const scrollRef = useRef(null);
+
+
     useEffect(() => {
         const card = document.querySelectorAll('.card-stretched');
         card.forEach((eachCard) => {
@@ -64,6 +67,19 @@ const CoursesInLandingPage = ({sectionRef}) => {
                 eachCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             });
         })
+        if (scrollRef.current) {
+            const scrollContainer = scrollRef.current;
+            const scrollContent = scrollContainer.firstElementChild;
+            
+            // Calculate the center position
+            const scrollLeft = (scrollContent.scrollWidth - scrollContainer.clientWidth) / 2;
+            
+            // Scroll to the center position
+            scrollContainer.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth' // Optional: adds a smooth scrolling effect
+            });
+        }
     return () => {
         card.forEach((eachCard) => {
             eachCard.addEventListener('mouseleave', () => {
@@ -78,7 +94,8 @@ const CoursesInLandingPage = ({sectionRef}) => {
                    <div className='my-10 py-10'>
                     <h1 className='text-5xl sm:text-8xl text-center sm:my-10 font-semibold'>Course</h1> 
                     {/* container */}
-                    <div ref={sectionRef} className='p-8 flex flex-wrap sm:gap-20 justify-center '> 
+                    <div ref={scrollRef} className="makeScrollable" >
+                    <div ref={sectionRef} className='course-card-scroll p-8 flex flex-wrap sm:gap-20 justify-center '> 
                         {/* card */}
                         {courseCardData.map((card) =>   <div className='course-card-container mb-10 sm:m-0'>
                             <div className={`course-card card-stretched course-card-${card.cardPosition} rounded-lg p-2 sm:p-4 pt-2`}>
@@ -117,6 +134,7 @@ const CoursesInLandingPage = ({sectionRef}) => {
                             </div>
                         </div>)}
                     </div>
+                    </div>
                     <div className='text-center text-3xl my-10'>
                         <span>
                         <Link to={'/courses'}  className=' view-all inline-flex gap-4 text-white bg-red-700 py-2 px-6 rounded-3xl text-xl'><SiOpenlayers style={{margin: 'auto'}}  />View All</Link>
@@ -151,5 +169,18 @@ const Container = styled.div`
     transition: transform 0.1s ease;
     /* box-shadow: rgb(253, 9, 9) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
 }
+@media screen and (max-width: 530px){
+.makeScrollable {
+    overflow: scroll;
+    /* transform: translateX(0); */
+}
+.course-card-scroll {
+    width: max-content;
+    overflow: scroll;
+}
+.course-card-container {
+    margin: 0 50px;
+}
+}  
 
 `;

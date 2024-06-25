@@ -100,6 +100,27 @@ const Home = () => {
         eachCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
     });
+    if (sectionRef3.current) {
+      // Access the scroll container within sectionRef3
+      const scrollContainer = sectionRef3.current.querySelector('.subscription-card-scroll-wrapper');
+
+      if (scrollContainer) {
+          // Access the scroll content within scrollContainer
+          const scrollContent = scrollContainer.querySelector('.subscription-card-scroll-container');
+
+          if (scrollContent) {
+            console.log('here');
+              // Calculate the center position
+              const scrollLeft = (scrollContent.scrollWidth - scrollContainer.clientWidth) / 2;
+
+              // Scroll to the center position
+              scrollContainer.scrollTo({
+                  left: scrollLeft,
+                  behavior: 'smooth' // Optional: adds a smooth scrolling effect
+              });
+          }
+      }
+  }
 
     return () => {
         if(!isMobile) {
@@ -262,7 +283,8 @@ const Home = () => {
                 <span className="sm:ps-4 pe-2">SUBSCRIPTION</span>PLAN
               </span>
             </div>
-            <div className="p-8 xl:flex justify-center sm:gap-10 flex-wrap sm:py-20 sm:px-40 md:gap-20 sm:gap-20 md:max-lg:grid lg:grid-cols-2 md:max-lg:grid-cols-2 md:max-xl:px-10 flex">
+            <div className="subscription-card-scroll-wrapper">
+            <div className="subscription-card-scroll-container p-8 xl:flex justify-center sm:gap-10 flex-wrap sm:py-20 sm:px-40 md:gap-20 sm:gap-20 md:max-lg:grid lg:grid-cols-2 md:max-lg:grid-cols-2 md:max-xl:px-10 flex">
               {/* card */}
               {Array.from({ length: 3 }).map(() => (
                 <Link to={"/SubscriptionPlans"}>
@@ -296,6 +318,7 @@ const Home = () => {
                   </div>
                 </Link>
               ))}
+            </div>
             </div>
           </div>
           {/* Latest Blogs */}
@@ -745,6 +768,16 @@ const LandingPage = styled.div`
     .hero {
       padding: 0;
       transition: all 1s ease;
+    }
+    .subscription-card-scroll-wrapper {
+      overflow: scroll;
+    }
+    .subscription-card-scroll-container{
+      width: max-content;
+      overflow: scroll;
+    }
+    .subscription-card-scroll-container > a > div{
+      margin: 0 50px;
     }
   }
 `;
