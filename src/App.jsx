@@ -46,7 +46,7 @@ function App() {
       {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
     <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='/Navbar' element={<Navbar/>}/>
+      {/* <Route path='/Navbar' element={<Navbar/>}/> */}
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/courses' element={<CourseComponent/>}/>

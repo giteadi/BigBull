@@ -1,10 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import {Link } from 'react-router-dom';
+import styled from "styled-components";
 
 const SideBar = ({ checked }) => {
    
     return (
         <>
+        <Contaienr>
+
             {checked && <div className="backdrop" />}
             <div
                 // onMouseMove={handleMouseMove}
@@ -21,8 +24,22 @@ const SideBar = ({ checked }) => {
                     </ol>
                 </div>
             </div>
+            </Contaienr>
         </>
     );
 };
 
 export default SideBar;
+const Contaienr = styled.div`
+    
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 39; 
+  }
+
+`

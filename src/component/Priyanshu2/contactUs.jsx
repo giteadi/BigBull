@@ -66,7 +66,7 @@ function ContactUs() {
   <div className="text-start px-6">
     <h2 className="text-gray-800 text-5xl font-semibold">Contact Us</h2>
   </div>
-  <div className="grid lg:grid-cols-3 items-start gap-4 p-2 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-lg mt-12">
+  <div className="grid lg:grid-cols-3 items-start gap-4 p-2 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-lg sm:mt-12">
     <div className="bg-[#011c2b] hidden lg:block rounded-lg p-6 h-full max-lg:order-1 ">
       <h2 className="text-2xl text-white">Contact Information</h2>
       <p className="text-xl text-gray-300 mt-4 leading-relaxed	">
@@ -290,7 +290,7 @@ function ContactUs() {
           <div className="col-span-full">
             <h6 className="text-sm text-gray-800">Select Subject</h6>
             <div className="flex max-lg:flex-col gap-6 mt-4">
-              <div className="flex items-center">
+              <div className="flex items-center mb-2 sm:m-0">
                 <input
                   id="radio1"
                   type="radio"
@@ -306,7 +306,7 @@ function ContactUs() {
                 </label>
                 <p className="text-sm text-gray-500 ml-4">General Inquiry</p>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center mb-2 sm:m-0">
                 <input
                   id="radio2"
                   type="radio"
@@ -321,7 +321,7 @@ function ContactUs() {
                 </label>
                 <p className="text-sm text-gray-500 ml-4">Technical Support</p>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center mb-2 sm:m-0">
                 <input
                   id="radio3"
                   type="radio"
