@@ -142,7 +142,7 @@ const Home = () => {
   return (
     <>
       <LandingPage>
-        <div className="landingPage-container">
+        <div className="landingPage-container overflow-hidden">
           {/* Hero Section */}
           <div>
             <div>
@@ -286,7 +286,7 @@ const Home = () => {
                   <div className="card-container mb-10 sm:m-0">
                     <div className="rounded-3xl transform transition duration-500 hover:scale-110 subscription-card border-8 card">
                       <div className="px-5 py-4 sm:px-6 sm:p-y6 rounded-3xl ">
-                        <h2 className=" text-2xl sm:text-5xl py-1 sm:py-3 px-1 sm:px-10 sm:px-12 bg-red-700 rounded-full font-semibold ">
+                        <h2 className=" text-2xl py-1.5 px-1.5 sm:px-10 sm:text-5xl sm:px-12 sm:py-3 bg-red-700 rounded-full font-semibold ">
                           Monthly
                         </h2>
                         <div className="flex flex-col ">
@@ -302,7 +302,7 @@ const Home = () => {
                               <li>Monthly Report</li>
                             </ul>
                           </div>
-                          <button className="py-1 sm:py-2.5 bg-red-700 rounded-full ">
+                          <button className="py-1.5 sm:py-2.5 bg-red-700 rounded-full ">
                             <span className="bg-transparent font-semibold text-xl sm:text-2xl">
                               Join
                             </span>
@@ -355,10 +355,10 @@ const Home = () => {
               </p>
             </div>
             <div ref={trainingGuideRef} className="mt-20 training-guide training-guide-wrapper">
-              <div className="grid 2xl:grid-cols-3 training-guide-container lg:grid-cols-2 gap-10 items-center guideLeft slider">
-                <div className="slide-track">
+              <div className=" training-guide-container  guideLeft slider">
+                <div className="slide-track grid 2xl:grid-cols-3 lg:grid-cols-3 gap-10 items-center">
                 {Array.from({ length: 3 }).map(() => (
-                  <div className="rounded-3xl border-2 border-black flex w-64 sm:w-96 py-2.5 sm:py-3 slide">
+                  <div className="rounded-3xl border-2 border-black flex w-80 lg:w-72 2xl:w-96 py-3 slide">
                     <div className="flex items-center m-auto text-xl gap-3 sm:gap-5">
                       <button>Trading Guide</button>
                       <FaArrowRightLong />
@@ -367,10 +367,10 @@ const Home = () => {
                 ))}
               </div>
               </div>
-              <div className=" sm:block grid 2xl:grid-cols-3 training-guide-container lg:grid-cols-2 gap-10 items-center mt-5 guidRight slider">
-              <div className="slide-track">
+              <div className=" training-guide-container  mt-5 guidRight slider">
+              <div className="slide-track grid 2xl:grid-cols-3 lg:grid-cols-3 gap-10 items-center">
                 {Array.from({ length: 3 }).map(() => (
-                  <div className="rounded-3xl border-2 border-black flex w-64 sm:w-96 py-2.5 sm:py-3 slide">
+                  <div className="rounded-3xl border-2 border-black flex w-80 2xl:w-96 py-3 slide">
                     <div className="flex items-center m-auto text-xl gap-3 sm:gap-5">
                       <button>Trading Guide</button>
                       <FaArrowRightLong />
@@ -771,6 +771,9 @@ const LandingPage = styled.div`
     .subscription-card-scroll-wrapper, .training-guide-wrapper {
       overflow: scroll;
     }
+    .training-guide-wrapper  {
+      width: max-content;
+    }
 
     .subscription-card-scroll-container, .training-guide-container{
       width: max-content;
@@ -788,7 +791,7 @@ const LandingPage = styled.div`
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-300px * 3));
+        transform: translateX(calc(-300px * 1));
       }
     }
 
@@ -797,7 +800,7 @@ const LandingPage = styled.div`
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-300px * 3));
+        transform: translateX(calc(-300px * 1));
       }
     }
 
@@ -808,7 +811,7 @@ const LandingPage = styled.div`
       margin: auto;
       overflow: hidden;
       position: relative;
-      width: 300px;
+      width: 365px;
     }
 
     .slider::before, .slider::after {
@@ -832,10 +835,10 @@ const LandingPage = styled.div`
     }
 
     .slider .slide-track {
-      -webkit-animation: scroll 6s linear infinite;
-      animation: scroll 6s linear infinite;
+      -webkit-animation: scroll 4s linear infinite;
+      animation: scroll 4s linear infinite;
       display: flex;
-      width: calc(300px * 6);
+      width: calc(300px * 3);
     }
     .slide {
       margin: 0 25px;
@@ -848,7 +851,7 @@ const LandingPage = styled.div`
       align-items: center;
     } */
 
-    .slide-content {
+    /* .slide-content {
       border: 2px solid black;
       border-radius: 1.5rem;
       width: 80%;
@@ -857,7 +860,7 @@ const LandingPage = styled.div`
       justify-content: center;
       align-items: center;
       gap: 1rem;
-    }
+    } */
 /* 
     .slide-content button {
       font-size: 1.25rem;

@@ -45,7 +45,7 @@ const Carousel = () => {
             <div className="max-w-screen-xl px-4 mx-auto text-center lg:py-16 lg:px-6 ">
                 <div className="max-w-screen-md mx-auto">
                     <div className="">
-                        <button onClick={prevSlide} className="hidden sm:block absolute left-24 top-full sm:top-1/2 transform -translate-y-1/2 bg-white text-gray-800 w-12 h-12 rounded-full focus:outline-none border-gray-200 border-2 flex justify-center items-center">
+                        <button onClick={prevSlide} className="hidden lg:flex absolute left-24 top-full sm:top-1/2 transform -translate-y-1/2 bg-white text-gray-800 w-12 h-12 rounded-full focus:outline-none border-gray-200 border-2 flex justify-center items-center">
                             <LuMoveLeft />
                         </button>
                         <div className="py-8 px-4 bg-white dark:bg-gray-800 rounded-lg sm:h-80">
@@ -65,7 +65,7 @@ const Carousel = () => {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={nextSlide} className=" hidden sm:block bg-white text-gray-800 w-12 h-12 absolute right-24 bottom-0 sm:top-1/2 bottom-0 transform -translate-y-1/2 bg-gray-300 text-gray-800 p-2 rounded-full focus:outline-none flex justify-center items-center border-2">
+                        <button onClick={nextSlide} className=" hidden lg:flex bg-white text-gray-800 w-12 h-12 absolute right-24 bottom-0 sm:top-1/2 bottom-0 transform -translate-y-1/2 bg-gray-300 text-gray-800 p-2 rounded-full focus:outline-none flex justify-center items-center border-2">
                             <LuMoveRight/>
                         </button>
                     </div>

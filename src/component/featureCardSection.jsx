@@ -37,21 +37,22 @@ const FeatureCardSection = ({sectionRef}) => {
                 <div className='my-10'>
                     <h1 className='text-5xl	sm:text-8xl text-center sm:my-10 font-semibold'>Our Course Feature</h1>
                     {/* container */}
-                    <div ref={scrollRef} className="makeScrollable">
-                    <div  className='feature-container flex py-10 sm:py-24 lg:flex sm:gap-20 justify-center '> 
-                        {
-                            cardContent.map((card) => <div className='course-feature p-4 w-80 bg-white rounded-lg mb-10 sm:mb-0 border border-gray-300'>
-
-                            {/* image */}
-                            <div className='h-96 rounded-lg '></div>
-                            {/* content */}
-                            <div className='py-4'>
-                                <h4 className='text-lg font-bold'>{card.heading}</h4>
-                                <p className='text-base'>{card.desc}</p>
-                            </div>
-                        </div>)
-                        }
-                    </div>
+                    <div ref={scrollRef} className="makeScrollable lg:flex justify-center">
+                        <div className='feature-container py-10 sm:py-24 sm:gap-16 md:gap-0 grow flex justify-center xl:max-w-screen-xl lg:max-w-screen-lg flex-wrap xl:grid-cols-3 md:grid md:grid-cols-2 justify-items-center items-center md:w-full md:gap-y-20 gap-y-7  '> 
+                            {
+                                cardContent.map((card) => 
+                                    <div className='course-feature p-4 sm:w-auto md:w-96 md:w-full bg-white rounded-lg mb-10 sm:mb-0 border border-gray-300'>
+                                        {/* image */}
+                                        <div className='h-96 rounded-lg'></div>
+                                        {/* content */}
+                                        <div className='py-4'>
+                                            <h4 className='text-lg font-bold'>{card.heading}</h4>
+                                            <p className='text-base'>{card.desc}</p>
+                                        </div>
+                                    </div>
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
                 </div>
@@ -104,7 +105,7 @@ const Container = styled.div`
     padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 0px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 2px;
     animation: 1.5s fadeInUp;
-    width: 24rem;
+    /* width: 24rem; */
 }
 @keyframes fadeInUp {
  0% {
@@ -125,7 +126,7 @@ const Container = styled.div`
 
 @media screen and (max-width: 855px){
 .feature-container .course-feature {
-    width: 20rem;
+    /* width: 20rem; */
     gap: 0;
     }  
 }

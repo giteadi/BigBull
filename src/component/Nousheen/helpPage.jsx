@@ -79,21 +79,6 @@ const HelpPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-8 px-4 md:px-0">
-      <header className="w-full max-w-4xl flex justify-between items-center py-4">
-        <div className="text-2xl font-bold md:hidden">BigBull</div>
-        <div className="text-2xl font-bold hidden md:block">BigBull</div>
-        <nav className={`md:flex md:space-x-4 ${menuOpen ? 'block' : 'hidden'} md:block`}>
-          <a href="#" className="text-gray-600">Home</a>
-          <a href="#" className="text-gray-600">Products</a>
-          <a href="#" className="text-gray-600">Pricing</a>
-          <a href="#" className="text-gray-600">Blog</a>
-          <a href="#" className="text-gray-600">About us</a>
-        </nav>
-        <div className="flex space-x-2 ">
-          <button className="border border-gray-600 px-3 py-1 rounded">Log in</button>
-          <button className="bg-gray-800 text-white px-3 py-1 rounded">Get started</button>
-        </div>
-      </header>
       <main className="w-full max-w-4xl bg-white rounded-lg shadow p-8 mt-8">
         <h1 className="text-3xl font-bold text-center">Frequently asked questions</h1>
         <p className="text-gray-600 text-center mt-2">

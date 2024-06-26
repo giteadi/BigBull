@@ -48,7 +48,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       {/* <Route path='/Navbar' element={<Navbar/>}/> */}
       <Route path='/login' element={<Login/>}/>
-      <Route path='/register' element={<Register/>}/>
+      {/* <Route path='/register' element={<Register/>}/> */}
       <Route path='/courses' element={<CourseComponent/>}/>
       <Route path="/course/:id" element={<SingleCourse />} />
       <Route path='/blogs' element={<Blogs/>}/>
@@ -57,10 +57,10 @@ function App() {
       {/* <Route path='/awards' element={<Awards/>}/> */}
       <Route path='/PurchasedCoursesPage' element={<PurchasedCoursesPage/>}/>
       {/* <Route path='/PurchasedComponent' element={<PurchasedComponent/>}/> */}
-      <Route path='/PaymentForm' element={<PaymentForm/>}/>
+      {/* <Route path='/PaymentForm' element={<PaymentForm/>}/> */}
       <Route path='/HelpPage' element={<HelpPage/>}/>
-      <Route path='/Cdetail/:id' element={<CourseDetail/>}/>
-      <Route path='/AsthaRegister' element={<AsthaRegister/>}/>
+      {/* <Route path='/Cdetail/:id' element={<CourseDetail/>}/> */}
+      {/* <Route path='/AsthaRegister' element={<AsthaRegister/>}/> */}
       <Route path='/Carousel' element={<Carousel/>}/>
       <Route path='/Cart' element={<Cart/>}/>
       <Route path='/Footer' element={<Footer/>}/>
