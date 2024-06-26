@@ -91,7 +91,7 @@ const CoursesInLandingPage = ({sectionRef}) => {
     return (
         <>
             <Container>
-                   <div className='my-10 py-10'>
+                   <div className='my-10 py-10 mb-0 sm:my-10'>
                     <h1 className='text-5xl sm:text-8xl text-center sm:my-10 font-semibold'>Course</h1> 
                     {/* container */}
                     <div ref={scrollRef} className="makeScrollable" >

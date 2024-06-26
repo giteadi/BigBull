@@ -56,6 +56,7 @@ const Home = () => {
   const sectionRef4 = useRef(null);
   const sectionRef5 = useRef(null);
   const sectionRef6 = useRef(null);
+  const trainingGuideRef = useRef(null);
 
   const handleClickOutside = (event) => {
     let target = event.target;
@@ -100,27 +101,21 @@ const Home = () => {
         eachCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
     });
-    if (sectionRef3.current) {
-      // Access the scroll container within sectionRef3
-      const scrollContainer = sectionRef3.current.querySelector('.subscription-card-scroll-wrapper');
-
-      if (scrollContainer) {
-          // Access the scroll content within scrollContainer
-          const scrollContent = scrollContainer.querySelector('.subscription-card-scroll-container');
+    
+      const scrollContainer = document
+                              .querySelector('.subscription-card-scroll-wrapper');
+      const scrollContent = scrollContainer
+                          .querySelector('.subscription-card-scroll-container');
 
           if (scrollContent) {
             console.log('here');
-              // Calculate the center position
               const scrollLeft = (scrollContent.scrollWidth - scrollContainer.clientWidth) / 2;
-
-              // Scroll to the center position
               scrollContainer.scrollTo({
                   left: scrollLeft,
-                  behavior: 'smooth' // Optional: adds a smooth scrolling effect
+                  behavior: 'smooth' 
               });
           }
-      }
-  }
+  
 
     return () => {
         if(!isMobile) {
@@ -324,7 +319,7 @@ const Home = () => {
           {/* Latest Blogs */}
           <div
             ref={sectionRef6}
-            className="flex justify-center flex-col sm:pt-24"
+            className="flex justify-center flex-col pt-10 sm:pt-24"
           >
             <h1 className="text-5xl sm:text-8xl text-center font-semibold">
               Latest Blogs
@@ -334,7 +329,7 @@ const Home = () => {
               <span>
                 <Link
                   to={"/blogs"}
-                  className=" view-all inline-flex gap-4 mb-20 text-white bg-red-700 py-2 px-6 rounded-3xl text-2xl"
+                  className=" view-all inline-flex gap-4 mb-16 sm:mb-20 text-white bg-red-700 py-2 px-6 rounded-3xl text-2xl"
                 >
                   <SiOpenlayers style={{ margin: "auto" }} />
                   View All
@@ -359,26 +354,30 @@ const Home = () => {
                 Elevate your brand and make your mark in history.
               </p>
             </div>
-            <div className="mt-20 training-guide">
-              <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center guideLeft">
+            <div ref={trainingGuideRef} className="mt-20 training-guide training-guide-wrapper">
+              <div className="grid 2xl:grid-cols-3 training-guide-container lg:grid-cols-2 gap-10 items-center guideLeft slider">
+                <div className="slide-track">
                 {Array.from({ length: 3 }).map(() => (
-                  <div className="rounded-3xl border-2 border-black flex w-80 sm:w-96 py-3">
-                    <div className="flex items-center m-auto text-xl gap-5">
+                  <div className="rounded-3xl border-2 border-black flex w-64 sm:w-96 py-2.5 sm:py-3 slide">
+                    <div className="flex items-center m-auto text-xl gap-3 sm:gap-5">
                       <button>Trading Guide</button>
                       <FaArrowRightLong />
                     </div>
                   </div>
                 ))}
               </div>
-              <div className=" hidden sm:block grid 2xl:grid-cols-3 lg:grid-cols-2 gap-10 items-center mt-5 guidRight">
+              </div>
+              <div className=" sm:block grid 2xl:grid-cols-3 training-guide-container lg:grid-cols-2 gap-10 items-center mt-5 guidRight slider">
+              <div className="slide-track">
                 {Array.from({ length: 3 }).map(() => (
-                  <div className="rounded-3xl border-2 border-black flex w-80 sm:w-96 py-3">
-                    <div className="flex items-center m-auto text-xl gap-5">
+                  <div className="rounded-3xl border-2 border-black flex w-64 sm:w-96 py-2.5 sm:py-3 slide">
+                    <div className="flex items-center m-auto text-xl gap-3 sm:gap-5">
                       <button>Trading Guide</button>
                       <FaArrowRightLong />
                     </div>
                   </div>
                 ))}
+              </div>
               </div>
             </div>
           </div>
@@ -769,15 +768,99 @@ const LandingPage = styled.div`
       padding: 0;
       transition: all 1s ease;
     }
-    .subscription-card-scroll-wrapper {
+    .subscription-card-scroll-wrapper, .training-guide-wrapper {
       overflow: scroll;
     }
-    .subscription-card-scroll-container{
+
+    .subscription-card-scroll-container, .training-guide-container{
       width: max-content;
       overflow: scroll;
+    }
+    .training-guide-container {
+      display: flex;
     }
     .subscription-card-scroll-container > a > div{
       margin: 0 50px;
     }
+    /* This seciton is make scroll to training guide seciton  */
+    @-webkit-keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-300px * 3));
+      }
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-300px * 3));
+      }
+    }
+
+    .slider {
+      background: white;
+      /* box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125); */
+      /* height: 200px; */
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+      width: 300px;
+    }
+
+    .slider::before, .slider::after {
+      /* background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%); */
+      content: "";
+      /* height: 200px; */
+      position: absolute;
+      width: 300px;
+      z-index: 2;
+    }
+
+    .slider::after {
+      right: 0;
+      top: 0;
+      transform: rotateZ(180deg);
+    }
+
+    .slider::before {
+      left: 0;
+      top: 0;
+    }
+
+    .slider .slide-track {
+      -webkit-animation: scroll 6s linear infinite;
+      animation: scroll 6s linear infinite;
+      display: flex;
+      width: calc(300px * 6);
+    }
+    .slide {
+      margin: 0 25px;
+    }
+    /* .slider .slide {
+      height: 200px;
+      width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    } */
+
+    .slide-content {
+      border: 2px solid black;
+      border-radius: 1.5rem;
+      width: 80%;
+      height: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+/* 
+    .slide-content button {
+      font-size: 1.25rem;
+    } */
   }
 `;

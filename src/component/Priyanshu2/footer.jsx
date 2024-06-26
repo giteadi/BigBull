@@ -33,12 +33,12 @@ const Footer = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda!
           </p>
           <div className="bottom-icons mb-10">
-            <div className="icons flex justify-center space-x-8">
-              <FaFacebook className="text-5xl" />
-              <FaSquareInstagram className="text-5xl" />
-              <FaTwitterSquare className="text-5xl" />
-              <FaLinkedin className="text-5xl" />
-              <FaYoutube className="text-5xl" />
+            <div className="icons flex justify-center space-x-5  sm:space-x-8">
+              <FaFacebook className=" text-3xl sm:text-5xl"/>
+              <FaSquareInstagram className=" text-3xl sm:text-5xl"/>
+              <FaTwitterSquare className=" text-3xl sm:text-5xl"/>
+              <FaLinkedin className=" text-3xl sm:text-5xl"/>
+              <FaYoutube className=" text-3xl sm:text-5xl"/>
             </div>
           </div>
           <div className="bottom-content flex flex-col lg:flex-row justify-between text-2xl footer-links gap-20">

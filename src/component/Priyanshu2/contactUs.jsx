@@ -63,7 +63,7 @@ function ContactUs() {
   return (
     <>  
     <div className="max-w-screen-xl	my-20 max-lg:max-w-3xl mx-auto bg-white my-6 font-[sans-serif] ">
-  <div className="text-start px-6">
+  <div className="text-start px-6 ">
     <h2 className="text-gray-800 text-5xl font-semibold">Contact Us</h2>
   </div>
   <div className="grid lg:grid-cols-3 items-start gap-4 p-2 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-lg sm:mt-12">
@@ -139,7 +139,7 @@ function ContactUs() {
         </li>
       </ul>
     </div>
-    <div className="p-4 lg:col-span-2 ms-10">
+    <div className="p-10 sm:p-4 lg:col-span-2 sm:ms-10 ">
       <form onSubmit={handleSubmit} >
         <div className="grid sm:grid-cols-2 gap-8">
           {/* <div className="relative flex items-center">

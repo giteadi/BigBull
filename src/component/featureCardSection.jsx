@@ -33,7 +33,7 @@ const FeatureCardSection = ({sectionRef}) => {
     return (
         <>
                <Container>  
-               <div ref={sectionRef} className="mb-20 sm:mb-44">
+               <div ref={sectionRef} className="mb-10 sm:mb-44">
                 <div className='my-10'>
                     <h1 className='text-5xl	sm:text-8xl text-center sm:my-10 font-semibold'>Our Course Feature</h1>
                     {/* container */}

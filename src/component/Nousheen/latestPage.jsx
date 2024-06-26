@@ -18,7 +18,7 @@ const LatestPage = () => {
 
   return (
     <div className="container mx-auto p-4 max-w-screen-xl">
-       <div key={0} className={`flex flex-col md:flex-row items-center gap-10 my-20 blog-left `}>
+       <div key={0} className={`flex flex-col md:flex-row items-center gap-10 my-10 sm:my-20 blog-left `}>
           <div className="md:ml-6 md:mr-6 mt-4 md:mt-0">
             <h2 className="text-md text-4xl	text-red-700 font-bold">{blogPosts[0].title}</h2>
             <h2 className="text-xxl text-2xl font-bold my-3">{blogPosts[0].subtitle}</h2>
@@ -26,7 +26,7 @@ const LatestPage = () => {
           </div>  
           <img src={blogPosts[0].imgSrc} alt="Blog Post" className="w-full md:w-1/4 rounded-md" />
         </div>
-       <div key={1} className={`flex flex-col md:flex-row items-center gap-10 my-20 blog-right`}>
+       <div key={1} className={`flex flex-col md:flex-row items-center gap-10 my-10 sm:my-20 blog-right`}>
           <div className="md:ml-6 md:mr-6 mt-4 md:mt-0 md:order-2">
             <h2 className="text-md text-4xl	text-red-700 font-bold">{blogPosts[1].title}</h2>
             <h2 className="text-xxl text-2xl font-bold my-3">{blogPosts[1].subtitle}</h2>
