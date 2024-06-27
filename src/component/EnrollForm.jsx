@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-
 const countryToStatesMap = {
     India: [
       "Andhra Pradesh",
@@ -51,20 +50,17 @@ const countryToStatesMap = {
     SouthAfrica: ["Gauteng", "Western Cape", "KwaZulu-Natal", "Eastern Cape"],
     // Add more countries and states as needed
   };
-
+  
+  
 const MyEnroll = () => {
-  const [showPassword, setShowPassword] = useState({
-    password: false,
-    confirmPassword: false,
-  });
-
+    
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        mobile: '',
+        phone: '',
         gender: '',
         password: '',
-        confirmPassword: '',
+        cpassword: '',
         country: '',
         state: '',
         city: '',
@@ -72,6 +68,11 @@ const MyEnroll = () => {
         dob: '',
         profilePicture: null,
     });
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    confirmPassword: false,
+  });
+
     const navigate = useNavigate();
 
     const allCountries = Object.keys(countryToStatesMap);
@@ -87,21 +88,41 @@ const MyEnroll = () => {
             [name]: type === 'file' ? files[0] : value,
         });
     };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // yaha par passord and confirm passowrd
-        // navigate('/login');
-        console.log(formData);
+        console.log(formData)
+        try {
+            const response = await fetch('http://localhost:6060/api/v1/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+    
+            const data = await response.json();
+            console.log('Form submitted successfully:', data);
+    
+            // Redirect or show a success message
+            navigate('/login');
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            // Handle error (e.g., display an error message to the user)
+        }
     };
+
     return (
         <>
-            <div className="max-w-screen-xl	m-auto pt-10">
+            <div className="max-w-screen-xl pt-10 m-auto">
                 <div className="mb-5">
                     <h1 className="text-4xl font-bold text-center">Enrollment Form</h1>
                 </div>
                 <div>
-                <form className="px-20 border-1 rounded-2xl pb-5" onSubmit={handleSubmit}>
+                <form className="px-20 pb-5 border-1 rounded-2xl" onSubmit={handleSubmit}>
             <div className="flex justify-around my-10">
                 <div className="w-full max-w-lg">
                     <label htmlFor="name" className="mb-2 text-xl font-semibold">Name</label>
@@ -110,7 +131,7 @@ const MyEnroll = () => {
                         id="name" 
                         name="name" 
                         placeholder="Your Name" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
                         value={formData.name} 
                         onChange={handleChange} 
                         required 
@@ -123,7 +144,7 @@ const MyEnroll = () => {
                         id="email" 
                         name="email" 
                         placeholder="Your Email" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
                         value={formData.email} 
                         onChange={handleChange} 
                         required 
@@ -132,14 +153,14 @@ const MyEnroll = () => {
             </div>
             <div className="flex justify-around my-10">
                 <div className="w-full max-w-lg">
-                    <label htmlFor="mobile" className="mb-2 text-xl font-semibold">Enter Mobile Number</label>
+                    <label htmlFor="phone" className="mb-2 text-xl font-semibold">Enter phone Number</label>
                     <input 
                         type="tel" 
-                        id="mobile" 
-                        name="mobile" 
-                        placeholder="Your Mobile Number" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
-                        value={formData.mobile} 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="Your phone Number" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
+                        value={formData.phone} 
                         onChange={handleChange} 
                         required 
                     />
@@ -149,7 +170,7 @@ const MyEnroll = () => {
                     <select 
                         id="gender" 
                         name="gender" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
                         value={formData.gender} 
                         onChange={handleChange} 
                         required
@@ -170,14 +191,14 @@ const MyEnroll = () => {
                         id="password" 
                         name="password" 
                         placeholder="Create Password" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
                         value={formData.password} 
                         onChange={handleChange} 
                         required 
                     />
                     </div>
                     <div className="flex justify-end">
-                        <span className=" relative -mt-10 pe-3" onClick={() => togglePasswordVisibility('password')}>
+                        <span className="relative -mt-10 pe-3" onClick={() => togglePasswordVisibility('password')}>
                             {!showPassword.password ? <FaEyeSlash size={25} /> : <FaEye size={25} />}
                         </span>
                     </div>
@@ -188,16 +209,16 @@ const MyEnroll = () => {
                     <input 
                         type={showPassword.confirmPassword ? "text" :"password"}
                         id="confirmPassword" 
-                        name="confirmPassword" 
+                        name="cpassword" 
                         placeholder="Confirm Password" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
-                        value={formData.confirmPassword} 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
+                        value={formData.cpassword} 
                         onChange={handleChange} 
                         required 
                     />
                 </div>
                 <div className="flex justify-end">
-                    <span className=" relative -mt-10 pe-3" onClick={() => togglePasswordVisibility('confirmPassword')}>
+                    <span className="relative -mt-10 pe-3" onClick={() => togglePasswordVisibility('confirmPassword')}>
                         {!showPassword.confirmPassword ? <FaEyeSlash size={25} /> : <FaEye size={25} />}
                     </span>
                     </div>
@@ -209,7 +230,7 @@ const MyEnroll = () => {
                     <select 
                         id="country" 
                         name="country" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
                         value={formData.country} 
                         onChange={handleChange} 
                         required
@@ -227,7 +248,7 @@ const MyEnroll = () => {
                     <select 
                         id="state" 
                         name="state" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
                         value={formData.state} 
                         onChange={handleChange} 
                         disabled={!formData.country}
@@ -251,7 +272,7 @@ const MyEnroll = () => {
                         id="city" 
                         name="city" 
                         placeholder="Your City" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
                         value={formData.city} 
                         onChange={handleChange} 
                         required 
@@ -264,7 +285,7 @@ const MyEnroll = () => {
                         id="address" 
                         name="address" 
                         placeholder="Your Address" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
                         value={formData.address} 
                         onChange={handleChange} 
                         required 
@@ -278,7 +299,7 @@ const MyEnroll = () => {
                         type="date" 
                         id="dob" 
                         name="dob" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
                         value={formData.dob} 
                         onChange={handleChange} 
                         required 
@@ -290,13 +311,13 @@ const MyEnroll = () => {
                         type="file" 
                         id="profilePicture" 
                         name="profilePicture" 
-                        className="w-full border-2 py-3 px-4 rounded-xl" 
+                        className="w-full px-4 py-3 border-2 rounded-xl" 
                         onChange={handleChange} 
                     />
                 </div>
             </div>
             <div className="flex justify-center my-10">
-                <button type="submit" className="bg-rose-600 text-white py-2 px-6 rounded-xl text-xl font-semibold">Submit</button>
+                <button type="submit" className="px-6 py-2 text-xl font-semibold text-white bg-rose-600 rounded-xl" onSubmit={handleSubmit}>Submit</button>
             </div>
             <div className="flex justify-center text-xl">
                 <p className="px-2">Already Have an Accound </p> <Link className="text-blue-600 hover:underline" to={'/login'}>Login</Link>

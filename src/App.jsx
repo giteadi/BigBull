@@ -50,7 +50,7 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       {/* <Route path='/register' element={<Register/>}/> */}
       <Route path='/courses' element={<CourseComponent/>}/>
-      <Route path="/course/:id" element={<SingleCourse />} />
+      {/* <Route path="/course/:id" element={<SingleCourse />} /> */}
       <Route path='/blogs' element={<Blogs/>}/>
       <Route path='/about' element={<About/>}/>
       {/* <Route path='/test' element={<Test/>}/> */}
@@ -59,7 +59,7 @@ function App() {
       {/* <Route path='/PurchasedComponent' element={<PurchasedComponent/>}/> */}
       {/* <Route path='/PaymentForm' element={<PaymentForm/>}/> */}
       <Route path='/HelpPage' element={<HelpPage/>}/>
-      {/* <Route path='/Cdetail/:id' element={<CourseDetail/>}/> */}
+      <Route path='/Cdetail/:id' element={<CourseDetail/>}/>
       {/* <Route path='/AsthaRegister' element={<AsthaRegister/>}/> */}
       <Route path='/Carousel' element={<Carousel/>}/>
       <Route path='/Cart' element={<Cart/>}/>

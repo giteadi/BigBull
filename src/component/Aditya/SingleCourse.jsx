@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-// import courseImage from '../adiAssets/table.jpg';
-// import instructorImage from '../adiAssets/striver.jpg';
-// import instructorImage2 from '../adiAssets/babbar.jpeg';
-
-const SingleCourse = () => {
+import { useNavigate, useParams } from 'react-router-dom';
+import courseImage from './adiAssets/table.jpg';
+// import instructorImage from './adiAssets/striver.jpg';
+// import instructorImage2 from './adiAssets/babbar.jpeg';
+// import { addToCart,removeFromCart } from '../../redux/cartSlice';
+// import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+const CourseDetail = () => {
     const { id } = useParams();
+//    const dispatch=useDispatch();
+   const navigate=useNavigate();
     const courses = [
         {
             id: 1,
@@ -137,7 +142,7 @@ const SingleCourse = () => {
     const [showMore, setShowMore] = useState(false);
 
     if (!course) {
-        return <div className="container mx-auto p-4 text-center text-red-600">Course not found</div>;
+        return <div className="container p-4 mx-auto text-center text-red-600">Course not found</div>;
     }
 
     const toggleModule = (index) => {
@@ -158,28 +163,48 @@ const SingleCourse = () => {
             element.scrollIntoView({ behavior: 'smooth' });
         }
     };
-
+    function cartHandler(course) {
+        navigate(`/Cart/${id}`);
+    
+        let user = localStorage.getItem('user');
+        user = JSON.parse(user);
+        
+        axios.get(`http://localhost:6060/api/v1/auth/addToWishlist/${user.id}/${id}`)
+            .then(response => {
+                // Handle successful response
+                toast.success("Item add successfully")
+                console.log('Item added to wishlist:', response.data);
+                // You can dispatch an action or update state here if needed
+            })
+            .catch(error => {
+                // Handle error
+                toast.error("Something went wrong")
+                console.error('Error adding item to wishlist:', error);
+                // You can display an error message or handle the error in another way
+            });
+    }
+    
     return (
-        <div className="bg-gray-100 p-6">
+        <div className="p-6 bg-gray-100">
             {/* Header Section */}
-            <header className="bg-white shadow-lg p-6 rounded-lg mb-6">
-                <div className="flex flex-col lg:flex-row justify-between items-start">
+            <header className="p-6 mb-6 bg-white rounded-lg shadow-lg">
+                <div className="flex flex-col items-start justify-between lg:flex-row">
                     <div className="flex-1 mb-6 lg:mb-0">
                         <div className="mb-4">
-                            <span className="text-red-600 text-sm">Course Section</span>
+                            <span className="text-sm text-red-600">Course Section</span>
                         </div>
-                        <h1 className="text-3xl font-bold mb-4">Masterclass: A Complete Guide For Upskilling Your Growth</h1>
-                        <p className="text-gray-600 mb-4">
+                        <h1 className="mb-4 text-3xl font-bold">Masterclass: A Complete Guide For Upskilling Your Growth</h1>
+                        <p className="mb-4 text-gray-600">
                             Develop the foundations of a digital technology career, from Agile project management to HTML, basics to basicsbasicsbasics.
                         </p>
                         <div className="flex flex-wrap space-x-4">
-                            <button className="bg-red-600 text-white px-4 py-2 rounded-md mb-2">Start learning now</button>
-                            <button className="border border-red-600 text-red-600 px-4 py-2 rounded-md mb-2">Add to favorites</button>
+                            <button className="px-4 py-2 mb-2 text-white bg-red-600 rounded-md">Start learning now</button>
+                            <button className="px-4 py-2 mb-2 text-red-600 border border-red-600 rounded-md">Add to favorites</button>
                         </div>
                     </div>
                     <div className="w-full lg:w-1/3 md:w-1/2 md:h-auto">
-                        <div className="bg-red-50 p-4 rounded-lg shadow-md">
-                            <img src='https://shethink.in/wp-content/uploads/2021/07/react.js-img.png' alt="Course Image" className="w-full md:w-1/2 md:mx-auto rounded-lg mb-4" />
+                        <div className="p-4 rounded-lg shadow-md bg-red-50">
+                            <img src={courseImage} alt="Course Image" className="w-full mb-4 rounded-lg md:w-1/2 md:mx-auto" />
                             <div className="flex flex-col space-y-2">
                                 <div className="flex justify-between">
                                     <span className="text-gray-500">Duration</span>
@@ -199,10 +224,10 @@ const SingleCourse = () => {
                                 </div>
                                 <div className="flex justify-between">
                                     <span className="text-gray-500">Price</span>
-                                    <span>Free</span>
+                                    <span>{course.price}</span>
                                 </div>
                             </div>
-                            <button className="bg-red-600 text-white w-full mt-4 py-2 rounded-md">Start learning</button>
+                            <button className="w-full py-2 mt-4 text-white bg-red-600 rounded-md" onClick={cartHandler}>Add To Wishlist</button>
                         </div>
                     </div>
                 </div>
@@ -218,27 +243,27 @@ const SingleCourse = () => {
             </header>
 
             {/* About Course Section */}
-            <section className="bg-white shadow-lg p-6 rounded-lg mb-6">
-            <h2 className="text-2xl font-bold mb-4">About Course</h2>
-            <p className="text-gray-600 mb-4">
+            <section className="p-6 mb-6 bg-white rounded-lg shadow-lg">
+            <h2 className="mb-4 text-2xl font-bold">About Course</h2>
+            <p className="mb-4 text-gray-600">
                 If you would like to get started as a front end web developer, you are going to LOVE this course! Work on projects ranging from a simple HTML page to a complete Javascript based Google Chrome extension. We will cover the following technologies in this course:
             </p>
-            <ul className="list-disc list-inside text-gray-600 mb-4">
+            <ul className="mb-4 text-gray-600 list-disc list-inside">
                 <li>Web development basics with HTML</li>
                 <li>Cascading Style Sheets (CSS)</li>
                 <li>JavaScript programming</li>
                 <li>Creating interactive web pages</li>
                 <li>JavaScript based browser extensions</li>
             </ul>
-            <button className="text-red-600 mb-5" onClick={toggleShowMore}>{showMore ? 'Show less' : 'Show more'}</button>
+            <button className="mb-5 text-red-600" onClick={toggleShowMore}>{showMore ? 'Show less' : 'Show more'}</button>
             {showMore && (
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition-all delay-50" id='obj'>
+            <div className="p-6 transition-all bg-white rounded-lg shadow-md hover:shadow-2xl delay-50" id='obj'>
 
-                    <h2 className="text-2xl font-semibold text-gray-800 mb-4">Course Objective</h2>
-                    <p className="text-gray-700 mb-2">
+                    <h2 className="mb-4 text-2xl font-semibold text-gray-800">Course Objective</h2>
+                    <p className="mb-2 text-gray-700">
                         By the end of this course, you will be able to:
                     </p>
-                    <ul className="list-disc list-inside text-gray-700 space-y-2">
+                    <ul className="space-y-2 text-gray-700 list-disc list-inside">
                         <li>Understand the fundamental concepts of React.</li>
                         <li>Build and manage state in functional components using hooks.</li>
                         <li>Implement routing in your React applications.</li>
@@ -252,27 +277,27 @@ const SingleCourse = () => {
         </section>
 
             {/* Intended Learning Objectives Section */}
-            <section className="bg-white shadow-lg p-6 rounded-lg mb-6">
-                <h2 className="text-2xl font-bold mb-4">Intended Learning Objectives</h2>
-                <ul className="list-none space-y-4">
+            <section className="p-6 mb-6 bg-white rounded-lg shadow-lg">
+                <h2 className="mb-4 text-2xl font-bold">Intended Learning Objectives</h2>
+                <ul className="space-y-4 list-none">
                     <li className="flex items-start">
-                        <span className="w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center mr-4">✔️</span>
+                        <span className="flex items-center justify-center w-6 h-6 mr-4 text-white bg-red-600 rounded-full">✔️</span>
                         <span>Identify ways that communication can happen.</span>
                     </li>
                     <li className="flex items-start">
-                        <span className="w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center mr-4">✔️</span>
+                        <span className="flex items-center justify-center w-6 h-6 mr-4 text-white bg-red-600 rounded-full">✔️</span>
                         <span>Describe the different styles of communication.</span>
                     </li>
                     <li className="flex items-start">
-                        <span className="w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center mr-4">✔️</span>
+                        <span className="flex items-center justify-center w-6 h-6 mr-4 text-white bg-red-600 rounded-full">✔️</span>
                         <span>Explain the importance of tone in communication.</span>
                     </li>
                 </ul>
             </section>
 
             {/* Course Content Section */}
-            <section className="bg-white shadow-lg p-6 rounded-lg mb-6">
-                <h2 className="text-2xl font-bold mb-4">Course Content</h2>
+            <section className="p-6 mb-6 bg-white rounded-lg shadow-lg">
+                <h2 className="mb-4 text-2xl font-bold">Course Content</h2>
                 <div className="divide-y divide-gray-200">
                     {course.modules.map((module, index) => (
                         <div key={index}>
@@ -296,10 +321,10 @@ const SingleCourse = () => {
             </section>
 
             {/* Instructor Section */}
-            <section className="bg-white shadow-lg p-6 rounded-lg mb-6">
-                <h2 className="text-2xl font-bold mb-4">Instructor</h2>
+            <section className="p-6 mb-6 bg-white rounded-lg shadow-lg">
+                <h2 className="mb-4 text-2xl font-bold">Instructor</h2>
                 <div className="flex items-center">
-                    <img src={course.instructor.image} alt={course.instructor.name} className="w-16 h-16 rounded-full mr-4" />
+                    <img src={course.instructor.image} alt={course.instructor.name} className="w-16 h-16 mr-4 rounded-full" />
                     <div>
                         <h3 className="text-lg font-bold">{course.instructor.name}</h3>
                         <p className="text-gray-600">{course.instructor.bio}</p>
@@ -309,8 +334,8 @@ const SingleCourse = () => {
 
             {/* Video Player Section */}
             {activeVideoUrl && (
-                <section className="bg-white shadow-lg p-6 rounded-lg mb-6">
-                    <h2 className="text-2xl font-bold mb-4">Course Video</h2>
+                <section className="p-6 mb-6 bg-white rounded-lg shadow-lg">
+                    <h2 className="mb-4 text-2xl font-bold">Course Video</h2>
                     <div className="aspect-w-16 aspect-h-9">
                         <iframe
                             width="100%"
@@ -326,11 +351,11 @@ const SingleCourse = () => {
             )}
 
             {/* FAQ and Reviews */}
-            <div className="bg-gray-100 p-4 w-full">
+            <div className="w-full p-4 bg-gray-100">
             {/* Requirements Section */}
-            <section id="requirements" className="bg-white shadow-lg p-6 rounded-lg mb-6">
-                <h2 className="text-2xl font-bold mb-4">Requirements</h2>
-                <ul className="list-disc list-inside text-gray-600 mb-4">
+            <section id="requirements" className="p-6 mb-6 bg-white rounded-lg shadow-lg">
+                <h2 className="mb-4 text-2xl font-bold">Requirements</h2>
+                <ul className="mb-4 text-gray-600 list-disc list-inside">
                     {requirements.map((requirement, index) => (
                         <li key={index}>{requirement}</li>
                     ))}
@@ -338,11 +363,11 @@ const SingleCourse = () => {
             </section>
 
             {/* Course Review Section */}
-            <section id="review" className="bg-white shadow-lg p-6 rounded-lg mb-6">
-                <h2 className="text-2xl font-bold mb-4">Course Review</h2>
+            <section id="review" className="p-6 mb-6 bg-white rounded-lg shadow-lg">
+                <h2 className="mb-4 text-2xl font-bold">Course Review</h2>
                 {reviews.map((review) => (
-                    <div key={review.id} className="border-b border-gray-200 pb-4 mb-4">
-                        <h3 className="text-lg font-semibold mb-2">{review.user}</h3>
+                    <div key={review.id} className="pb-4 mb-4 border-b border-gray-200">
+                        <h3 className="mb-2 text-lg font-semibold">{review.user}</h3>
                         <div className="flex items-center mb-2">
                             <span className="text-yellow-500">{'★'.repeat(review.rating)}</span>
                         </div>
@@ -352,11 +377,11 @@ const SingleCourse = () => {
             </section>
 
             {/* FAQs Section */}
-            <section id="faqs" className="bg-white shadow-lg p-6 rounded-lg mb-6">
-                <h2 className="text-2xl font-bold mb-4">FAQs</h2>
+            <section id="faqs" className="p-6 mb-6 bg-white rounded-lg shadow-lg">
+                <h2 className="mb-4 text-2xl font-bold">FAQs</h2>
                 {faqs.map((faq) => (
-                    <div key={faq.id} className="border-b border-gray-200 pb-4 mb-4">
-                        <h3 className="text-lg font-semibold mb-2">{faq.question}</h3>
+                    <div key={faq.id} className="pb-4 mb-4 border-b border-gray-200">
+                        <h3 className="mb-2 text-lg font-semibold">{faq.question}</h3>
                         <p className="text-gray-600">{faq.answer}</p>
                     </div>
                 ))}
@@ -366,4 +391,4 @@ const SingleCourse = () => {
     );
 };
 
-export default SingleCourse;
+export default CourseDetail;
