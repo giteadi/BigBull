@@ -38,10 +38,10 @@ const FeatureCardSection = ({sectionRef}) => {
                     <h1 className='text-5xl	sm:text-8xl text-center sm:my-10 font-semibold'>Our Course Feature</h1>
                     {/* container */}
                     <div ref={scrollRef} className="makeScrollable lg:flex justify-center">
-                        <div className='feature-container py-10 sm:py-24 sm:gap-16 md:gap-0 grow flex justify-center xl:max-w-screen-xl lg:max-w-screen-lg flex-wrap xl:grid-cols-3 md:grid md:grid-cols-2 justify-items-center items-center md:w-full md:gap-y-20 gap-y-7  '> 
+                        <div className='feature-container py-10 sm:py-24 sm:gap-16 md:gap-0 grow flex justify-center xl:max-w-screen-xl lg:w-full flex-wrap xl:grid-cols-3 md:grid md:grid-cols-2 lg:grid-cols-3 justify-items-center items-center md:w-full md:gap-y-20 gap-y-7  '> 
                             {
                                 cardContent.map((card) => 
-                                    <div className='course-feature p-4 sm:w-auto md:w-96 md:w-full bg-white rounded-lg mb-10 sm:mb-0 border border-gray-300'>
+                                    <div className='course-feature p-4 sm:w-auto md:w-96 bg-white rounded-lg mb-10 sm:mb-0 border border-gray-300'>
                                         {/* image */}
                                         <div className='h-96 rounded-lg'></div>
                                         {/* content */}

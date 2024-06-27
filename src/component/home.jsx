@@ -198,7 +198,7 @@ const Home = () => {
           {/* Sementic */}
           <div
             ref={sectionRef2}
-            className="grid mb-20 lg:grid-cols-2 sm:grid-cols-1 grid gap-10 px-4 sm:px-5 sementic-container"
+            className="grid mb-20 lg:grid-cols-2 sm:grid-cols-1 grid gap-10 px-4 sm:px-5 sementic-container m-auto	"
           >
             {/* left */}
             <div className="flex flex-col sementic-left flex-wrap">
@@ -209,7 +209,7 @@ const Home = () => {
                 </button>
               </div>
               {/* content */}
-              <div className="gap-y-14 mt-14 max-w-md lg:self-end self-center">
+              <div className="gap-y-14 mt-14 max-w-xl lg:self-end self-center">
                 <div className="flex sm:gap-11 mb-12">
                   {/* numberr */}
                   <div className="text-5xl me-10 sm:m-0 sm:text-7xl">01</div>
