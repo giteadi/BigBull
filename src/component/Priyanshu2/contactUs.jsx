@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ContactUs() {
   const [formData, setFormData] = useState({
-    firstname: '',
+    fullname: '',
     email: '',
-    lastname: '',
-    phone: '',
-    message: ''
+    number: '',
+    message: '',
+    subject:"General Inquiry ",
   });
 
   const [phoneError, setPhoneError] = useState('');
@@ -35,41 +36,44 @@ function ContactUs() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-      console.log('okay')
-    // Validate form before submission
-    // if (phoneError !== '') {
-    //   return; // Prevent submission if there are errors
-    // }
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+    console.log(formData)
+    try {
+        const response = await fetch('http://localhost:6060/api/v1/auth/sendMail', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
 
-    // Handle form submission logic here, e.g., sending data to backend
-    console.log(formData);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
 
-    // Clearing inputs after submission
-    setFormData({
-      firstname: '',
-      email: '',
-      lastname: '',
-      phone: '',
-      message: ''
-    });
+        const data = await response.json();
+        console.log('Form submitted successfully:', data);
 
-    // Focusing on name input after submission (optional)
-    nameInputRef.current.focus();
-  };
+        // Redirect or show a success message
+        navigate('/login');
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        // Handle error (e.g., display an error message to the user)
+    }
+};
 
 
   return (
     <>  
     <div style={{height: '70vh'}}  className="max-w-screen-xl	my-20 max-lg:max-w-3xl mx-auto bg-white my-6 font-[sans-serif] ">
-  <div className="text-start px-6">
-    <h2 className="text-gray-800 text-5xl font-semibold">Contact Us</h2>
+  <div className="px-6 text-start">
+    <h2 className="text-5xl font-semibold text-gray-800">Contact Us</h2>
   </div>
   <div className="grid lg:grid-cols-3 items-start gap-4 p-2 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-lg mt-12">
     <div className="bg-[#011c2b] rounded-lg p-6 h-full max-lg:order-1 ">
       <h2 className="text-2xl text-white">Contact Information</h2>
-      <p className="text-xl text-gray-300 mt-4 leading-relaxed	">
+      <p className="mt-4 text-xl leading-relaxed text-gray-300 ">
         Have some big idea or brand to develop and need help?
       </p>
       <ul className="mt-16 space-y-8">
@@ -88,7 +92,7 @@ function ContactUs() {
           </svg>
           <a
             href="javascript:void(0)"
-            className="text-white text-xl text-gray-500 ml-4"
+            className="ml-4 text-xl text-white text-gray-500"
           >
             info@example.com
           </a>
@@ -108,7 +112,7 @@ function ContactUs() {
           </svg>
           <a
             href="javascript:void(0)"
-            className="text-white text-xl text-gray-500 ml-4"
+            className="ml-4 text-xl text-white text-gray-500"
           >
             +91123456789
           </a>
@@ -132,7 +136,7 @@ function ContactUs() {
           </svg>
           <a
             href="javascript:void(0)"
-            className="text-white text-xl text-gray-500 ml-4"
+            className="ml-4 text-xl text-white text-gray-500"
           >
             123 Jabalpur
           </a>
@@ -141,39 +145,16 @@ function ContactUs() {
     </div>
     <div className="p-4 lg:col-span-2 ms-10">
       <form onSubmit={handleSubmit} >
-        <div className="grid sm:grid-cols-2 gap-8">
-          {/* <div className="relative flex items-center">
-            <input
-            ref={nameInputRef}
-              type="text"
-              placeholder="First Name"
-              name='firstname'
-              value={formData.firstname}
-              onChange={handleChange}
-              className="px-2 py-3 bg-white w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-500 outline-none"
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#bbb"
-              stroke="#bbb"
-              className="w-[18px] h-[18px] absolute right-2"
-              viewBox="0 0 24 24"
-            >
-              <circle cx={10} cy={7} r={6} data-original="#000000" />
-              <path
-                d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z"
-                data-original="#000000"
-              />
-            </svg>
-          </div> */}
-          <div className="relative flex items-center  sm:col-span-2 ">
+        <div className="grid gap-8 sm:grid-cols-2">
+         
+          <div className="relative flex items-center sm:col-span-2 ">
             <input
               type="text"
               placeholder="Full Name"
-              name='lastname'
-              value={formData.lastname}
+              name='fullname'
+              value={formData.fullname}
               onChange={handleChange}
-              className="px-2 py-3 bg-white w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-500 outline-none"
+              className="w-full px-2 py-3 text-sm text-gray-800 bg-white border-b border-gray-300 outline-none focus:border-blue-500"
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -193,10 +174,10 @@ function ContactUs() {
             <input
               type="number"
               placeholder="Phone Number"
-              name='phone'
-              value={formData.phone}
+              name='number'
+              value={formData.number}
               onChange={handleChange}
-              className="px-2 py-3 bg-white text-black w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-500 outline-none"
+              className="w-full px-2 py-3 text-sm text-black bg-white border-b border-gray-300 outline-none focus:border-blue-500"
             />
             <svg
               fill="#bbb"
@@ -216,7 +197,7 @@ function ContactUs() {
               name='email'
               value={formData.email}
               onChange={handleChange}
-              className="px-2 py-3 bg-white text-black w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-500 outline-none"
+              className="w-full px-2 py-3 text-sm text-black bg-white border-b border-gray-300 outline-none focus:border-blue-500"
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +235,7 @@ function ContactUs() {
               name='message'
               value={formData.message}
               onChange={handleChange}
-              className="px-2 pt-3 bg-white text-black w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-500 outline-none"
+              className="w-full px-2 pt-3 text-sm text-black text-gray-800 bg-white border-b border-gray-300 outline-none focus:border-blue-500"
               defaultValue={""}
             />
             <svg
@@ -289,7 +270,7 @@ function ContactUs() {
           </div>
           <div className="col-span-full">
             <h6 className="text-sm text-gray-800">Select Subject</h6>
-            <div className="flex max-lg:flex-col gap-6 mt-4">
+            <div className="flex gap-6 mt-4 max-lg:flex-col">
               <div className="flex items-center">
                 <input
                   id="radio1"
@@ -304,7 +285,7 @@ function ContactUs() {
                 >
                   <span className="border-[4px] border-[#011c2b] rounded-full w-full h-full" />
                 </label>
-                <p className="text-sm text-gray-500 ml-4">General Inquiry</p>
+                <p className="ml-4 text-sm text-gray-500">General Inquiry</p>
               </div>
               <div className="flex items-center">
                 <input
@@ -319,7 +300,7 @@ function ContactUs() {
                 >
                   <span className="border-[4px] border-[#011c2b] rounded-full w-full h-full" />
                 </label>
-                <p className="text-sm text-gray-500 ml-4">Technical Support</p>
+                <p className="ml-4 text-sm text-gray-500">Technical Support</p>
               </div>
               <div className="flex items-center">
                 <input
@@ -334,14 +315,14 @@ function ContactUs() {
                 >
                   <span className="border-[4px] border-[#011c2b] rounded-full w-full h-full" />
                 </label>
-                <p className="text-sm text-gray-500 ml-4">Website Feedback</p>
+                <p className="ml-4 text-sm text-gray-500">Website Feedback</p>
               </div>
             </div>
           </div>
         </div>
         <button
           type="submit"
-          className="mt-12 flex items-center justify-center text-sm lg:ml-auto max-lg:w-full rounded-lg px-4 py-3 tracking-wide text-white bg-rose-600 hover:bg-rose-700"
+          className="flex items-center justify-center px-4 py-3 mt-12 text-sm tracking-wide text-white rounded-lg lg:ml-auto max-lg:w-full bg-rose-600 hover:bg-rose-700"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
