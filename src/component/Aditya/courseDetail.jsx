@@ -1,83 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios'; // Import axios for making HTTP requests
 
 const CourseDetail = () => {
-    const { id } = useParams();
-    const courses = [
-        {
-          id: 1,
-          title: 'React Basics',
-          category: 'React',
-          description: 'Learn the basics of React.',
-          price: "10,000",
-          instructor: {
-            name: 'John Doe',
-            bio: 'Experienced React developer with a passion for teaching.',
-            image: 'https://example.com/john_doe.jpg'
-          },
-          modules: [
-            {
-              title: 'Introduction to React',
-              submodules: [
-                { title: 'What is React?', videoUrl: 'https://www.youtube.com/embed/vz1RlUyrc3w' },
-                { title: 'Getting Started with React', videoUrl: 'https://www.youtube.com/embed/vz1RlUyrc3w' }
-              ]
-            },
-            {
-              title: 'React Components',
-              submodules: [
-                { title: 'Functional Components', videoUrl: 'https://www.youtube.com/embed/vz1RlUyrc3w' },
-                { title: 'Class Components', videoUrl: 'https://www.youtube.com/embed/vz1RlUyrc3w' }
-              ]
-            },
-          ],
-        },
-        {
-          id: 3,
-          title: 'JavaScript Basics',
-          category: 'JavaScript',
-          description: 'Learn the basics of JavaScript.',
-          price: "4500",
-          instructor: {
-            name: 'Jane Smith',
-            bio: 'JavaScript enthusiast with a knack for simplifying complex concepts.',
-            image: 'https://example.com/jane_smith.jpg'
-          },
-          modules: [
-            {
-              title: 'Introduction to JavaScript',
-              submodules: [
-                { title: 'JavaScript Fundamentals', videoUrl: 'https://www.youtube.com/embed/ajdRvxDWH4w' },
-                { title: 'Variables and Data Types', videoUrl: 'https://www.youtube.com/embed/ajdRvxDWH4w' }
-              ]
-            },
-            {
-              title: 'JavaScript Functions',
-              submodules: [
-                { title: 'Defining Functions', videoUrl: 'https://www.youtube.com/embed/ajdRvxDWH4w' },
-                { title: 'Function Expressions', videoUrl: 'https://www.youtube.com/embed/ajdRvxDWH4w' }
-              ]
-            },
-          ],
-        },
-      ];
+  const { id } = useParams();
+  const [course, setCourse] = useState(null); // State to hold course details
+  const [loading, setLoading] = useState(true); // State to manage loading state
 
-      const course = courses.find(course => course.id === parseInt(id));
-
-      const [activeModuleIndex, setActiveModuleIndex] = useState(null);
-      const [activeVideoUrl, setActiveVideoUrl] = useState(null);
-
-      if (!course) {
-        return <div className="container mx-auto p-4 text-center text-red-600">Course not found</div>;
+  const fetchCourse = async () => {
+    try {
+      const response = await fetch(`http://localhost:6060/api/v1/auth/coursePage/${id}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch course data');
       }
+      const data = await response.json();
+      setCourse(data[0]); // Assuming API returns an array with one course object
+      setLoading(false); // Update loading state
+    } catch (error) {
+      console.error('Error fetching course:', error);
+      // Handle error state here (e.g., setCourse(null), display an error message)
+      setLoading(false); // Update loading state even on error
+    }
+  };
+  
+  useEffect(() => {
+    fetchCourse();
+  }, [id]);
 
-      const toggleModule = (index) => {
-        setActiveModuleIndex(activeModuleIndex === index ? null : index);
-      };
+  if (loading) {
+    return <div className="container mx-auto p-4 text-center">Loading...</div>;
+  }
 
-      const playVideo = (videoUrl) => {
-        setActiveVideoUrl(videoUrl);
-      };
+  if (!course) {
+    return <div className="container mx-auto p-4 text-center text-red-600">Course not found</div>;
+  }
 
   return (
     <div className="bg-gray-100 p-6">
@@ -86,12 +42,12 @@ const CourseDetail = () => {
         <div className="flex flex-col lg:flex-row justify-between items-start">
           <div className="flex-1 mb-6 lg:mb-0">
             <div className="mb-4">
-              <span className="text-blue-600 text-sm">Design</span>
+              <span className="text-blue-600 text-sm">{course.category}</span>
               <span className="text-gray-500 text-sm ml-2">Photography</span>
             </div>
-            <h1 className="text-3xl font-bold mb-4">Photography Masterclass: A Complete Guide to Photography</h1>
+            <h1 className="text-3xl font-bold mb-4">{course.course_name}</h1>
             <p className="text-gray-600 mb-4">
-              Develop the foundations of a digital technology career, from Agile project management to HTML, basics to basicsbasicsbasics.
+              {course.description}
             </p>
             <div className="flex flex-wrap space-x-4">
               <button className="bg-blue-600 text-white px-4 py-2 rounded-md mb-2">Start learning now</button>
@@ -100,40 +56,27 @@ const CourseDetail = () => {
           </div>
           <div className="w-full lg:w-1/3">
             <div className="bg-blue-50 p-4 rounded-lg shadow-md">
-              <img src="path/to/image.jpg" alt="Course Image" className="w-full rounded-lg mb-4" />
+              <img src={course.thumbnails} alt="Course Image" className="w-full rounded-lg mb-4" />
               <div className="flex flex-col space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-500">Duration</span>
                   <span>8h 40m</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Language</span>
-                  <span>Arabic / English</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Level</span>
-                  <span>Beginner level</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Students</span>
-                  <span>From 12 years old</span>
-                </div>
+                {/* Add more details like Language, Level, Students, Price dynamically */}
                 <div className="flex justify-between">
                   <span className="text-gray-500">Price</span>
-                  <span>Free</span>
+                  <span>{`$${course.price}`}</span>
                 </div>
               </div>
               <button className="bg-blue-600 text-white w-full mt-4 py-2 rounded-md">Start learning</button>
             </div>
           </div>
         </div>
+        {/* Navigation Section */}
         <nav className="mt-6">
           <ul className="flex flex-wrap space-x-6">
             <li><a href="#" className="text-blue-600 border-b-2 border-blue-600 pb-2">About Course</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-blue-600 pb-2">Course Objective</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-blue-600 pb-2">Requirements</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-blue-600 pb-2">Course Review</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-blue-600 pb-2">FAQs</a></li>
+            {/* Add more navigation links like Course Objective, Requirements, Course Review, FAQs */}
           </ul>
         </nav>
       </header>

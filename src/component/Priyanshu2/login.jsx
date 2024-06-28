@@ -4,6 +4,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import styled from "styled-components";
 
+// import img from '../Image/login2.png';
+// import img2 from '../Image/bigbulllogo.png';
+// import img3 from '../Image/google.png';
+
+
 function Login() {
   const data = new Date();
   const [showPassword, setShowPassword] = useState(false);
