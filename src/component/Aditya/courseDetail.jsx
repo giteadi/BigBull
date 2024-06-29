@@ -13,7 +13,7 @@ const CourseDetail = () => {
           instructor: {
             name: 'John Doe',
             bio: 'Experienced React developer with a passion for teaching.',
-            image: 'https://example.com/john_doe.jpg'
+            image: 'https://wallpaperbat.com/img/7200619-anime-man-in-lofi-desktop-room-wallpaper.png'
           },
           modules: [
             {
@@ -41,7 +41,7 @@ const CourseDetail = () => {
           instructor: {
             name: 'Jane Smith',
             bio: 'JavaScript enthusiast with a knack for simplifying complex concepts.',
-            image: 'https://example.com/jane_smith.jpg'
+            image: 'https://wallpaperbat.com/img/7200619-anime-man-in-lofi-desktop-room-wallpaper.png'
           },
           modules: [
             {
@@ -100,7 +100,7 @@ const CourseDetail = () => {
           </div>
           <div className="w-full lg:w-1/3">
             <div className="bg-blue-50 p-4 rounded-lg shadow-md">
-              <img src="path/to/image.jpg" alt="Course Image" className="w-full rounded-lg mb-4" />
+              <img src="https://wallpaperbat.com/img/7200619-anime-man-in-lofi-desktop-room-wallpaper.png" alt="Course Image" className="w-full rounded-lg mb-4" />
               <div className="flex flex-col space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-500">Duration</span>
@@ -185,14 +185,14 @@ const CourseDetail = () => {
       <section className="bg-white shadow-lg p-6 rounded-lg mb-6">
         <h2 className="text-2xl font-bold mb-4">Instructors</h2>
         <div className="flex flex-col lg:flex-row space-x-0 lg:space-x-4">
-          <div className="flex-1 mb-6 lg:mb-0">
-            <img src="path/to/instructor1.jpg" alt="Instructor 1" className="w-full rounded-lg mb-4" />
+          <div className="flex-1 mb-6 lg:mb-0  max-w-sm ">
+            <img src="https://wallpaperbat.com/img/7200619-anime-man-in-lofi-desktop-room-wallpaper.png" alt="Instructor 1" className="w-full rounded-lg mb-4m-auto	" />
             <h3 className="text-lg font-bold">Moatasem abd-Alatif</h3>
             <p className="text-gray-600">Product Strategy</p>
             <p className="text-gray-600 text-sm">This is my first course in Teachable, and with this course, I've seen a wonderful first class to jump into the world of data science.</p>
           </div>
-          <div className="flex-1">
-            <img src="path/to/instructor2.jpg" alt="Instructor 2" className="w-full rounded-lg mb-4" />
+          <div className="flex-1  max-w-sm ">
+            <img src="https://wallpaperbat.com/img/7200619-anime-man-in-lofi-desktop-room-wallpaper.png" alt="Instructor 2" className="w-full rounded-lg mb-4 m-auto" />
             <h3 className="text-lg font-bold">Mostafa samir</h3>
             <p className="text-gray-600">Frontend Designer</p>
             <p className="text-gray-600 text-sm">This is my first course in Teachable, and with this course, I've seen a wonderful first class to jump into the world of data science.</p>
@@ -206,7 +206,7 @@ const CourseDetail = () => {
         <div className="flex flex-wrap -mx-2">
           <div className="w-full sm:w-1/2 lg:w-1/4 px-2 mb-4">
             <div className="bg-gray-200 p-4 rounded-lg shadow-md">
-              <img src="path/to/recommended1.jpg" alt="Recommended Course 1" className="w-full rounded-lg mb-4" />
+              <img src="https://wallpaperbat.com/img/7200619-anime-man-in-lofi-desktop-room-wallpaper.png" alt="Recommended Course 1" className="w-full rounded-lg mb-4 " />
               <h3 className="text-lg font-bold">Course 1</h3>
               <p className="text-gray-600 text-sm">Description of the recommended course 1.</p>
               <button className="bg-blue-600 text-white w-full py-2 rounded-md mt-4">Add to Cart</button>
@@ -214,7 +214,7 @@ const CourseDetail = () => {
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/4 px-2 mb-4">
             <div className="bg-gray-200 p-4 rounded-lg shadow-md">
-              <img src="path/to/recommended2.jpg" alt="Recommended Course 2" className="w-full rounded-lg mb-4" />
+              <img src="https://wallpaperbat.com/img/7200619-anime-man-in-lofi-desktop-room-wallpaper.png" alt="Recommended Course 2" className="w-full rounded-lg mb-4" />
               <h3 className="text-lg font-bold">Course 2</h3>
               <p className="text-gray-600 text-sm">Description of the recommended course 2.</p>
               <button className="bg-blue-600 text-white w-full py-2 rounded-md mt-4">Add to Cart</button>
@@ -222,7 +222,7 @@ const CourseDetail = () => {
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/4 px-2 mb-4">
             <div className="bg-gray-200 p-4 rounded-lg shadow-md">
-              <img src="path/to/recommended3.jpg" alt="Recommended Course 3" className="w-full rounded-lg mb-4" />
+              <img src="https://wallpaperbat.com/img/7200619-anime-man-in-lofi-desktop-room-wallpaper.png" alt="Recommended Course 3" className="w-full rounded-lg mb-4" />
               <h3 className="text-lg font-bold">Course 3</h3>
               <p className="text-gray-600 text-sm">Description of the recommended course 3.</p>
               <button className="bg-blue-600 text-white w-full py-2 rounded-md mt-4">Add to Cart</button>
@@ -230,7 +230,7 @@ const CourseDetail = () => {
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/4 px-2 mb-4">
             <div className="bg-gray-200 p-4 rounded-lg shadow-md">
-              <img src="path/to/recommended4.jpg" alt="Recommended Course 4" className="w-full rounded-lg mb-4" />
+              <img src="https://wallpaperbat.com/img/7200619-anime-man-in-lofi-desktop-room-wallpaper.png" alt="Recommended Course 4" className="w-full rounded-lg mb-4" />
               <h3 className="text-lg font-bold">Course 4</h3>
               <p className="text-gray-600 text-sm">Description of the recommended course 4.</p>
               <button className="bg-blue-600 text-white w-full py-2 rounded-md mt-4">Add to Cart</button>

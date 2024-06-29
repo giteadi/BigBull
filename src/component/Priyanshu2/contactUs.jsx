@@ -68,7 +68,7 @@ function ContactUs() {
     <>  
     <div style={{height: '70vh'}}  className="max-w-screen-xl	my-20 max-lg:max-w-3xl mx-auto bg-white my-6 font-[sans-serif] ">
   <div className="px-6 text-start">
-    <h2 className="text-5xl font-semibold text-gray-800">Contact Us</h2>
+    <h2 style={{fontFamily: "Futura-bold"}} className="text-5xl font-semibold text-gray-800">Contact Us</h2>
   </div>
   <div className="grid lg:grid-cols-3 items-start gap-4 p-2 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-lg mt-12">
     <div className="bg-[#011c2b] rounded-lg p-6 h-full max-lg:order-1 ">

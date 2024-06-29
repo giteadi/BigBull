@@ -5,11 +5,14 @@ import courseImage3 from '../Assets/courseImage3.webp'
 import courseFeatureBackground from '../Assets/courseFeatureBackground.jpg'
 import blanckBackground from '../Assets/blanckBackground.png'
 import { useEffect, useRef } from "react";
+import React from "react";
+import { CardBody, CardContainer, CardItem} from "./3d-card";
+
 
 const cardContent = [
-    {heading: 'Beginner’s `Guide to `Stock Market Investing', desc: 'Understand the basics, start investing, and manage risks' },
-    {heading: 'Beginner’s `Guide to `Stock Market Investing', desc: 'Understand the basics, start investing, and manage risks' },
-    {heading: 'Beginner’s `Guide to `Stock Market Investing', desc: 'Understand the basics, start investing, and manage risks' },
+    {heading: 'Beginner’s Guide to Stock Market Investing', desc: 'Understand the basics, start investing, and manage risks', image: 'https://www.ringcentral.com/gb/en/blog/wp-content/uploads/2021/05/happy-manager-leads-a-meeting-in-the-office-640x427.jpg' },
+    {heading: 'Beginner’s Guide to Stock Market Investing', desc: 'Understand the basics, start investing, and manage risks',image: 'https://www.shutterstock.com/image-photo/happy-mid-aged-business-woman-600nw-2353012835.jpg' },
+    {heading: 'Beginner’s Guide to Stock Market Investing', desc: 'Understand the basics, start investing, and manage risks', image: 'https://cdn.sanity.io/images/xmpcmhrn/production/f363771ad3c072ec71f1ea5e8f3868d18de231a6-1200x800.jpg?rect=0,62,1200,674&w=436&h=245&q=80&fit=max&auto=format' },
 ]
 
 const FeatureCardSection = ({sectionRef}) => {
@@ -35,24 +38,57 @@ const FeatureCardSection = ({sectionRef}) => {
                <Container>  
                <div ref={sectionRef} className="mb-10 sm:mb-44">
                 <div className='my-10'>
-                    <h1 className='text-5xl	sm:text-8xl text-center sm:my-10 font-semibold'>Our Course Feature</h1>
+                    <h1 style={{fontFamily: "Futura-bold"}} className='text-5xl	sm:text-8xl text-center sm:my-10 font-semibold pb-20'>Our Course Feature</h1>
                     {/* container */}
                     <div ref={scrollRef} className="makeScrollable lg:flex justify-center">
-                        <div className='feature-container py-10 sm:py-24 sm:gap-16 md:gap-0 grow flex justify-center xl:max-w-screen-xl lg:w-full flex-wrap xl:grid-cols-3 md:grid md:grid-cols-2 lg:grid-cols-3 justify-items-center items-center md:w-full md:gap-y-20 gap-y-7  '> 
-                            {
-                                cardContent.map((card) => 
-                                    <div className='course-feature p-4 sm:w-auto md:w-96 bg-white rounded-lg mb-10 sm:mb-0 border border-gray-300'>
-                                        {/* image */}
-                                        <div className='h-96 rounded-lg'></div>
-                                        {/* content */}
-                                        <div className='py-4'>
-                                            <h4 className='text-lg font-bold'>{card.heading}</h4>
-                                            <p className='text-base'>{card.desc}</p>
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        </div>
+                    <div className='feature-container gap-x-20 sm:gap-16 md:gap-0 grow flex justify-center xl:max-w-screen-xl lg:w-full flex-wrap xl:grid-cols-3 md:grid md:grid-cols-2 lg:grid-cols-3 justify-items-center items-center md:w-full md:gap-y-16'>
+                  {cardContent.map((card, index) => (
+                   <CardContainer className="">
+                   <CardBody className="bg-neutral-100 relative lg:w-[23rem] md:w-[25rem] w-[25rem] h-auto rounded-xl px-6 py-10 ">
+                     <CardItem
+                       translateZ={50}
+                       className="text-2xl font-bold text-neutral-600 text-black"
+                     >
+                       {/* Make things float in air */}
+                     {card.heading}
+                     </CardItem>
+                     {/* <CardItem
+                       as="p"
+                       translateZ={60}
+                       className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+                     >
+                       Hover over this card to unleash the power of CSS perspective
+                     </CardItem> */}
+                     <CardItem translateZ={150} className="w-full mt-4 my-10">
+                       <img
+                         src={card.image}
+                         className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl "
+                         alt="thumbnail"
+                       />
+                     </CardItem>
+                     <div className="flex justify-between items-center mt-5">
+                       <CardItem
+                         translateZ={20}
+                         to="https://twitter.com/mannupaaji"
+                         target="__blank"
+                         className="px-4 rounded-xl text-xl font-semibold text-black"
+                       >
+                         {/* Try now → */}
+                         {/* Understand the basics, start investing, and manage risks */}
+                         {card.desc}
+                       </CardItem>
+                       {/* <CardItem
+                         translateZ={20}
+                         as="button"
+                         className="px-4 py-2 rounded-xl bg-white text-white text-xs font-bold"
+                       >
+                         Sign up
+                       </CardItem> */}
+                     </div>
+                   </CardBody>
+                 </CardContainer>
+                  ))}
+    </div>
                     </div>
                 </div>
                 </div>
@@ -92,15 +128,6 @@ const Container = styled.div`
     background-size: cover;
     background-position: center;
  }   
- .feature-container > div:nth-child(1) > div:nth-child(1){
-    background-image: url(${courseImage1});
- }   
- .feature-container > div:nth-child(2) > div:nth-child(1){
-    background-image: url(${courseImage2});
- }   
- .feature-container > div:nth-child(3) > div:nth-child(1) {
-    background-image: url(${courseImage3});
- } 
  .feature-container .course-feature {
     padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 0px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 2px;

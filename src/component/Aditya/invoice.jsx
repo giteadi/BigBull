@@ -14,7 +14,7 @@ const Invoice = () => {
   return (
     <div className="container mx-auto p-8 bg-gray-100">
       <div className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-semibold mb-6">Invoice</h2>
+        <h2 style={{fontFamily: "Futura-bold"}} className="text-3xl font-semibold mb-6">Invoice</h2>
         <div className="flex justify-between mb-4">
           <div>
             <p className="font-semibold">Invoice Number:</p>

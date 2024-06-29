@@ -29,8 +29,8 @@ const SubscriptionPlans = () => {
   }, [])
   return (
     <div className="flex flex-col items-center p-4 bg-gray-100 min-h-screen overflow-x-hidden">
-      <h2 className="text-2xl font-bold mb-4 mt-4">
-        <span className="text-red-700">Pricing</span>
+      <h2 className="text-2xl font-bold mb-10 mt-4">
+        <span style={{fontFamily: "Futura-bold"}} className="text-5xl md:text-8xl text-red-700">Pricing</span>
       </h2>
       <p className="text-center mb-8 px-4 sm:px-8 md:px-16 lg:px-32 max-w-6xl	">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto vitae distinctio eum impedit accusantium a, sit culpa quidem quibusdam temporibus harum nulla officia ullam laudantium eveniet blanditiis porro, mollitia molestias saepe tempora earum dolore neque 

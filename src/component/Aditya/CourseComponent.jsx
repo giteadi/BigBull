@@ -175,10 +175,10 @@ const CourseComponent = () => {
     <CoursePage>
     <div className="container mx-auto p-4 pt-0">
       <div className="text-center mb-4">
-          <h1 className='text-8xl font-bold text-gray-800 card border-0 mb-10'>Courses</h1>
+          <h1 style={{fontFamily: "Futura-bold"}} className='text-5xl sm:text-8xl font-bold text-gray-800 card border-0 mb-10'>Courses</h1>
       </div>
-<div className="flex flex-col sm:flex-row justify-around items-center mb-6">
-  <div className="flex flex-wrap justify-center gap-2 sm:mb-0">
+<div className="flex flex-col sm:flex-row justify-around items-center mb-6 gap-y-8 sm:gap-0">
+  <div className="flex flex-wrap gap-2 sm:mb-0 justify-center sm:justify-start">
     {categories.map((category) => (
       <button 
         key={category}
@@ -194,7 +194,7 @@ const CourseComponent = () => {
     ))}
   </div>
 
-  <div className="flex flex-wrap justify-center gap-2">
+  <div className="flex flex-wrap gap-2">
     <div className="flex flex-col items-start">
       <label htmlFor="priceRange" className="mb-1 text-gray-700">Price Range</label>
       <select 
@@ -222,13 +222,13 @@ const CourseComponent = () => {
   </div>
 </div>
 
-      <div className='container mx-auto px-4'>
-      <div className=" m-4 p-4 flex justify-center">
+      <div className='container mx-auto'>
+      <div className=" m-4 px-4.5 py-4.5 flex justify-center">
         <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3   max-w-5xl w-ful gap-5">
 
       {/* <label>Categories by Dater</label> */}
         {filteredCourses.map((course) => (
-          <div className='card-container'>
+          <div className='card-container min-w-72'>
           <div 
             key={course.id} 
            className="bg-white card border p-4 cursor-pointer rounded-lg shadow-lg text-black transition-transform transform hover:scale-105"

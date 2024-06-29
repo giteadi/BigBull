@@ -92,7 +92,7 @@ const CoursesInLandingPage = ({sectionRef}) => {
         <>
             <Container>
                    <div className='my-10 py-10 mb-0 sm:my-10'>
-                    <h1 className='text-5xl sm:text-8xl text-center sm:my-10 font-semibold'>Course</h1> 
+                    <h1 style={{fontFamily: "Futura-bold"}} className='text-5xl sm:text-8xl text-center sm:my-10 font-semibold'>Course</h1> 
                     {/* container */}
                     <div ref={scrollRef} className="makeScrollable" >
                     <div ref={sectionRef} className='course-card-scroll p-8 flex flex-wrap sm:gap-20 justify-center '> 

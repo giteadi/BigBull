@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { SiOpenlayers } from "react-icons/si";
 import logo from "./../../public/logo/logo.png";
 import { FaArrowRightLong } from "react-icons/fa6";
+// import heroBackground from "../Assets/5.mp4";
 import heroBackground from "../Assets/hero.mp4";
 import videoInMobileFrame from "../Assets/videoInMobileFrame.mp4";
 import videoInTableFrame from "../Assets/videoInTabletForm.mp4";
@@ -173,14 +174,14 @@ const Home = () => {
             <div className={`hero ${!isChecked || "brightness-50"} `}>
               <div className="h-screen">
                 <video
-                  style={{ filter: "brightness(60%)" }}
+                  style={{ filter: "brightness(40%)" }}
                   src={heroBackground}
                   autoPlay
                   loop
                   muted
                   className="h-full w-full object-cover"
                 ></video>
-                <div className="absolute top-0 text-white h-full flex flex-col justify-center w-full sm:w-4/5 px-2 sm:px-5">
+                <div style={{fontFamily: "Futura-bold"}} className="absolute top-0 text-white h-full flex flex-col justify-center w-full sm:w-4/5 px-2 sm:px-5">
                   <h1 className="font-semibold text-9xl leading-tight">
                     Master the Stock Market with Our Expert-Led Courses
                   </h1>
@@ -203,7 +204,7 @@ const Home = () => {
             {/* left */}
             <div className="flex flex-col sementic-left flex-wrap">
               <div className="self-center">
-                <h2 className="text-5xl sm:text-7xl	mb-10 ">Schematic</h2>
+                <h2 style={{fontFamily: "Futura-bold"}} className="text-5xl sm:text-7xl	mb-10 ">Schematic</h2>
                 <button className="text-xl border-2 rounded-3xl border-black py-2 px-7">
                   Brand Identity
                 </button>
@@ -272,9 +273,9 @@ const Home = () => {
           <CoursesInLandingPage sectionRef={sectionRef3} />
           {/* Subscription */}
           <div className="text-center bg-white subscription">
-            <div className="text-xl sm:text-5xl max-w-2xl my-6 m-auto leading-tight">
+            <div style={{fontFamily: "Futura-bold"}} className="text-xl sm:text-5xl max-w-2xl my-6 m-auto leading-tight">
               <h1 className="sm:mb-4">Choice your best </h1>
-              <span className="font-bold text-3xl me-2">
+              <span className="font-bold text-3xl md:text-5xl me-2">
                 <span className="sm:ps-4 pe-2">SUBSCRIPTION</span>PLAN
               </span>
             </div>
@@ -321,7 +322,7 @@ const Home = () => {
             ref={sectionRef6}
             className="flex justify-center flex-col pt-10 sm:pt-24"
           >
-            <h1 className="text-5xl sm:text-8xl text-center font-semibold">
+            <h1 style={{fontFamily: "Futura-bold"}} className="text-5xl sm:text-8xl text-center font-semibold">
               Latest Blogs
             </h1>
             <LatestPage />
@@ -343,13 +344,13 @@ const Home = () => {
             className="px-40 lg:px-20 py-20 call-to-action"
           >
             <div className="mb-10 sm:mb-20 ">
-              <h1 className="text-5xl sm:text-7xl	mb-10  ">Call to Action</h1>
+              <h1 style={{fontFamily: "Futura-bold"}} className="text-5xl sm:text-7xl	mb-10  ">Call to Action</h1>
               <p className="text-xl sm:text-4xl">
                 Join Now and Start Your Journey to Financial Mastery!
               </p>
             </div>
             <div>
-              <h1 className="text-5xl sm:text-7xl	mb-3 sm:mb-10 ">What we do</h1>
+              <h1 style={{fontFamily: "Futura-bold"}} className="text-5xl sm:text-7xl	mb-3 sm:mb-10 ">What we do</h1>
               <p className="text-xl sm:text-4xl">
                 Elevate your brand and make your mark in history.
               </p>
@@ -866,4 +867,15 @@ const LandingPage = styled.div`
       font-size: 1.25rem;
     } */
   }
+  @media screen and (min-width: 600px) and (max-width: 1024px) {
+    .call-to-action {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .slide-track {
+      /* display: flex; */
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
 `;

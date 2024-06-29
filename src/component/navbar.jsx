@@ -1,12 +1,11 @@
 import {Link} from 'react-router-dom';
 import logo from './../../public/logo/logo.png'
 
-
 const Navbar = () => {
     return (
         <>
-<nav className="border-gray-200 dark:bg-gray-900 w-full bg-white pt-3 mb-20">
-  <div style={{maxWidth: 'max-width: 1920px;'}} className="flex flex-wrap items-center justify-between mx-auto">
+<nav style={{maxWidth: '1728px'}} className="border-gray-200 dark:bg-gray-900 w-full bg-white pt-3 mb-20 mx-auto">
+  <div className="flex flex-wrap items-center justify-between mx-auto">
     <Link to={'/'} className="flex items-center space-x-3 rtl:space-x-reverse w-32">
       <img
         src={logo}

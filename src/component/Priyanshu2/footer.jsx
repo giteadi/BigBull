@@ -28,7 +28,7 @@ const Footer = () => {
             /> */}
           </div>
 
-          <h4 className="pt-4 text-5xl font-bold">We are Social</h4>
+          <h4 style={{fontFamily: "Futura-bold"}} className="pt-4 text-5xl font-bold">We are Social</h4>
           <p className="bottom-para text-xl py-8">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda!
           </p>
