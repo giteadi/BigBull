@@ -172,7 +172,7 @@ const CourseComponent = () => {
                   >
                     <div className="w-full h-48 mb-4 overflow-hidden rounded-lg">
                       <img
-                        src={course.thumbnails}
+                        src="https://media.istockphoto.com/id/1337462632/photo/growth.jpg?s=1024x1024&w=is&k=20&c=G3zWfnVkyz2LJCg9A3W60yDYXLs8wU11k585OjbYYeo="
                         alt={course.course_name}
                         className="w-full h-full object-cover rounded-t-lg"
                       />
