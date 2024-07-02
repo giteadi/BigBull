@@ -34,10 +34,14 @@ import SubscriptionPlans from './component/Nousheen/subscription';
 import Navbar from './component/navbar';
 import LatestPage from './component/Nousheen/latestPage';
 import EnrollForm from './component/EnrollForm';
+<<<<<<< HEAD
 // import locomotiveScroll from "locomotive-scroll";
 import PageNotFound from './component/pageNotFound';
 import ScrollToTop from './component/scrollTop';
 
+=======
+import ForgetPass from './component/Aditya/forget';
+>>>>>>> e3259dd8213f4ffb00385460325c86c7b7e353ba
 
 function App() {
   const location = useLocation();
@@ -49,24 +53,34 @@ function App() {
 <ScrollToTop>
     <Routes>
       <Route path='/' element={<Home/>}/>
+<<<<<<< HEAD
       <Route path='*' element={<PageNotFound/>}/>
       {/* <Route path='/Navbar' element={<Navbar/>}/> */}
+=======
+      <Route path='/Navbar' element={<Navbar/>}/>
+>>>>>>> e3259dd8213f4ffb00385460325c86c7b7e353ba
       <Route path='/login' element={<Login/>}/>
-      {/* <Route path='/register' element={<Register/>}/> */}
+      <Route path='/register' element={<Register/>}/>
       <Route path='/courses' element={<CourseComponent/>}/>
-      {/* <Route path="/course/:id" element={<SingleCourse />} /> */}
+      <Route path="/course/:id" element={<SingleCourse />} />
       <Route path='/blogs' element={<Blogs/>}/>
       <Route path='/about' element={<About/>}/>
       {/* <Route path='/test' element={<Test/>}/> */}
       {/* <Route path='/awards' element={<Awards/>}/> */}
       <Route path='/PurchasedCoursesPage' element={<PurchasedCoursesPage/>}/>
       {/* <Route path='/PurchasedComponent' element={<PurchasedComponent/>}/> */}
-      {/* <Route path='/PaymentForm' element={<PaymentForm/>}/> */}
+      {/* <Route path='/PaymentForm' element={<PaymentForm/>} */}
       <Route path='/HelpPage' element={<HelpPage/>}/>
       <Route path='/Cdetail/:id' element={<CourseDetail/>}/>
+<<<<<<< HEAD
       {/* <Route path='/AsthaRegister' element={<AsthaRegister/>}/> */}
       {/* <Route path='/Carousel' element={<Carousel/>}/> */}
       <Route path='/Cart' element={<Cart/>}/>
+=======
+      <Route path='/AsthaRegister' element={<AsthaRegister/>}/>
+      <Route path='/Carousel' element={<Carousel/>}/>
+      <Route path='/Cart/:id' element={<Cart/>}/>
+>>>>>>> e3259dd8213f4ffb00385460325c86c7b7e353ba
       <Route path='/Footer' element={<Footer/>}/>
       {/* <Route path='/UpdateProfile' element={<UpdateProfile/>}/> */}
       <Route path='/Invoice' element={<Invoice/>}/>
@@ -83,8 +97,13 @@ function App() {
       <Route path='/SubscriptionPlans' element={<SubscriptionPlans/>}/>
       {/* <Route path='/LatestPage' element={<LatestPage/>}/> */}
       <Route path='/EnrollForm' element={<EnrollForm/>}/>
+<<<<<<< HEAD
     </Routes>
       </ScrollToTop>
+=======
+      <Route path='/Forget' element={<ForgetPass/>}/>
+    </Routes> 
+>>>>>>> e3259dd8213f4ffb00385460325c86c7b7e353ba
       <Footer/>
     </>
   )

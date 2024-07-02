@@ -5,6 +5,11 @@ import loginImage from './../../Assets/loginImage.png';
 
 import styled from "styled-components";
 
+// import img from '../Image/login2.png';
+// import img2 from '../Image/bigbulllogo.png';
+// import img3 from '../Image/google.png';
+
+
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
